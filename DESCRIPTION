@@ -2,7 +2,7 @@ Package: skrunchy2025
 Title: Update Skeena River run reconstruction for Chinook salmon with data available in 2025
 Version: 0.0.0.9000
 Authors@R: 
-    person("Luke", "Warkentin", "luke.warkentin@dfo-mpo.gc.ca", role = c("aut", "cre"))
+    person("Luke", "Warkentin", ,"luke.warkentin@dfo-mpo.gc.ca", role = c("aut", "cre"))
 Description: Update Skeena River run reconstruction for Chinook salmon with data available in 2025. Uses the skrunchy package. 
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -10,3 +10,6 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Imports: 
     skrunchy
+Depends: 
+    R (>= 3.5)
+LazyData: true
