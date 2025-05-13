@@ -51,5 +51,9 @@ rsconnect/
 
 # Raw data
 data-raw/
+data-raw/tyee-genetics/
+data-raw/tyee-sampling-biodata-ages/
 *.csv
 *.xlsx
+
+
