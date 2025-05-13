@@ -49,6 +49,9 @@ po/*~
 rsconnect/
 
 
+# Raw data to include
+!data-raw/freshwater-catch.xlsx
+
 # Raw data
 data-raw/
 data-raw/tyee-genetics/
