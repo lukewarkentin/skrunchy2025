@@ -50,7 +50,7 @@ rsconnect/
 
 
 # Raw data to include
-!data-raw/README-include.md
+!data-raw/README.md
 !data-raw/freshwater-catch.xlsx
 
 
