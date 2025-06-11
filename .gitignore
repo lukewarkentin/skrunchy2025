@@ -48,9 +48,10 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 
+# README for raw data to include
+!data-raw/README.md
 
 # Raw data to include
-!data-raw/README.md
 !data-raw/freshwater-catch.xlsx
 
 
