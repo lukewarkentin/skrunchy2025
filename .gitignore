@@ -53,6 +53,8 @@ rsconnect/
 
 # Raw data to include
 !data-raw/freshwater-catch.xlsx
+!data-raw/kitsumkalum/brood-removals.csv
+
 
 
 # Raw data
