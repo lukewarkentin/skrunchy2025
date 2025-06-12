@@ -17,7 +17,7 @@ POPAN results with SE. Has total escapement and escapement by sex (female, male)
 
 ### `kitsumkalum-escapement-by-age-1984-2020.csv`
 
-Escapement of Kitsumkalum Chinook broken out into ages using age distribution on spawning grounds, by sex. Years 1984-2020 are from file "1979-2020 Skeena Test Chinook full DNA probs matched to Tyee data 2023-11-26.xlsx" tab "KLM" columns CB:CQ. These are based on the POPAN estimates of females and males separately with female and male age distributions, and hatchery contributions. 
+Escapement of Kitsumkalum Chinook broken out into ages using age distribution on spawning grounds, by sex. Years 1984-2020 are available in Winther et al. 2021 Table 14, and from file "1979-2020 Skeena Test Chinook full DNA probs matched to Tyee data 2023-11-26.xlsx" tab "KLM" columns CB:CQ. These are based on the POPAN estimates of females and males separately with female and male age distributions, and hatchery contributions. 
 
 ### `brood-removals.csv`
 
