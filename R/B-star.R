@@ -10,5 +10,5 @@
 #'   \item{a}{Age}
 #' }
 #' @source data-raw/process-B-star.R
-"P"
+"B_star"
 
