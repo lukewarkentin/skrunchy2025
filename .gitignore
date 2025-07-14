@@ -53,6 +53,7 @@ rsconnect/
 
 # Raw data to include
 !data-raw/freshwater-catch.xlsx
+!data-raw/kitsumkalum/kitsumkalum-escapement.csv
 !data-raw/kitsumkalum/brood-removals.csv
 !data-raw/kitsumkalum/fishery-lookup-CWT-ERA.csv
 !data-raw/kitsumkalum/chinook-cwt-ERA-outfiles_2025-03-06_KLM-KLY.xlsx

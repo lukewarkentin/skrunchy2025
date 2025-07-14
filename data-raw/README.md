@@ -13,7 +13,7 @@ Notes:
 
 ## `kitsumkalum`
 
-### `kitsumkalum-escapament.csv`
+### `kitsumkalum-escapement.csv`
 
 POPAN results with SE. Has total escapement and escapement by sex (female, male). 1984-2020 data is from Winther et al. 2021 table 14. 
 
