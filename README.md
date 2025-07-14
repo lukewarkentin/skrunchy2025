@@ -1,6 +1,7 @@
 # skrunchy2025
 
-This is a data and analysis package that updates the Skeena River run reconstruction for Chinook salmon, with data available in 2025.
+This is a data and analysis package that updates the Skeena River run reconstruction for Chinook salmon, with data available in 2025. 
+It contains the data needed to run the run reconstruction. 
 It uses the functions in the skrunchy package: https://github.com/Pacific-salmon-assess/skrunchy. 
 
 ### Organization 
