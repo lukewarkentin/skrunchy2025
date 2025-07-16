@@ -28,6 +28,6 @@ pak::pak("Pacific-salmon-assess/skrunchy")
 
 install.packages("devtools")
 library(devtools)
-install_github("Pacific-salmon-assess/skrunchy")
+install_github("lukewarkentin/skrunchy2025")
 
 ```
