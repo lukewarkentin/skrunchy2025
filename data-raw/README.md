@@ -14,7 +14,7 @@ Notes:
 
 # Folders 
 
-## `kitsumkalum`
+## `kitsumkalum/`
 
 ### `kitsumkalum-escapement.csv`
 
@@ -30,6 +30,21 @@ Female brood removals from Kitsumkalum River. Years 1984-2019 are from "V20-4-KL
 
 Output files from the Chinook Exploitation Rate Analysis (ERA) done by Chinook Technical Committee. Requested from Pacific Salmon Commission through official data request form.
 Outputs for Coded Wire Tag (CWT) recoveries for KLM (Kitsumkalum fry releases) and KLY (Kitsumkalum yearling releases). Note that run reconstruction uses rates for fry releases (code KLM) and estimates of hatchery escapement for both KLM and KLY summed. 
+
+From LT: For exploitation rates, the Calendar Year refers to the distributions of mortalities (reported catch and total) among fisheries and escapement in a catch year for a given stock.  The Brood Year ER is the cumulative impact of all fisheries on all ages for a given stock and brood year. For ER_total and ER_legal, ER total would include sublegal mortalities and potentially also include shaker mortality in the calculations whereas ER_legal would be the exploitation rate only on the legal fish
+
+Tabs: 
+- `Releases total`: CWT releases and total releases by stock and brood year. Used to expand the estimate of CWT tagged fish in escapement to estimate hatchery origin spawners.
+- `Releases by tag`: 
+- `BY mat aeq cohort`: 
+- `CY mat aeq cohort`: 
+- `BY Morts and ERs`: 
+- `CY Morts and ERs`: 
+- `BY Simple ERs`: 
+- `CY Simple ERs`: 
+- `BY Survival`:
+- `CY Survival`: 
+
 
 ### `fishery-lookup-CWT-ERA.csv`
 
