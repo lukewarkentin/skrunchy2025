@@ -36,19 +36,34 @@ From LT: For exploitation rates, the Calendar Year refers to the distributions o
 Tabs: 
 - `Releases total`: CWT releases and total releases by stock and brood year. Used to expand the estimate of CWT tagged fish in escapement to estimate hatchery origin spawners.
 - `Releases by tag`: CWT releases and total releases by stock and tag code. 
-- `BY mat aeq cohor`: By stock and brood year:
+- `BY mat aeq cohor`:
+    - `Stock`: release stage: KLM = fry release, KLY = yearling release
+    - `Brood.Yr`: Brood year
+    - `age`: Age
     - `mat`: Maturation rate
     - `AEQ`: Adult equivalency rate
     - `Cohort_BNM`: Cohort abundance before natural mortality
     - `Cohort_ANM`: Cohort abundance after natural mortality
     - `escape`: Estimated CWT tagged fish in escapement (Kitsumkalum River), estimated from: Kitsumkalum POPAN, number of CWT adipose clipped fish encountered during mark recapture study, proportion of clipped to unclipped fish encountered during mark recapture study. 
 - `CY mat aeq cohort`: Same as above, but by calendar year.
-- `BY Morts and ERs`: 
-- `CY Morts and ERs`: 
-- `BY Simple ERs`: 
-- `CY Simple ERs`: 
-- `BY Survival`:
-- `CY Survival`: 
+- `BY Morts and ERs`: By stock, brood year, and age: 
+    - `Stock`: release stage: KLM = fry release, KLY = yearling release
+    - `Fishery`: Numeric code for fishery
+    - `Fishery_Name`: US and Canadian fisheries encountering Chinook. Details can be found in `fishery-lookup-CWT-ERA.csv`
+    - `by`: Brood year
+    - `age`: Age
+    - `CNR_legal_morts`: ???
+    - `CNR_Sublegal_morts`: ???
+    - `Total_shaker_morts`: ???
+    - `Landed_catch`: Estimated number of landed CWT and adipose fin clipped Chinook in the fishery. 
+    - `ER_legal`: Exploitation rate of legal sized Chinook. Most closely matches rates used in Winther et al. 2024. 
+    - `ER_total`: ??? Exploitation rate including sub-legal mortalities and potentially shaker mortalities. 
+- `CY Morts and ERs`: Same as above but buy calendar year. 
+- `BY Simple ERs`: Harvest rates summarized by brood year and fishery category, in adult equivalents. 
+    - `Type`: Reported = ???, Total= ???, terminal = only terminal fisheries. 
+- `CY Simple ERs`: Same as above, but by calendar year method. 
+- `BY Survival`: survival rates by age, estimated recoveries or all mortalities. Details???
+- `CY Survival`: Same as above but calendar year method. Details???
 
 
 ### `fishery-lookup-CWT-ERA.csv`
