@@ -44,7 +44,7 @@ Tabs:
     - `AEQ`: Adult equivalency rate
     - `Cohort_BNM`: Cohort abundance before natural mortality
     - `Cohort_ANM`: Cohort abundance after natural mortality
-    - `escape`: Estimated CWT tagged fish in escapement (Kitsumkalum River), estimated from: Kitsumkalum POPAN, number of CWT adipose clipped fish encountered during mark recapture study, proportion of clipped to unclipped fish encountered during mark recapture study. 
+    - **`escape`**: Estimated CWT tagged fish in escapement (Kitsumkalum River), estimated from: Kitsumkalum POPAN, number of CWT adipose clipped fish encountered during mark recapture study, proportion of clipped to unclipped fish encountered during mark recapture study. 
 - `CY mat aeq cohort`: Same as above, but by calendar year.
 - `BY Morts and ERs`: Estimated catch and exploitation rates in each fishery.  
     - `Stock`: release stage: KLM = fry release, KLY = yearling release
