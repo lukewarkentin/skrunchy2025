@@ -35,9 +35,14 @@ From LT: For exploitation rates, the Calendar Year refers to the distributions o
 
 Tabs: 
 - `Releases total`: CWT releases and total releases by stock and brood year. Used to expand the estimate of CWT tagged fish in escapement to estimate hatchery origin spawners.
-- `Releases by tag`: 
-- `BY mat aeq cohort`: 
-- `CY mat aeq cohort`: 
+- `Releases by tag`: CWT releases and total releases by stock and tag code. 
+- `BY mat aeq cohor`: By stock and brood year:
+    - `mat`: Maturation rate
+    - `AEQ`: Adult equivalency rate
+    - `Cohort_BNM`: Cohort abundance before natural mortality
+    - `Cohort_ANM`: Cohort abundance after natural mortality
+    - `escape`: Estimated CWT tagged fish in escapement (Kitsumkalum River), estimated from: Kitsumkalum POPAN, number of CWT adipose clipped fish encountered during mark recapture study, proportion of clipped to unclipped fish encountered during mark recapture study. 
+- `CY mat aeq cohort`: Same as above, but by calendar year.
 - `BY Morts and ERs`: 
 - `CY Morts and ERs`: 
 - `BY Simple ERs`: 
