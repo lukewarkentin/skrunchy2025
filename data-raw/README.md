@@ -40,8 +40,8 @@ Tabs:
     - `Stock`: release stage: KLM = fry release, KLY = yearling release
     - `Brood.Yr`: Brood year
     - `age`: Age
-    - `mat`: Maturation rate
-    - `AEQ`: Adult equivalency rate
+    - **`mat`**: Maturation rate
+    - **`AEQ`**: Adult equivalency rate
     - `Cohort_BNM`: Cohort abundance before natural mortality
     - `Cohort_ANM`: Cohort abundance after natural mortality
     - **`escape`**: Estimated CWT tagged fish in escapement (Kitsumkalum River), estimated from: Kitsumkalum POPAN, number of CWT adipose clipped fish encountered during mark recapture study, proportion of clipped to unclipped fish encountered during mark recapture study. 
@@ -56,7 +56,7 @@ Tabs:
     - `CNR_Sublegal_morts`: ???
     - `Total_shaker_morts`: ???
     - `Landed_catch`: Estimated number of landed CWT and adipose fin clipped Chinook in the fishery. 
-    - `ER_legal`: Exploitation rate of legal sized Chinook. Most closely matches rates used in Winther et al. 2024. 
+    - **`ER_legal`**: Exploitation rate of legal sized Chinook. Most closely matches rates used in Winther et al. 2024. 
     - `ER_total`: ??? Exploitation rate including sub-legal mortalities and potentially shaker mortalities. 
 - `CY Morts and ERs`: Same as above but buy calendar year. 
 - `BY Simple ERs`: Harvest rates summarized by brood year and fishery category, in adult equivalents. 
