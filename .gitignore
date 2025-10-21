@@ -57,6 +57,8 @@ rsconnect/
 !data-raw/kitsumkalum/brood-removals.csv
 !data-raw/kitsumkalum/fishery-lookup-CWT-ERA.csv
 !data-raw/kitsumkalum/chinook-cwt-ERA-outfiles_2025-03-06_KLM-KLY.xlsx
+!data-raw/kitsumkalum/misc/kitsumkalum-age-observations.RDS
+
 !data-raw/process-H-star.R
 !data-raw/process-kitsumkalum.R
 
