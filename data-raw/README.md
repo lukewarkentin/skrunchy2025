@@ -35,6 +35,10 @@ From LT: For exploitation rates, the Calendar Year refers to the distributions o
 
 Tabs: 
 - `Releases total`: CWT releases and total releases by stock and brood year. Used to expand the estimate of CWT tagged fish in escapement to estimate hatchery origin spawners.
+    - `Stock`: release stage: KLM = fry release, KLY = yearling release
+    - `Brood.Yr`: Brood year
+    - ***`CWT_Release`***: number of fish released that were tagged with Coded Wire Tags (these were also adipose fin clipped)
+    - ***`total_Release`***: Total number of fish released, including tagged fish. 
 - `Releases by tag`: CWT releases and total releases by stock and tag code. 
 - `BY mat aeq cohor`: Maturation rate, adult equivalency rate, cohort abundance, and escapement of CWT Chinook.
     - `Stock`: release stage: KLM = fry release, KLY = yearling release
@@ -44,7 +48,7 @@ Tabs:
     - **`AEQ`**: Adult equivalency rate
     - `Cohort_BNM`: Cohort abundance before natural mortality
     - `Cohort_ANM`: Cohort abundance after natural mortality
-    - **`escape`**: Estimated CWT tagged fish in escapement (Kitsumkalum River), estimated from: Kitsumkalum POPAN, number of CWT adipose clipped fish encountered during mark recapture study, proportion of clipped to unclipped fish encountered during mark recapture study. 
+    - **`escape`**: Estimated CWT tagged fish in escapement (Kitsumkalum River), estimated from: Kitsumkalum POPAN, number of CWT adipose clipped fish encountered during mark recapture study, proportion of clipped to unclipped fish encountered during mark recapture study. This is later expanded using total/tagged releases to estimate total hatchery escapement. 
 - `CY mat aeq cohort`: Same as above, but by calendar year.
 - `BY Morts and ERs`: Estimated catch and exploitation rates in each fishery.  
     - `Stock`: release stage: KLM = fry release, KLY = yearling release
