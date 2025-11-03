@@ -83,5 +83,5 @@ Contains files for weekly Chinook catch and GSI mixture results, by stat week, f
 Weekly adult Chinook catch data to be matched up with re-run of msat GSI mixture analysis. Revised for accuracy by Ivan Winther. 
 This table is taken from tab "Samples & catch 79-20" from file "1AB Skeena Esc 1979 to 2020 POPAN 2023-11-13 to LW&CM .xlsx", which was created by Ivan Winther for the publication: An assessment of Skeena River Chinook salmon using genetic stock identification 1984 to 2020 (https://publications.gc.ca/site/eng/9.901355/publication.html)
 It contains weekly Tyee adult catch (revised weekly catch) by stat week. (LW added "(G)" to indicate which column to use in the updated run reconstruction)
-The original file also had msat GSI mixture results for the samples from each stat week. These have been rerun by the Molecular Genetics Lab, and are joined to this data in an R script found in skrunchy2025/data-raw/tyee-genetics
+The original file also had msat GSI mixture results for the samples from each stat week. These will be rerun by the Molecular Genetics Lab, and will be joined to this data when available. 
 
