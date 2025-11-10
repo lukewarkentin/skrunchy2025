@@ -63,6 +63,7 @@ rsconnect/
 !data-raw/process-kitsumkalum.R
 
 !data-raw/tyee-genetics/tyee-catch-by-stat-week-1984-2020.xlsx
+!data-raw/tyee-genetics/check-sets-per-day.csv
 
 
 

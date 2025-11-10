@@ -85,3 +85,7 @@ This table is taken from tab "Samples & catch 79-20" from file "1AB Skeena Esc 1
 It contains weekly Tyee adult catch (revised weekly catch) by stat week. (LW added "(G)" to indicate which column to use in the updated run reconstruction)
 The original file also had msat GSI mixture results for the samples from each stat week. These will be rerun by the Molecular Genetics Lab, and will be joined to this data when available. 
 
+### `check-sets-per-day.csv`
+
+Number of sets at Skeena River Tyee test fishery by day. Check bias of assumption 
+of equal effort by week for expansions of GSI by weekly catch. File created by querying FOS database using FOSer package and file `FOSer-exporter/scripts/query-FOS-catch-data-using-FOSer-package.R`
