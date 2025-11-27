@@ -52,19 +52,22 @@ rsconnect/
 !data-raw/README.md
 
 # Raw data to include
+# Raw data folder
 !data-raw/freshwater-catch.xlsx
+!data-raw/process-H-star.R
+!data-raw/process-G.R
+!data-raw/process-kitsumkalum.R
+
 !data-raw/kitsumkalum/kitsumkalum-escapement.csv
 !data-raw/kitsumkalum/brood-removals.csv
 !data-raw/kitsumkalum/fishery-lookup-CWT-ERA.csv
 !data-raw/kitsumkalum/chinook-cwt-ERA-outfiles_2025-03-06_KLM-KLY.xlsx
 !data-raw/kitsumkalum/misc/kitsumkalum-age-observations.RDS
 
-!data-raw/process-H-star.R
-!data-raw/process-kitsumkalum.R
-
 !data-raw/tyee-genetics/tyee-catch-by-stat-week-1984-2020.xlsx
 !data-raw/tyee-genetics/check-sets-per-day.csv
 
+#data-raw/tyee-sampling-biodata-ages/2014-2024-tyee-chinook-biodata-2025-04-10.xlsx
 
 
 # Raw data
