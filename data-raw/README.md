@@ -1,4 +1,4 @@
-# Data files
+# Data and processing files
 
 
 ### `freshwater-catch.xlsx` 
@@ -11,6 +11,10 @@ Notes:
 - "Tyee Catch large not corrected",	"Tyee catch jacks not corrected", and	"Tyee catch Jacks + Large" are from FOS, and can be accessed multiple ways. "Detailed Salmon Testfish Catch" has it divided into jacks and large. 
 - "Tyee catch Jacks + Large" can also be found by downloading the "Skeena Tyee Multipanel Catch Summary Export" (SQL ID: 8886) report and summing the "CHINOOK_TOTAL" column. 
 
+
+### `population-key.csv`
+
+Population key file that matches msat and SNP collections to most up to date CU groupings.
 
 # Folders 
 
