@@ -1,0 +1,33 @@
+msat_collection,snp_collection,Display_Order,repunit,CU,cu_name_obs,code,msat_group_obs,cu_name_match_report,cu_name_snp_v6
+Ecstall,ECSTALL_RIVER,34,ECST,46,Ecstall,2000133,Skeena_Lower,Ecstall,Ecstall
+NA,KLOIYA_RIVER,35,SKEst,45,Skeena Estuary,293,Skeena_Estuary,Skeena Estuary,Skeena Estuary
+Exchamsiks,EXCHAMSIKS_RIVER,36,LSK,48,Lower Skeena,2000151,Skeena_Lower,Lower Skeena,Lower Skeena
+Exstew_R,EXSTEW_RIVER,36,LSK,48,Lower Skeena,1000496,Skeena_Lower,Lower Skeena,Lower Skeena
+Gitnadoix,GITNADOIX_RIVER,36,LSK,48,Lower Skeena,2000374,Skeena_Lower,Lower Skeena,Lower Skeena
+Kasiks_R,KASIKS_RIVER,36,LSK,48,Lower Skeena,2000152,Skeena_Lower,Lower Skeena,Lower Skeena
+Khyex_R,KHYEX_RIVER,36,LSK,48,Lower Skeena,2544,Skeena_Lower,Lower Skeena,Lower Skeena
+Zymogotitz_R,ZYMAGOTITZ_RIVER,36,LSK,48,Lower Skeena,2214,Skeena_Lower,Lower Skeena,Lower Skeena
+Fiddler_Cr,FIDDLER_CREEK,36,LSK,48,Lower Skeena,1000500,Skeena_Lower,Zymoetz-Fiddler,Middle Skeena
+Cedar_Early,CEDAR_RIVER,38,KALUM-E,49,Kalum_early timing,1000086,Skeena_Lower,Kitsumkalum early,Kitsumkalum early
+L_Kalum,KITSUMKALUM_RIVER-LOWER,39,KALUM-L,50,Kalum_late timing,53,Skeena_Lower,Kitsumkalum,Kitsumkalum
+Thomas_Cr,THOMAS_CREEK,40,ZYM,80,Zymoetz,2292,Skeena_Lower,Zymoetz-Fiddler,Zymoetz
+NA,BULKLEY_RIVER-LOWER,42,MSK-M_S,54,Middle Skeena-mainstem tributaries,1000015,Skeena_Bulkley,Middle Skeena,Middle Skeena
+Kispiox,KISPIOX_RIVER,42,MSK-M_S,54,Middle Skeena-mainstem tributaries,119,Skeena_Mid,Middle Skeena,Middle Skeena
+Kitseguecla_R,KITSEGUECLA_RIVER,42,MSK-M_S,54,Middle Skeena-mainstem tributaries,1000494,Skeena_Mid,Middle Skeena,Middle Skeena
+Kitwanga,KITWANGA_RIVER,42,MSK-M_S,54,Middle Skeena-mainstem tributaries,1917,Skeena_Mid,Middle Skeena,Middle Skeena
+Kuldo_C,KULDO_CREEK,42,MSK-M_S,54,Middle Skeena-mainstem tributaries,1000480,Skeena_Upper,Upper Skeena,Middle Skeena
+Nangeese_R,NANGEESE_RIVER,42,MSK-M_S,54,Middle Skeena-mainstem tributaries,2574,Skeena_Mid,Middle Skeena,Middle Skeena
+Shegunia_R,SHEGUNIA_RIVER,42,MSK-M_S,54,Middle Skeena-mainstem tributaries,2597,Skeena_Mid,Middle Skeena,Middle Skeena
+Slamgeesh,SLAMGEESH_RIVER,42,MSK-M_S,54,Middle Skeena-mainstem tributaries,6345,Skeena_Upper,Middle Skeena,Middle Skeena
+Suskwa,SUSKWA_RIVER,42,MSK-M_S,54,Middle Skeena-mainstem tributaries,1528,Skeena_Bulkley,Middle Skeena,Middle Skeena
+Sweetin,SWEETIN_RIVER,42,MSK-M_S,54,Middle Skeena-mainstem tributaries,1000401,Skeena_Mid,Middle Skeena,Middle Skeena
+Babine,BABINE_RIVER-SECTIONS_1_TO_3,43,MSK-LGLKS,53,Middle Skeena-large lakes,55,Skeena_Babine,Large Lakes,Large Lakes
+Bear,BEAR_RIVER,43,MSK-LGLKS,53,Middle Skeena-large lakes,1000020,Skeena_Upper,Large Lakes,Large Lakes
+Morice,MORICE_RIVER,43,MSK-LGLKS,53,Middle Skeena-large lakes,54,Skeena_Bulkley,Large Lakes,Large Lakes
+Kluatantan,KLUATANTAN_RIVER,44,USK,56,Upper Skeena,2000143,Skeena_Upper,Upper Skeena,Upper Skeena
+Kluayaz_Cr,KLUAYAZ_CREEK,44,USK,56,Upper Skeena,1000466,Skeena_Upper,Upper Skeena,Upper Skeena
+Otsi_Cr,OTSI_CREEK,44,USK,56,Upper Skeena,1000492,Skeena_Upper,Upper Skeena,Upper Skeena
+Sicintine_R,SICINTINE_RIVER,41,SIC,81,Sicintine,1000495,Skeena_Upper,Upper Skeena,Upper Skeena
+Squingula_R,SQUINGULA_RIVER,44,USK,56,Upper Skeena,1000479,Skeena_Upper,Upper Skeena,Upper Skeena
+Sustut,SUSTUT_RIVER,44,USK,56,Upper Skeena,5424,Skeena_Upper,Upper Skeena,Upper Skeena
+Bulkley_Early,BULKLEY_RIVER-UPPER,45,MSK-UprBulk,55,Upper Bulkley River,478,Skeena_Bulkley,Upper Bulkley River,Upper Bulkley River

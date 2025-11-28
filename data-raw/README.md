@@ -90,7 +90,7 @@ The original file also had msat GSI mixture results for the samples from each st
 Number of sets at Skeena River Tyee test fishery by day. Check bias of assumption 
 of equal effort by week for expansions of GSI by weekly catch. File created by querying FOS database using FOSer package and file `FOSer-exporter/scripts/query-FOS-catch-data-using-FOSer-package.R`
 
-## `tyee-sampling-biodata-ages`
+## `tyee-sampling-biodata-ages/`
 
 Contains files with individual fish biodata (age, sex, length), one row per fish, from the Tyee test fishery. 
 

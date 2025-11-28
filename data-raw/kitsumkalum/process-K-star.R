@@ -40,14 +40,14 @@ apply(omega_K$omega[ "F",, ], 1, sum)
 omega_KM <- omega_K$omega[ "M",, ]
 omega_KF <- omega_K$omega[ "F",,]
 
-# Read in escapament, total and male / female
+# Read in escapement, total and male / female
 # FLAG: need 2022 male female escapement
 kitsumkalum <- read.csv( here("data-raw","kitsumkalum", "kitsumkalum-escapement.csv"))
 ks <- kitsumkalum[ kitsumkalum$year >= 2021, ]
 
 # read in hatchery contribution (need updated CTC model data)
 H_star <- H_star
-# FLAG: need to remove age 3s???
+# FLAG: need to remove age 3s??? Yes, probably
 H <- H_star %>% group_by(return_year) %>% summarise(H = sum(hatchery_contribution))
 
 # Get K_star

@@ -53,10 +53,12 @@ rsconnect/
 
 # Raw data to include
 # Raw data folder
-!data-raw/freshwater-catch.xlsx
 !data-raw/process-H-star.R
 !data-raw/process-G.R
 !data-raw/process-kitsumkalum.R
+
+!data-raw/population-key.csv
+!data-raw/freshwater-catch.xlsx
 
 !data-raw/kitsumkalum/kitsumkalum-escapement.csv
 !data-raw/kitsumkalum/brood-removals.csv
