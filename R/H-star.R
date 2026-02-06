@@ -1,7 +1,7 @@
-#' Hatchery spawners in Kitsumkalum River, by age
+#' Hatchery origin Chinook in escapement, Kitsumkalum River, by return year and age
 #'
-#' Kitsumkalum hatchery origin spawners, by age
-#'
+#' From the Chinook CTC ERA model outputs, number of fish with CWTs in escapement,
+#' expanded by mark rate.
 #'
 #' @format ## `H_star`
 #' An array with two dimensions:
@@ -9,5 +9,5 @@
 #'   \item{y}{Year}
 #'   \item{a}{Age}
 #' }
-#' @source data-raw/process-H-star.R
+#' @source data-raw/kitsumkalum/process-ERA-data.R
 "H_star"
