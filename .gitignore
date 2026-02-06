@@ -56,7 +56,7 @@ rsconnect/
 !data-raw/process-H-star.R
 !data-raw/process-G.R
 !data-raw/process-kitsumkalum.R
-!data-raw/process-ERA-data.R
+!data-raw/kitsumkalum/process-ERA-data.R
 
 !data-raw/population-key.csv
 !data-raw/freshwater-catch.xlsx
