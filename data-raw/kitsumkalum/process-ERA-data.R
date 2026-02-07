@@ -1,14 +1,8 @@
 # Read in and process Chinook ERA model outputs
 
-# Notes
-# This uses the older xlsx output file. There is a newer rds file output
-# but I still don't have enough information to use that.
+# This includes hatchery escapement data, exploitation rates, maturation rates, and AEQ rates.
 
-# Note that all brood year 2019 releases were untagged and unclipped.
-# CWT_Release column does not reflect this for brood year 2019.
-# FLAG: Was escape column for 2019 brood year done using pseudo-recoveries?
-
-# These are the values I need to produce:
+# These are the values in the run reconstruction that are produced by this script:
 
 # H - hatchery spawners
 # H_star - hatchery spawners
@@ -21,12 +15,21 @@
 #       for age 3-4 fish, sum of ER for all other fisheries and ALASKA N and CENTRL N)
 # Q - Adult equivalency rate
 
+# Notes
+# This uses the older xlsx output file. There is a newer rds file output
+# but I still don't have enough information to use that.
+
+# Note that all brood year 2019 releases were untagged and unclipped.
+# CWT_Release column does not reflect this for brood year 2019.
+# FLAG: Was escape column for 2019 brood year done using pseudo-recoveries?
+
 library(here)
 library(readxl)
 library(dplyr)
 library(tidyr)
 library(skrunchy)
 library(ggplot2)
+library(zoo)
 
 path <- "data-raw/kitsumkalum"
 
@@ -82,17 +85,45 @@ str(ex_H)
 # check if there are differences between BY and CY for age-specific ER rates
 sheet <- "BY Morts and ERs "
 by_er <- read_xlsx( path = here(path, file), sheet = sheet)
+by_er$age <- as.integer(by_er$age)
 # compare with cy_er
 cy_er <- read_xlsx( path = here(path, file), sheet = "CY Morts and ERs ")
 check <- merge(by_er, cy_er, by.x = c("Stock", "Fishery", "Fishery_Name", "by", "age"), by.y = c("Stock", "Fishery", "Fishery_Name", "cy", "age"), all = TRUE, suffixes = c("_by", "_cy"))
-# some small differences. Use brood year for now.
-ggplot(check[ check$age>3, ], aes( y = ER_legal_by, x = ER_legal_cy)) +
+check1 <- check[ check$age>3, ]
+ggplot(check1, aes( y = ER_legal_by, x = ER_legal_cy)) +
   geom_point()
-range(check$ER_legal_by - check$ER_legal_cy)
-hist(check$ER_legal_by - check$ER_legal_cy)
-check$dif <- abs( check$ER_legal_by - check$ER_legal_cy )
+range(check1$ER_legal_by - check1$ER_legal_cy)
+hist(check1$ER_legal_by - check1$ER_legal_cy )
+check1$dif <- abs( check1$ER_legal_by - check1$ER_legal_cy )
+# some very small differences, mainly identical. Use brood year for now. Not too concerned about that one.
 
+# ER total is misnamed. It is actually the ER from incidental mortality (shaker, non-retention, etc)
+# make a new variable named ER that is actually the legal catch + Incidental mortality
+by_er$ER <- by_er$ER_legal + by_er$ER_total
+# Make tau_dot_M
+# Use Terminal Northern BC Terminal Net fisheries (includes river gap slough, terminal gillnet and seine fisheries)
+#           FLAG - need to confirm if this uses Tyee test fishery recoveries!!!! Don't want to double count them
+# and Terminal Northern BC Terminal Sport fisheries (areas 3-4?)
+tau_dot_M_fisheries <- c("TNBC TERM N", "TNBC TERM S")
 
+tau_dot_M_df <- by_er %>% filter(Fishery_Name %in% tau_dot_M_fisheries, Stock == "KLM", age >=4 ) %>%
+  group_by( by, age) %>%
+  summarise( tau_dot_M = sum(ER, na.rm=TRUE)) %>% mutate(y = by + age)
+
+# rename to skrunchy var names
+names(tau_dot_M_df)[ grep("age", names(tau_dot_M_df))] <- "a"
+# convert to array
+tau_dot_M <- df_to_array( tau_dot_M_df, value = "tau_dot_M", dimnames_order = c("y", "a"), FUN = sum, default = 0)
+# make array with NA for values >0.5, for rolling mean
+tau_dot_M_drop_hi_vals <- ifelse(tau_dot_M < 0.5, tau_dot_M, NA)
+# running mean of drop hi vals array
+tau_dot_M_rollmean <- rollapply(tau_dot_M_drop_hi_vals, width = 5, FUN = mean,
+                                by.column = TRUE,
+                                na.rm=TRUE, fill = NA, partial = TRUE )
+# sub rollmean for hi values
+tau_dot_M_fix <- ifelse( tau_dot_M < 0.5, tau_dot_M, tau_dot_M_rollmean)
+
+ggplot( array2DF(tau_dot_M_fix), aes( y = )
 
 # Save rds data files
 
