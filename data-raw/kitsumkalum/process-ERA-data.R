@@ -4,9 +4,9 @@
 
 # These are the values in the run reconstruction that are produced by this script:
 
-# H - hatchery spawners
-# H_star - hatchery spawners
-# tau_dot_M - terminal marine exploitation rate (note, may also include Tyee)
+# H - hatchery spawners - DONE
+# H_star - hatchery spawners - DONE
+# tau_dot_M - terminal marine exploitation rate (note, may also include Tyee) - DONE
 # phi_dot_M - preterminal net total mortality harvest rate of mature fish
 #       (0 for age 3-4, sum of ALASKA N and CENTRL N for age 5-6)
 # r - maturation rate
@@ -113,23 +113,17 @@ tau_dot_M_df <- by_er %>% filter(Fishery_Name %in% tau_dot_M_fisheries, Stock ==
 # rename to skrunchy var names
 names(tau_dot_M_df)[ grep("age", names(tau_dot_M_df))] <- "a"
 # convert to array
-tau_dot_M <- df_to_array( tau_dot_M_df, value = "tau_dot_M", dimnames_order = c("y", "a"), FUN = sum, default = 0)
-# make array with NA for values >0.5, for rolling mean
-tau_dot_M_drop_hi_vals <- ifelse(tau_dot_M < 0.5, tau_dot_M, NA)
-# running mean of drop hi vals array
-tau_dot_M_rollmean <- rollapply(tau_dot_M_drop_hi_vals, width = 5, FUN = mean,
-                                by.column = TRUE,
-                                na.rm=TRUE, fill = NA, partial = TRUE )
+tau_dot_M_raw <- df_to_array( tau_dot_M_df, value = "tau_dot_M", dimnames_order = c("y", "a"), FUN = sum, default = 0)
 # sub rollmean for hi values
-tau_dot_M_fix <- ifelse( tau_dot_M < 0.5, tau_dot_M, tau_dot_M_rollmean)
-
-ggplot( array2DF(tau_dot_M_fix), aes( y = )
+tau_dot_M <- process_rates( tau_dot_M_raw )
+plot(as.vector(tau_dot_M_raw), col = "red", cex = 2)
+points(as.vector(tau_dot_M), col = "dodgerblue")
 
 # Save rds data files
 
 usethis::use_data(H_star, overwrite = TRUE)
 usethis::use_data(H, overwrite = TRUE)
-
+usethis::use_data(tau_dot_M, overwrite = TRUE)
 
 
 
