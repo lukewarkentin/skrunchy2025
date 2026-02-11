@@ -288,15 +288,39 @@ comb_arr <- function(x) {
     merge(d1, d2, by = c("y", "a"), all = TRUE)
   }, l_df)
 
+  combdf$y <- as.numeric(combdf$y)
+  combdf$a <- as.numeric(combdf$a)
+  combdf$b <- combdf$y - combdf$a
   return(combdf)
 }
 
 listarr <- list("H_star" = H_star, "tau_dot_M" = tau_dot_M,
                 "phi_dot_M" = phi_dot_M, "r" = r, "phi_dot_E" = phi_dot_E,
                 "Q" = Q )
-ERA_data_processed <- comb_arr(listarr)
+ERA_w <- comb_arr(listarr)
+ERA_l <- ERA_w %>% pivot_longer(., cols = 3:8, names_to = "var", values_to = "value")
+ERA_data_processed <- list( df_wide = ERA_w, df_long = ERA_l)
+names(ERA_data_processed)
 
+png(here("fig/all_ERA_data_processed.png"), width=10, height=6, units="in", res=600)
+ggplot(ERA_l, aes( y= value, x = y, colour = factor(a), group = a)) +
+  geom_point() + geom_line() +
+  facet_wrap(~ var, scales = "free_y") +
+  geom_hline( aes( yintercept = 0)) +
+  scale_x_continuous( breaks = seq(1985, 2025, 5)) +
+  xlab( "Return year") +
+  theme_classic() +
+  theme( axis.text.x = element_text ( angle = 90, vjust = 0.5))
+dev.off()
 
+# ggplot(ERA_l, aes( y= value, x = b, colour = factor(a), group = a)) +
+#   geom_point() + geom_line() +
+#   facet_wrap(~ var, scales = "free_y") +
+#   geom_hline( aes( yintercept = 0)) +
+#   scale_x_discrete( breaks = seq(1985, 2025, 5)) +
+#   xlab( "Brood year") +
+#   theme_classic() +
+#   theme( axis.text.x = element_text ( angle = 90, vjust = 0.5))
 
 # Save rds data files
 usethis::use_data( H_star, overwrite = TRUE)
