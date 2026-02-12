@@ -26,6 +26,9 @@ library(ggplot2)
 # I think it includes jacks, that's why it is higher.
 
 # Read in data exported from skeena-escapament-gsi repo, consistent with P and sigma_P from msat data (all came from the same table)
+# Originally from: file `1AB Skeena Esc 1979 to 2020 POPAN 2023-11-13 to LW&CM .xlsx`,
+#     tab "Samples & catch 79-20".
+# Script that creates the rda file is here (private repo): skeena-escapement-gsi/scripts/save-data-for-skrunchy2025-tyee-weekly-and-ages.R
 G_1984_2020 <- readRDS( here("data-raw/tyee-data-1984-2020/G-1984-2020.rda"))
 G_1984_2020_df <- array2DF( G_1984_2020, responseName = "G")
 

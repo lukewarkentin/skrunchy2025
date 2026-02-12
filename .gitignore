@@ -61,6 +61,8 @@ rsconnect/
 
 !data-raw/population-key.csv
 !data-raw/freshwater-catch.xlsx
+!data-raw/stat-week-key-2021.csv
+
 
 !data-raw/kitsumkalum/kitsumkalum-escapement.csv
 !data-raw/kitsumkalum/brood-removals.csv
