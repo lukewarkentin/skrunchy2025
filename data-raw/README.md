@@ -129,3 +129,4 @@ Age proportions including jacks (ages) by return year and CU
 - SD, female and male spawner values for Kitsumkalum in 2022
 - In river harvest values for 2021-2024 (FSC and rec)
 - All genetics data (1984-2020 msat, 2021-2024 SNP) is being rerun against most current baselines. GSI data subject to small changes. 
+- 2021-2024 ages need a bit more QAQC to make sure CWT fish have corrected ages, if CWT age is different than scale age. 

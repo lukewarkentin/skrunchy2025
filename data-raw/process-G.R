@@ -95,6 +95,8 @@ d2$nose_fork_length_mm <- as.numeric(d2$nose_fork_length_mm)
 
 d2$year_catch <- as.integer(d2$year_catch)
 
+sort(unique(d2$year_catch))
+
 # 2021-2024 only
 d2 <- d2[ d2$year_catch > 2020, ]
 
@@ -147,10 +149,15 @@ G
 
 usethis::use_data(G, overwrite = TRUE)
 
-
-
-
 ggplot(dcomb, aes( y = G, x = w, group = y)) +
   geom_line() +
   facet_wrap(~y) +
   theme_bw()
+
+
+
+# need to merge all indidual genetics with the biosampling data. I've done this before for each year seperately. Might be easier to just bring those all together here??
+# check C:\github\tyee\scripts
+
+
+
