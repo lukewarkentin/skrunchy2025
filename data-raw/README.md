@@ -1,7 +1,7 @@
 # Data and processing files
 
 
-### `freshwater-catch.xlsx` 
+#### `freshwater-catch.xlsx` 
 
 This file has the terminal freshwater mortality numbers by return year. Columns with headers highlighted in green are used in subsequent analysis and are shown in Winther et al. 2024 Appendix 2 Table 1. LW checked file against table 2025-05-13.
 
@@ -12,7 +12,7 @@ Notes:
 - "Tyee catch Jacks + Large" can also be found by downloading the "Skeena Tyee Multipanel Catch Summary Export" (SQL ID: 8886) report and summing the "CHINOOK_TOTAL" column. 
 
 
-### `population-key.csv`
+#### `population-key.csv`
 
 Population key file that matches msat and SNP collections to most up to date CU groupings.
 
@@ -20,17 +20,17 @@ Population key file that matches msat and SNP collections to most up to date CU 
 
 ## `kitsumkalum/`
 
-### `kitsumkalum-escapement.csv`
+#### `kitsumkalum-escapement.csv`
 
 POPAN results with SE. Has total escapement and escapement by sex (female, male). 1984-2020 data is from Winther et al. 2021 table 14. 
 
-### `brood-removals.csv`
+#### `brood-removals.csv`
 
 Female brood removals from Kitsumkalum River. Years 1984-2019 are from "V20-4-KLM_&_Skeena_CalcSR_2024-01-15.xlsx" tab "Brood Removals" columns A:E. 
 
 2020-2024 are compiled by Luke Warkentin from Kitsumkalum tagging/brood data and scale aging data. Code in kitsumkalum repo "scripts" folder. 
 
-### `chinook-cwt-ERA-outfiles_2025-03-06_KLM-KLY.xlsx`
+#### `chinook-cwt-ERA-outfiles_2025-03-06_KLM-KLY.xlsx`
 
 Output files from the Chinook Exploitation Rate Analysis (ERA) done by Chinook Technical Committee. Requested from Pacific Salmon Commission through official data request form.
 Outputs for Coded Wire Tag (CWT) recoveries for KLM (Kitsumkalum fry releases) and KLY (Kitsumkalum yearling releases). Note that run reconstruction uses rates for fry releases (code KLM) and estimates of hatchery escapement for both KLM and KLY summed. 
@@ -74,7 +74,7 @@ Tabs:
 - `CY Survival`: Same as above but calendar year method. Details???
 
 
-### `fishery-lookup-CWT-ERA.csv`
+#### `fishery-lookup-CWT-ERA.csv`
 
 Lookup table with the fishery codes from the ERA file (`chinook-cwt-ERA-outfiles_2025-03-06_KLM-KLY.xlsx`). Provides details on different fisheries. 
 
@@ -82,14 +82,14 @@ Lookup table with the fishery codes from the ERA file (`chinook-cwt-ERA-outfiles
 
 Contains files for weekly Chinook catch and GSI mixture results, by stat week, from Tyee Test Fishery. GSI results are for age 4-7 fish ony. Catch results are for adults (1984-2020) and adults age 4-7 (2021-2024). 
 
-### `tyee-catch-by-stat-week-1984-2020.xlsx`
+#### `tyee-catch-by-stat-week-1984-2020.xlsx`
 
 Weekly adult Chinook catch data to be matched up with re-run of msat GSI mixture analysis. Revised for accuracy by Ivan Winther. 
 This table is taken from tab "Samples & catch 79-20" from file "1AB Skeena Esc 1979 to 2020 POPAN 2023-11-13 to LW&CM .xlsx", which was created by Ivan Winther for the publication: An assessment of Skeena River Chinook salmon using genetic stock identification 1984 to 2020 (https://publications.gc.ca/site/eng/9.901355/publication.html).
 It contains weekly Tyee adult catch (revised weekly catch) by stat week. (LW added "(G)" to indicate which column to use in the updated run reconstruction)
 The original file also had msat GSI mixture results for the samples from each stat week. These will be rerun by the Molecular Genetics Lab, and will be joined to this data when available. 
 
-### `check-sets-per-day.csv`
+#### `check-sets-per-day.csv`
 
 Number of sets at Skeena River Tyee test fishery by day. Check bias of assumption 
 of equal effort by week for expansions of GSI by weekly catch. File created by querying FOS database using [FOSer](https://gitlab.com/MichaelFolkes/foser) package, the FOSEer-exporter repo (private), and file `FOSer-exporter/scripts/query-FOS-catch-data-using-FOSer-package.R`
@@ -98,7 +98,7 @@ of equal effort by week for expansions of GSI by weekly catch. File created by q
 
 Contains files with individual fish biodata (age, sex, length), one row per fish, from the Tyee test fishery. 
 
-### `2014-2024-tyee-chinook-biodata-2025-04-10.xlsx`
+#### `2014-2024-tyee-chinook-biodata-2025-04-10.xlsx`
 
 Direct export from Access database maintained by North Coast stock assessment. 
 
@@ -108,19 +108,19 @@ Weekly catch, genetics, and age proportions from Tyee Test fishery, 1984-2020, d
    - keeping Kuldo in Middle Skeena
    - Fiddler into Middle Skeena 
 
-### `P_1984_2020.rda`
+#### `P_1984_2020.rda`
 
 Genetic proportions by year, week and CU.
    
-### `sigma_P_1984_2020.rda`
+#### `sigma_P_1984_2020.rda`
 
 Standard deviation of genetic proportions by year, week and CU.
 
-### `omega_1984_2020.rda` 
+#### `omega_1984_2020.rda` 
 
 Age proportions (ages 4-7) by return year and CU
 
-### `omega_J_1984_2020.rda` 
+#### `omega_J_1984_2020.rda` 
 
 Age proportions including jacks (ages) by return year and CU
 
