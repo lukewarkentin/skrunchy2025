@@ -56,6 +56,7 @@ rsconnect/
 !data-raw/process-H-star.R
 !data-raw/process-G.R
 !data-raw/process-kitsumkalum.R
+!data-raw/process-P.R
 !data-raw/kitsumkalum/process-ERA-data.R
 
 !data-raw/population-key.csv
@@ -70,11 +71,11 @@ rsconnect/
 #!data-raw/tyee-genetics/tyee-catch-by-stat-week-1984-2020.xlsx # obsolete
 !data-raw/tyee-genetics/check-sets-per-day.csv
 
-!data-raw/tyee-data-1984-2020/P_1984_2020.rda
-!data-raw/tyee-data-1984-2020/sigma_P_1984_2020.rda
-!data-raw/tyee-data-1984-2020/G_1984_2020.rda
-!data-raw/tyee-data-1984-2020/omega_1984_2020.rda
-!data-raw/tyee-data-1984-2020/omega_J_1984_2020.rda
+!data-raw/tyee-data-1984-2020/P-1984-2020.rda
+!data-raw/tyee-data-1984-2020/sigma-P-1984-2020.rda
+!data-raw/tyee-data-1984-2020/G-1984-2020.rda
+!data-raw/tyee-data-1984-2020/omega-1984-2020.rda
+!data-raw/tyee-data-1984-2020/omega-J-1984-2020.rda
 
 
 #data-raw/tyee-sampling-biodata-ages/2014-2024-tyee-chinook-biodata-2025-04-10.xlsx

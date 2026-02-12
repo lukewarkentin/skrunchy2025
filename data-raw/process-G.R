@@ -26,7 +26,7 @@ library(ggplot2)
 # I think it includes jacks, that's why it is higher.
 
 # Read in data exported from skeena-escapament-gsi repo, consistent with P and sigma_P from msat data (all came from the same table)
-G_1984_2020 <- readRDS( here("data-raw/tyee-data-1984-2020/G_1984_2020.rda"))
+G_1984_2020 <- readRDS( here("data-raw/tyee-data-1984-2020/G-1984-2020.rda"))
 G_1984_2020_df <- array2DF( G_1984_2020, responseName = "G")
 
 # Obsolete, use exported data above instead ------------
