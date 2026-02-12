@@ -20,38 +20,48 @@ library(ggplot2)
 # 2010: samples were done weekly but not in sync with stat weeks.
 # 2012: revised catches corrected to the dates used by the MGL - not in sync with stat weeks
 
-d1 <- read_xlsx( here("data-raw", "tyee-genetics", "tyee-catch-by-stat-week-1984-2020.xlsx"), skip = 10)
-
-# Add Alaska style statistical week column for consistency with more recent years
-d1$fix_date_range <- gsub("[[:space:]]{2}", " ", d1$`stwk dates from StAD and Test Fish database`)
-unique(nchar(d1$fix_date_range))
-d1$date_start <- ymd( paste( d1$YEAR,
-                             match(  stringr::str_to_title(substr( d1$fix_date_range, 1,3)), month.abb), # get numeric month
-                             as.numeric(substr( d1$fix_date_range, 5,6)),
-                             sep= "-"))
-d1$date_end <- ymd( paste( d1$YEAR,
-                           match(  stringr::str_to_title(substr( d1$fix_date_range, 10,12)), month.abb), # get numeric month
-                           as.numeric(substr( d1$fix_date_range, 14,15)),
-                           sep= "-"))
-# Check if stat week conversion worked
-# d1$stat_week1 <- get_stat_week(d1$date_start)
-# d1$stat_week2 <- get_stat_week(d1$date_end)
-# identical(d1$stat_week1, d1$stat_week2 ) # yes, it did.
-d1$stat_week <- get_stat_week(d1$date_start)
-# rename
-names(d1)[ grep("revised weekly catch \\(G)", names(d1)) ] <- "G"
-names(d1)[ grep("YEAR", names(d1)) ] <- "y"
-names(d1)[ grep("stat_week", names(d1)) ] <- "w"
-
-# remove rows with NA weekly catch
-d1 <- d1[ !is.na(d1$G), ]
-
 # More notes:
 # Multipanel catch report has slightly more observations. Includes
 # bit/jacks? Don’t know right now.
 # I think it includes jacks, that's why it is higher.
 
-# Note:
+# Read in data exported from skeena-escapament-gsi repo, consistent with P and sigma_P from msat data (all came from the same table)
+G_1984_2020 <- readRDS( here("data-raw/tyee-data-1984-2020/G_1984_2020.rda"))
+G_1984_2020_df <- array2DF( G_1984_2020, responseName = "G")
+
+# Obsolete, use exported data above instead ------------
+# d1 <- read_xlsx( here("data-raw", "tyee-genetics", "tyee-catch-by-stat-week-1984-2020.xlsx"), skip = 10)
+#
+# # Add Alaska style statistical week column for consistency with more recent years
+# d1$fix_date_range <- gsub("[[:space:]]{2}", " ", d1$`stwk dates from StAD and Test Fish database`)
+# unique(nchar(d1$fix_date_range))
+# d1$date_start <- ymd( paste( d1$YEAR,
+#                              match(  stringr::str_to_title(substr( d1$fix_date_range, 1,3)), month.abb), # get numeric month
+#                              as.numeric(substr( d1$fix_date_range, 5,6)),
+#                              sep= "-"))
+# d1$date_end <- ymd( paste( d1$YEAR,
+#                            match(  stringr::str_to_title(substr( d1$fix_date_range, 10,12)), month.abb), # get numeric month
+#                            as.numeric(substr( d1$fix_date_range, 14,15)),
+#                            sep= "-"))
+# # Check if stat week conversion worked
+# # d1$stat_week1 <- get_stat_week(d1$date_start)
+# # d1$stat_week2 <- get_stat_week(d1$date_end)
+# # identical(d1$stat_week1, d1$stat_week2 ) # yes, it did.
+# d1$stat_week <- get_stat_week(d1$date_start)
+# # rename
+# names(d1)[ grep("revised weekly catch \\(G)", names(d1)) ] <- "G"
+# names(d1)[ grep("YEAR", names(d1)) ] <- "y"
+# names(d1)[ grep("stat_week", names(d1)) ] <- "w"
+#
+# # remove rows with NA weekly catch
+# d1 <- d1[ !is.na(d1$G), ]
+
+
+
+
+
+
+# Note: -------
 # Below might not be consistent with past years, which used adult/jack assignments
 # as done at Tyee based on length only (jacks <650 mm).
 # Did Ivan go back and send MGL which fish were adults based on age to re-run for mixture?
@@ -109,7 +119,7 @@ ggplot( d2[ d2$nose_fork_length_mm <1050, ], aes(x = nose_fork_length_mm)) +
   facet_wrap( stage ~ age, drop=TRUE)
 
 # manually check
-write.csv(d2, here("data-raw", "temp-check-get-stage.csv"), row.names = FALSE)
+#write.csv(d2, here("data-raw", "temp-check-get-stage.csv"), row.names = FALSE)
 
 # Years with ETAGS but no corrected ages ******
 # FLAG - need to revisit this. Need CWT corrected ages, at least for 2021-2024
@@ -124,53 +134,20 @@ names(d2sum)[ grep("year_catch", names(d2sum)) ] <- "y"
 names(d2sum)[ grep("stat_week_new", names(d2sum)) ] <- "w"
 
 # Combine 1984-2020 and 2021-2024 data
-dcomb <- rbind( d1[ , names(d1) %in% c("G", "y", "w")], d2sum[ , names(d2sum) %in% c("G", "y", "w")] )
+dcomb <- rbind(  G_1984_2020_df , d2sum[ , names(d2sum) %in% c("G", "y", "w")] )
+
 
 # convert to array
-G <- df_to_array(dcomb, "G", dimnames_order = c("w", "y"), function(x) {sum(x, na.rm=TRUE)} )
+G <- df_to_array(dcomb, "G", dimnames_order = c("w", "y"), function(x) {sum(x, na.rm=TRUE)}, default = 0)
 G <- G[ , as.character(1984:2024)]
 G
 
 usethis::use_data(G, overwrite = TRUE)
 
 
-plot(  apply(G, 2, sum) ~ dimnames(G)$y )
 
 
-
-
-
-
-# OBSOLETE:
-
-
-
-
-# 2024  -------
-
-file <- "2024-tyee-revised-adults-jacks.csv"
-file_path <- "data-raw/tyee-sampling-biodata-ages"
-d <- read.csv(here(file_path, file))
-# remove jacks
-d <- d[ d$revised_stage=="adult", ]
-str(d)
-d$date <- ymd(d$catch_date)
-d$w <- epiweek(d$date)
-d$jday <- yday(d$date)
-d$wday <- wday(d$date, label=TRUE)
-d$y <- d$year_catch
-table(d$jday)
-sort(unique(d$w))
-table(d$w, d$year_catch)
-
-ds <- d %>% group_by(y, w) %>% summarize(G = n())
-
-
-
-G <- df_to_array( df = ds, value= "G", dimnames_order = c("w", "y"), FUN = sum)
-G
-dim(G)
-dimnames(G)
-#saveRDS(G, file = here("data", "2024_G.rda"))
-
-
+ggplot(dcomb, aes( y = G, x = w, group = y)) +
+  geom_line() +
+  facet_wrap(~y) +
+  theme_bw()

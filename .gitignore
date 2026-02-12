@@ -67,7 +67,7 @@ rsconnect/
 !data-raw/kitsumkalum/chinook-cwt-ERA-outfiles_2025-03-06_KLM-KLY.xlsx
 !data-raw/kitsumkalum/misc/kitsumkalum-age-observations.RDS
 
-!data-raw/tyee-genetics/tyee-catch-by-stat-week-1984-2020.xlsx
+#!data-raw/tyee-genetics/tyee-catch-by-stat-week-1984-2020.xlsx # obsolete
 !data-raw/tyee-genetics/check-sets-per-day.csv
 
 !data-raw/tyee-data-1984-2020/P_1984_2020.rda
