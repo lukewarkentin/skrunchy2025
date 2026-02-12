@@ -124,6 +124,10 @@ Age proportions (ages 4-7) by return year and CU
 
 Age proportions including jacks (ages) by return year and CU
 
+#### `tyee-biodata-age-sex-length-CU-1984-2020.rda` 
+
+Biodata from Tyee Test fishery, one line per fish. Includes catch date, sex, length, age, and estimated CU based on msat GSI, with the probability of assignment to that CU based on the sum of the probabilities for each population in the given CU.
+
 # Current placeholder values: 
 
 - SD, female and male spawner values for Kitsumkalum in 2022
