@@ -74,7 +74,7 @@ Tabs:
 - `CY Survival`: Same as above but calendar year method. Details???
 
 
-#### `fishery-lookup-CWT-ERA.csv`
+#### `fishery-lookup-CWT-ERA-notes.csv`
 
 Lookup table with the fishery codes from the ERA file (`chinook-cwt-ERA-outfiles_2025-03-06_KLM-KLY.xlsx`). Provides details on different fisheries. 
 
