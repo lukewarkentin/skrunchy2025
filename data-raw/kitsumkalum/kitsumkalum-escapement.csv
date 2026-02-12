@@ -37,6 +37,7 @@ year,kitsumkalum_escapement,sd,female_escapement,male_escapement,note
 2019,6673,562,3400,3273,Female and male escapement from Winther et al. 2021 Table 14
 2020,4777,843,3292,1485,Female and male escapement from Winther et al. 2021 Table 14
 2021,4032,469,1495,2538,Female and male escapement calculated by CM
-2022,5649,999,,,
+2022,5649,999,2825,2824,"FLAG: Need SD, female and male escapement "
 2023,5376,643,2894,2482,Female and male escapement calculated by LW
 2024,5451,701,2648,2803,Female and male escapement calculated by LW
+2025,6016,722,1980,4036,Female and male escapement calculated by LW

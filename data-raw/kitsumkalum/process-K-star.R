@@ -15,8 +15,9 @@ ka <- read_xlsx(here("data-raw/kitsumkalum/kitsumkalum-escapement-by-age-1984-20
 # get just total
 kat <- ka[ , c(1,12:15)]
 names(kat) <- c("y", "4", "5", "6", "7")
-K_star_old <- pivot_longer(kat, cols = 2:5, names_to = "a", values_to = "K_star")
+K_star_old_df <- pivot_longer(kat, cols = 2:5, names_to = "a", values_to = "K_star")
 
+K_star_old <- df_to_array(K_star_old_df, value = "K_star", dimnames_order = c("y", "a"), FUN = sum, default = 0)
 
 
 # Get K_star for 2021-2024 --------
@@ -41,17 +42,21 @@ omega_KM <- omega_K$omega[ "M",, ]
 omega_KF <- omega_K$omega[ "F",,]
 
 # Read in escapement, total and male / female
-# FLAG: need 2022 male female escapement
+# FLAG: need 2022 male, female escapement still
 kitsumkalum <- read.csv( here("data-raw","kitsumkalum", "kitsumkalum-escapement.csv"))
-ks <- kitsumkalum[ kitsumkalum$year >= 2021, ]
+ks <- kitsumkalum[ kitsumkalum$year >= 2021 & kitsumkalum$year <= 2024, ]
 
 # read in hatchery contribution (need updated CTC model data)
-H_star <- H_star
-# FLAG: need to remove age 3s??? Yes, probably
-H <- H_star %>% group_by(return_year) %>% summarise(H = sum(hatchery_contribution))
+H
 
-# Get K_star
+# Get K_star for 2021-2024
 K_star_new <- get_K_star( K = ks$kitsumkalum_escapement, y_K = ks$year, K_M = ks$male_escapement,
             K_F = ks$female_escapement, omega_KM = omega_KM, omega_KF = omega_KF,
-            H = H, H_star = H_star)
+            H = H[ names(H) %in% 2021:2024 ], H_star = H_star[ as.character(2021:2024),  ])
+K_star_new
+# bind old and new years together
+K_star <- round(abind(K_star_old, K_star_new$K_star, along = 1 ))
+K_star
+# save data
+usethis::use_data(K_star, overwrite = TRUE)
 

@@ -94,6 +94,13 @@ The original file also had msat GSI mixture results for the samples from each st
 Number of sets at Skeena River Tyee test fishery by day. Check bias of assumption 
 of equal effort by week for expansions of GSI by weekly catch. File created by querying FOS database using [FOSer](https://gitlab.com/MichaelFolkes/foser) package, the FOSEer-exporter repo (private), and file `FOSer-exporter/scripts/query-FOS-catch-data-using-FOSer-package.R`
 
+### `P_tilde_1984_2020.rda`
+
+List of three elements, $\tilde{P}$ array, $sigma_{\tilde{P}}$ arrray, and a data frame with both. These are produced from msat results (currently waiting for rerun). Same data as for Winther et al. 2024, with some minor adjustments to CUs (see `P_tilde_1984_2020.rda`). 
+   - keeping Kuldo in Middle Skeena
+   - Fiddler into Middle Skeena 
+
+
 ## `tyee-sampling-biodata-ages/`
 
 Contains files with individual fish biodata (age, sex, length), one row per fish, from the Tyee test fishery. 
@@ -101,3 +108,17 @@ Contains files with individual fish biodata (age, sex, length), one row per fish
 ### `2014-2024-tyee-chinook-biodata-2025-04-10.xlsx`
 
 Direct export from Access database maintained by North Coast stock assessment. 
+
+### `omega_1984_2020.rda` 
+
+Age proportions (ages 4-7) by return year and CU, from msat data. Same data as Winther et al. 2024, with minor adjustments to CUs (see `P_tilde_1984_2020.rda`).
+
+### `omega_J_1984_2020.rda` 
+
+Age proportions including jacks (ages) by return year and CU, from msat data. Same data as Winther et al. 2024, with minor adjustments to CUs (see `P_tilde_1984_2020.rda`).
+
+
+# Current placeholder values: 
+
+- SD, female and male spawner values for Kitsumkalum in 2022
+- In river harvest values for 2021-2024 (FSC and rec)
