@@ -134,3 +134,7 @@ Biodata from Tyee Test fishery, one line per fish. Includes catch date, sex, len
 - In river harvest values for 2021-2024 (FSC and rec)
 - All genetics data (1984-2020 msat, 2021-2024 SNP) is being rerun against most current baselines. GSI data subject to small changes. 
 - 2021-2024 ages need a bit more QAQC to make sure CWT fish have corrected ages, if CWT age is different than scale age. 
+- Same as above, but for 1984-2020 data as well. 
+- Handful of biodata - gsi individual fish observations that aren't matching up in 2021, 2022, 2023
+
+
