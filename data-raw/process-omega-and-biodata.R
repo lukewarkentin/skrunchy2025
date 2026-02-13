@@ -187,6 +187,18 @@ bdall <- rbind(bd_old, md_exp)
 unique(bdall$sex)
 bdall$sex <- ifelse( bdall$sex == 1, "m", ifelse(bdall$sex == 2, "f", "u"))
 
+# Plot observations by year, by CU
+ggplot(bdall, aes( x = y)) +
+  geom_bar() +
+  facet_wrap( ~ i, scales = "free_y") +
+  theme_bw()
+
+# Plot observations by year, by CU
+ggplot(bdall, aes( x = yday(date))) +
+  geom_bar() +
+  facet_wrap( ~ y) +
+  theme_bw()
+
 tyee_biodata_age_sex_length_CU <- bdall
 
 # save merged biodata file ------------
@@ -196,5 +208,5 @@ usethis::use_data(tyee_biodata_age_sex_length_CU, overwrite = TRUE )
 # Make age proportion data (omega and omega_J)------------
 
 
-
-
+# Re use code from   C:\github\skeena-chinook-escapement-gsi\save-data-for-skrunchy2025-tyee-weekly-and-ages.R
+# see lines 219 onwards

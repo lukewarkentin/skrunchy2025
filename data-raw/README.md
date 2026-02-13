@@ -128,13 +128,15 @@ Age proportions including jacks (ages) by return year and CU
 
 Biodata from Tyee Test fishery, one line per fish. Includes catch date, sex, length, age, and estimated CU based on msat GSI, with the probability of assignment to that CU based on the sum of the probabilities for each population in the given CU.
 
-# Current placeholder values: 
+# Current placeholder values or things to consider/ updates: 
 
 - SD, female and male spawner values for Kitsumkalum in 2022
 - In river harvest values for 2021-2024 (FSC and rec)
+- Note that 1984-2020 biodata file with gsi/CU is excluding some observations of sex/length/catch/age. IW's 1984-2020 file was just fish that had age and genetics data. More data exists for sex/length, and for aged fish that didn't get genetic analysis. May be useful for demographics (e.g., length, sex ratio, and age shifts for aggregate, or independent of CU).
+- For Kitsumkalum escapement, decide whether to use age proportion data from Tyee test fishery, or from mark-recap on Kitsumkalum River 
 - All genetics data (1984-2020 msat, 2021-2024 SNP) is being rerun against most current baselines. GSI data subject to small changes. 
 - 2021-2024 ages need a bit more QAQC to make sure CWT fish have corrected ages, if CWT age is different than scale age. 
 - Same as above, but for 1984-2020 data as well. 
 - Handful of biodata - gsi individual fish observations that aren't matching up in 2021, 2022, 2023
-
-
+- Add a file with raw catch by day at Tyee
+- Add file with Tyee index by day at Tyee

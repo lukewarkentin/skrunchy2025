@@ -57,12 +57,14 @@ rsconnect/
 !data-raw/process-G.R
 !data-raw/process-kitsumkalum.R
 !data-raw/process-P.R
-!data-raw/kitsumkalum/process-ERA-data.R
+!data-raw/process-omega-and-biodata.R
+
 
 !data-raw/population-key.csv
 !data-raw/freshwater-catch.xlsx
 !data-raw/stat-week-calculator-2021.xlsx
 
+!data-raw/kitsumkalum/process-ERA-data.R
 
 !data-raw/kitsumkalum/kitsumkalum-escapement.csv
 !data-raw/kitsumkalum/brood-removals.csv
