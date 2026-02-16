@@ -20,11 +20,11 @@ library(ggplot2)
 # read in biodata with age, sex, length, CU
 bd_old <- readRDS( here("data-raw/tyee-data-1984-2020/tyee-biodata-age-sex-length-CU-1984-2020.rda") )
 # read in age proportion data (no jacks)
-omega_old <- readRDS( here("data-raw/tyee-data-1984-2020/omega-1984-2020.rda") )
-# read in age proportion data (with jacks)
-omega_J_old <-readRDS( here("data-raw/tyee-data-1984-2020/omega-J-1984-2020.rda") )
-# Read in age observation data
-age_obs_old <- readRDS( here( "data-raw/tyee-data-1984-2020/age-obs-1984-2020.rda"))
+# omega_old <- readRDS( here("data-raw/tyee-data-1984-2020/omega-1984-2020.rda") )
+# # read in age proportion data (with jacks)
+# omega_J_old <-readRDS( here("data-raw/tyee-data-1984-2020/omega-J-1984-2020.rda") )
+# # Read in age observation data
+# age_obs_old <- readRDS( here( "data-raw/tyee-data-1984-2020/age-obs-1984-2020.rda"))
 
 # new data, 2021-2024
 
@@ -203,24 +203,66 @@ ggplot(bdall, aes( x = yday(date))) +
 
 tyee_biodata_age_sex_length_CU <- bdall
 
-# save merged biodata file ------------
-usethis::use_data(tyee_biodata_age_sex_length_CU, overwrite = TRUE )
-
-# Make age proportion data (omega and omega_J)------------
-
-# Re use code from   C:\github\skeena-chinook-escapement-gsi\save-data-for-skrunchy2025-tyee-weekly-and-ages.R
-# see lines 219 onwards
-omega_old
-omega_J_old
+# Make age observation data and age proportion data (omega and omega_J)------------
 
 # Use corrected GR age to get age proportions.
-at <- table(md_exp$i, md_exp$y, md_exp$a, dnn = c("i", "y", "a"))
+at <- table(bdall$i, bdall$y, bdall$a, dnn = c("i", "y", "a"))
 # add aggregate column for summarizing for Skeena
-md$aggregate <- "Skeena"
-atskeena <- table(md$aggregate, md$y, md$a, dnn = c("i", "y", "a"))
+bdall$aggregate <- "Skeena"
+atskeena <- table(bdall$aggregate, bdall$y, bdall$a, dnn = c("i", "y", "a"))
 aarrcu <- as.array(at)
 aarrskeena <- as.array(atskeena)
 aarr <- abind(aarrcu, aarrskeena, along=1, use.dnns = TRUE)
 dimnames(aarr)
 aarr
+
+# save age observations n for example runs ----------
+pops_keep <- c("Kitsumkalum", "Large Lakes", "Lower Skeena", "Middle Skeena",
+               "Upper Skeena", "Zymoetz")
+age_obs <- aarr[ c("Skeena", pops_keep), , c("4", "5", "6", "7")]
+# bring in Kitsumkalum age obs from spawning ground sampling, mark-recap program.
+load( here("data/n_kitsumkalum.rda"))
+kitsumkalum_age_obs <- n_kitsumkalum
+
+#gurl <- "https://github.com/lukewarkentin/skrunchy2025/raw/refs/heads/main/data-raw/kitsumkalum/misc/kitsumkalum-age-observations.RDS"
+#kitsumkalum_age_obs <- readRDS( url(gurl) )
+
+
+# # For Kitsumkalum, replace Tyee age obs with Kitsumkalum river age obs - FLAG might not want to do this.
+# age_obs_check <- age_obs
+# age_obs["Kitsumkalum",, ] <- kitsumkalum_age_obs
+# # check
+# plot(as.vector(age_obs["Kitsumkalum",, ]) ~ as.vector(kitsumkalum_age_obs))
+# # looks good. Check other CUs
+# plot(as.vector(age_obs[-2,, ]) ~ as.vector( age_obs_check[ -2,, ] ))
+# # looks good
+
+# # make age obs for 6 = 6+7
+age_obs[ ,, c("6") ] <- age_obs[ ,,c("6") ] + age_obs[ ,, c("7") ]
+# remove age 7 age obs
+age_obs <- age_obs[ ,, -4 ]
+dimnames(age_obs)
+
+n_age_observations <- age_obs
+
+# Get omega age proportions, ages 4-7 ----------
+omega <- get_omega( aarr[ c("Skeena", pops_keep), , c("4", "5", "6", "7")] , save_csv = FALSE)
+omega$omega[,,"7"]
+dimnames(omega$omega)
+omega
+# Get omega age proportions including jacks, ages 3-7
+omega_J <- get_omega( aarr[ c("Skeena", pops_keep), , c("3", "4", "5", "6", "7")] , save_csv = FALSE)
+omega_J$omega[,,"7"]
+dimnames(omega_J$omega)
+omega_J
+
+
+
+# save merged biodata file ------------
+usethis::use_data(tyee_biodata_age_sex_length_CU, overwrite = TRUE )
+
+# Save omega and omega_J and age observations
+usethis::use_data( omega, overwrite = TRUE)
+usethis::use_data( omega_J, overwrite = TRUE)
+usethis::use_data( n_age_observations, overwrite = TRUE)
 
