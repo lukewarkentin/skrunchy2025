@@ -58,11 +58,13 @@ rsconnect/
 !data-raw/process-kitsumkalum.R
 !data-raw/process-P.R
 !data-raw/process-omega-and-biodata.R
-
+!data-raw/misc.R
+!data-raw/process-Tau-terminal-freshwater-mortality.R
 
 !data-raw/population-key.csv
 !data-raw/freshwater-catch.xlsx
 !data-raw/stat-week-calculator-2021.xlsx
+!data-raw/variable-name-key.csv
 
 !data-raw/kitsumkalum/process-ERA-data.R
 
