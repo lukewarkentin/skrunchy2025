@@ -217,6 +217,7 @@ dfs <- grep("^ds[[:digit:]]{4}", names(.GlobalEnv),value=TRUE)
 dfs_list <- do.call( "list" ,mget(dfs))
 P_df <- do.call(rbind, dfs_list)
 
+
 # convert to arrays
 P <- df_to_array( df = P_df, value = "P", dimnames_order = c("i", "w", "y"), FUN = sum )
 sigma_P <- df_to_array( df= P_df, value = "sigma_P", dimnames_order = c("i","w", "y"), FUN = sum )
@@ -224,6 +225,19 @@ sigma_P <- df_to_array( df= P_df, value = "sigma_P", dimnames_order = c("i","w",
 P
 sigma_P
 
+# Combine Sicintine into Upper Skeena
+dimnames(P)
+P_test <- P
+P_test[ "Upper Skeena",,] <- P["Upper Skeena",, ] + P[ "Sicintine",, ]
+plot( P["Upper Skeena",,], P_test["Upper Skeena",,] )
+P_test <- P_test[ - grep( "Sicintine", dimnames(P_test)$i ),, ]
+P <- P_test
+
+sigma_P_test <- sigma_P
+sigma_P_test[ "Upper Skeena",,] <- sqrt(sigma_P["Upper Skeena",, ]^2 + sigma_P[ "Sicintine",, ]^2)
+plot( sigma_P["Upper Skeena",,], sigma_P_test["Upper Skeena",,] )
+sigma_P_test <- sigma_P_test[ - grep( "Sicintine", dimnames(sigma_P_test)$i ),, ]
+sigma_P <- sigma_P_test
 
 # Save rda files
 # weekly

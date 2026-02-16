@@ -140,3 +140,6 @@ Biodata from Tyee Test fishery, one line per fish. Includes catch date, sex, len
 - Handful of biodata - gsi individual fish observations that aren't matching up in 2021, 2022, 2023
 - Add a file with raw catch by day at Tyee
 - Add file with Tyee index by day at Tyee
+- In CTC data, clarify where NBC ISBM S should go
+- Confirm rec catch above Terrace is 0 for 2002, 2003, 2007
+- Check maturation rate `r` for return year 2003, age 4. Very low. Gives weird results. 
