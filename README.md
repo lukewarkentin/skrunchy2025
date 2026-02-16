@@ -14,7 +14,7 @@ Processed data is saved as `.rda` files in the `data` folder. When the package i
 
 The `R` folder has documentation files for each `.rda` data object. 
 
-The `scripts` folder has code that is run to do the run reconstruction on the data, using the `skrunchy` package. 
+The `Rmd` folder has a [markdown document](Rmd/run-reconstruction-1984-2024.md) that is run to do the run reconstruction on the data, using the `skrunchy` package. 
 
 ## Installation
 
