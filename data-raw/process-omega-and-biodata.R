@@ -23,7 +23,8 @@ bd_old <- readRDS( here("data-raw/tyee-data-1984-2020/tyee-biodata-age-sex-lengt
 omega_old <- readRDS( here("data-raw/tyee-data-1984-2020/omega-1984-2020.rda") )
 # read in age proportion data (with jacks)
 omega_J_old <-readRDS( here("data-raw/tyee-data-1984-2020/omega-J-1984-2020.rda") )
-
+# Read in age observation data
+age_obs_old <- readRDS( here( "data-raw/tyee-data-1984-2020/age-obs-1984-2020.rda"))
 
 # new data, 2021-2024
 
@@ -128,6 +129,7 @@ gsi1 <- merge(gsi, key, by.x = "repunit.1", by.y = "cu_snp_short", all.x = TRUE)
 # read in tyee biodata with ages from 2014-2024, select 2021-2024
 file <- "2014-2024-tyee-chinook-biodata-2025-04-10.xlsx"
 bd <- read_xlsx( here( "data-raw", "tyee-sampling-biodata-ages", file), na = c("N/A", "NA"))
+# select 2021-2024
 bd1 <- bd[ bd$`YEAR (CATCH)` >= 2021,  ]
 bd1$`SCALE BOOK NUMBER` <- sub("^102500$", "1025000", bd1$`SCALE BOOK NUMBER`) # 2022 was mistyped
 bd1$scale_book_scale <- paste( bd1$`SCALE BOOK NUMBER`, bd1$`SCALE NUMBER`, sep = "-")
@@ -204,9 +206,21 @@ tyee_biodata_age_sex_length_CU <- bdall
 # save merged biodata file ------------
 usethis::use_data(tyee_biodata_age_sex_length_CU, overwrite = TRUE )
 
-
 # Make age proportion data (omega and omega_J)------------
-
 
 # Re use code from   C:\github\skeena-chinook-escapement-gsi\save-data-for-skrunchy2025-tyee-weekly-and-ages.R
 # see lines 219 onwards
+omega_old
+omega_J_old
+
+# Use corrected GR age to get age proportions.
+at <- table(md_exp$i, md_exp$y, md_exp$a, dnn = c("i", "y", "a"))
+# add aggregate column for summarizing for Skeena
+md$aggregate <- "Skeena"
+atskeena <- table(md$aggregate, md$y, md$a, dnn = c("i", "y", "a"))
+aarrcu <- as.array(at)
+aarrskeena <- as.array(atskeena)
+aarr <- abind(aarrcu, aarrskeena, along=1, use.dnns = TRUE)
+dimnames(aarr)
+aarr
+
