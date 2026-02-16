@@ -673,57 +673,10 @@ CU_dummy2$B_star <- 0
 
 B_star_df1 <- merge(B_star_df, CU_dummy, by = c("y", "a"), all = TRUE)
 B_star_df2 <- rbind( B_star_df1, CU_dummy2)
-ggplot( B_star_df2, aes ( y = B_star, x  = y)) + 
-  geom_line()+ geom_point() + 
-  facet_grid( i ~ a) + 
-  theme_classic() 
-#> `geom_line()`: Each group consists of only one observation.
-#> ℹ Do you need to adjust the group aesthetic?
-#> `geom_line()`: Each group consists of only one observation.
-#> ℹ Do you need to adjust the group aesthetic?
-#> `geom_line()`: Each group consists of only one observation.
-#> ℹ Do you need to adjust the group aesthetic?
-#> `geom_line()`: Each group consists of only one observation.
-#> ℹ Do you need to adjust the group aesthetic?
-#> `geom_line()`: Each group consists of only one observation.
-#> ℹ Do you need to adjust the group aesthetic?
-#> `geom_line()`: Each group consists of only one observation.
-#> ℹ Do you need to adjust the group aesthetic?
-#> `geom_line()`: Each group consists of only one observation.
-#> ℹ Do you need to adjust the group aesthetic?
-#> `geom_line()`: Each group consists of only one observation.
-#> ℹ Do you need to adjust the group aesthetic?
-#> `geom_line()`: Each group consists of only one observation.
-#> ℹ Do you need to adjust the group aesthetic?
-#> `geom_line()`: Each group consists of only one observation.
-#> ℹ Do you need to adjust the group aesthetic?
-#> `geom_line()`: Each group consists of only one observation.
-#> ℹ Do you need to adjust the group aesthetic?
-#> `geom_line()`: Each group consists of only one observation.
-#> ℹ Do you need to adjust the group aesthetic?
-#> `geom_line()`: Each group consists of only one observation.
-#> ℹ Do you need to adjust the group aesthetic?
-#> `geom_line()`: Each group consists of only one observation.
-#> ℹ Do you need to adjust the group aesthetic?
-#> `geom_line()`: Each group consists of only one observation.
-#> ℹ Do you need to adjust the group aesthetic?
-#> `geom_line()`: Each group consists of only one observation.
-#> ℹ Do you need to adjust the group aesthetic?
-#> `geom_line()`: Each group consists of only one observation.
-#> ℹ Do you need to adjust the group aesthetic?
-#> `geom_line()`: Each group consists of only one observation.
-#> ℹ Do you need to adjust the group aesthetic?
-#> `geom_line()`: Each group consists of only one observation.
-#> ℹ Do you need to adjust the group aesthetic?
-#> `geom_line()`: Each group consists of only one observation.
-#> ℹ Do you need to adjust the group aesthetic?
-#> `geom_line()`: Each group consists of only one observation.
-#> ℹ Do you need to adjust the group aesthetic?
-```
-
-<img src="man/figures/README-combine-data-table-1.png" width="100%" />
-
-``` r
+# ggplot( B_star_df2, aes ( y = B_star, x  = y)) + 
+#   geom_line()+ geom_point() + 
+#   facet_grid( i ~ a) + 
+#   theme_classic() 
 
 
 list_df_iya <- list( omega$df,
@@ -854,3 +807,17 @@ ggplot( dcsum, aes(y = total_run, x = b)) +
 ```
 
 <img src="man/figures/README-return-1.png" width="100%" />
+
+``` r
+ggplot( dcsum, aes(y = harvest, x = b)) +
+  geom_line() +
+  geom_hline(aes(yintercept=0)) +
+  ylab(TeX("Total harvest estimate")) +
+  xlab("Brood year") +
+  #geom_line( aes( y = W) , colour = "dodgerblue") + 
+  facet_wrap( ~ i, scales = "free_y") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle=90, vjust=0.5))
+```
+
+<img src="man/figures/README-harvest-1.png" width="100%" />
