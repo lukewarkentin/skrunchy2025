@@ -231,12 +231,14 @@ Get age-specific escapement for Kitsumkalum River, from sex-specific age
 proportions, sex-specific escapement, and hatchery contributions.
 
 ``` r
-K_star <- get_K_star( K = k$kitsumkalum_escapement, y_K = k$year, 
-                      K_M = k$male_escapement, K_F = k$female_escapement, 
-                      omega_KM = omega_K[ "M",,  ], omega_KF = omega_K[ "F",, ], 
-                      H = H, H_star = H_star)
+K_star <- K_star
+K_star_df <- array2DF( K_star, responseName = "K_star")
+# K_star <- get_K_star( K = k$kitsumkalum_escapement, y_K = k$year, 
+#                       K_M = k$male_escapement, K_F = k$female_escapement, 
+#                       omega_KM = omega_K[ "M",,  ], omega_KF = omega_K[ "F",, ], 
+#                       H = H, H_star = H_star)
 
-ggplot(K_star$df, aes(y = K_star, x = y, group= a )) +
+ggplot(K_star_df, aes(y = K_star, x = y, group= a )) +
   geom_point() +
   geom_line() +
   facet_wrap(~a, ncol=2 ) +
@@ -250,7 +252,7 @@ ggplot(K_star$df, aes(y = K_star, x = y, group= a )) +
 Get age-specific escapement by using age proportions.
 
 ``` r
-E_star <- get_E_star(E = E$E, omega = omega$omega, K_star = K_star$K_star, add_6_7 = TRUE)
+E_star <- get_E_star(E = E$E, omega = omega$omega, K_star = K_star, add_6_7 = TRUE)
 
 ggplot( E_star$df, aes(y = E_star, x = y, group = i)) +
   geom_point( colour="gray") + 
@@ -317,6 +319,10 @@ very high for Kitsumkalum across years.
 
 ``` r
 p <- get_p(W_star = W_star$W_star, E_star = E_star$E_star, B_star = B_star)
+
+# # replace values of p = 0, in 1994, 1996, for Kitsumkalum
+# p$p["Kitsumkalum", as.character(c(1994, 1996)),"4" ] <- mean( p$p["Kitsumkalum", as.character(c(1984:1993,1995,1997:2024)),"4" ] )
+# p$df$p[ p$df$p == 0 ] <-  mean( p$p["Kitsumkalum", as.character(c(1984:1993,1995,1997:2024)),"4" ] )
 
 ggplot(p$df, aes(y = p, x = y, group = i)) +
   geom_point() +

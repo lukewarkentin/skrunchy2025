@@ -55,8 +55,16 @@ K_star_new <- get_K_star( K = ks$kitsumkalum_escapement, y_K = ks$year, K_M = ks
             H = H[ names(H) %in% 2021:2024 ], H_star = H_star[ as.character(2021:2024),  ])
 K_star_new
 # bind old and new years together
+dimnames(K_star_old)[[2]]
+
+dimnames(K_star_new$K_star)[[2]]
+
 K_star <- round(abind(K_star_old, K_star_new$K_star, along = 1 ))
+
 K_star
+dimnames(K_star)
+dimnames(K_star) <- list( "y" = dimnames(K_star)[[1]], "a" = dimnames(K_star)[[2]])
+
 # save data
 usethis::use_data(K_star, overwrite = TRUE)
 
