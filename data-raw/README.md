@@ -131,6 +131,7 @@ Biodata from Tyee Test fishery, one line per fish. Includes catch date, sex, len
 # Current placeholder values or things to consider/ updates: 
 
 - SD, female and male spawner values for Kitsumkalum in 2022
+- 2021 SNP Tyee file - is it with jacks or not?
 - In river harvest values for 2021-2024 (FSC and rec)
 - Note that 1984-2020 biodata file with gsi/CU is excluding some observations of sex/length/catch/age. IW's 1984-2020 file was just fish that had age and genetics data. More data exists for sex/length, and for aged fish that didn't get genetic analysis. May be useful for demographics (e.g., length, sex ratio, and age shifts for aggregate, or independent of CU).
 - For Kitsumkalum escapement, decide whether to use age proportion data from Tyee test fishery, or from mark-recap on Kitsumkalum River 

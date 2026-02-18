@@ -18,16 +18,19 @@ The `Rmd` folder has a [markdown document](Rmd/run-reconstruction-1984-2024.md) 
 
 ## Installation
 
-You can install the development version of skrunchy2025 from [GitHub](https://github.com/) with:
+You can install the development version of skrunchy2025 from [GitHub](https://github.com/). Package skrunchy is required. 
 
 ```
 install.packages("pak")
 pak::pak("Pacific-salmon-assess/skrunchy")
+pak::pak("lukewarkentin/skrunchy2025")
+
 
 # Alternative method:
 
 install.packages("devtools")
 library(devtools)
+install_github("Pacific-salmon-assess/skrunchy")
 install_github("lukewarkentin/skrunchy2025")
 
 ```
