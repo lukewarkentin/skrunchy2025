@@ -4,6 +4,22 @@ This is a data and analysis package that updates the Skeena River run reconstruc
 It contains the data needed to run the run reconstruction. 
 It uses the functions in the skrunchy package: https://github.com/Pacific-salmon-assess/skrunchy. 
 
+## Purpose
+
+The goal of **skrunchy2025** is to update the run reconstruction for Skeena River Chinook salmon for years 1984-2024. This file does this analysis and save results into the [data](data/) folder. It uses cleaned data in the [data](data/) folder and the functions from the [skrunchy](https://github.com/Pacific-salmon-assess/skrunchy) package. 
+
+See package [skrunchy](https://github.com/Pacific-salmon-assess/skrunchy) - **Sk**eena River **Run** Reconstruction for **Ch**inook Salmon - for detailed methods and functions. 
+The goal of skrunchy is to recreate and update the run reconstruction for Skeena River summer run timing Chinook upstream of Tyee test fishery (aggregate plus six Conservation Units), as documented in [Winther et al. 2024](https://publications.gc.ca/site/eng/9.901355/publication.html "An assessment of Skeena River Chinook salmon using genetic stock identification 1984 to 2020").
+
+[This methods document](https://github.com/Pacific-salmon-assess/skrunchy/blob/1296a4d8effdc5d75e464436b5d2861e2915f3bf/methods.pdf) contains detailed methods, variables, and equations matching this package as much as possible. 
+
+### Why two packages?
+
+[skrunchy2025](https://github.com/lukewarkentin/skrunchy2025) is like the sandbox with all the data for 1984-2024, and  [skrunchy](https://github.com/Pacific-salmon-assess/skrunchy) is like the toolbox that has all the functions to do the run reconstruction ([see this post by Dr. Stephanie C. Hicks](https://www.stephaniehicks.com/blog/why-it-s-best-to-keep-software-and-data-analysis-repositories-separate/)). That way, every time we do an actual data update of the run reconstruction, we don’t have to further complicate the skrunchy software package.
+
+
+
+
 ## Organization 
 
 Raw data (`.csv` and `.xlsx` files) are included in the `data-raw` folder. A `README.md` file gives a brief explanation of each data file. 

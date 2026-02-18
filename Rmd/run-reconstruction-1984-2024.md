@@ -1,26 +1,43 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Run reconstruction using skrunchy package
+## Purpose
 
 <!-- badges: start -->
 
 <!-- badges: end -->
 
+The goal of **skrunchy2025** is to update the run reconstruction for
+Skeena River Chinook salmon for years 1984-2024. This file does this
+analysis and save results into the [data](data/) folder. It uses cleaned
+data in the [data](data/) folder and the functions from the
+[skrunchy](https://github.com/Pacific-salmon-assess/skrunchy) package.
+
 See package
 [skrunchy](https://github.com/Pacific-salmon-assess/skrunchy) -
 **Sk**eena River **Run** Reconstruction for **Ch**inook Salmon - for
-detailed methods and functions.
-
-The goal of skrunchy is to recreate and update the run reconstruction
-for Skeena River summer run timing Chinook upstream of Tyee test fishery
-(aggregate plus six Conservation Units), as documented in [Winther et
+detailed methods and functions. The goal of skrunchy is to recreate and
+update the run reconstruction for Skeena River summer run timing Chinook
+upstream of Tyee test fishery (aggregate plus six Conservation Units),
+as documented in [Winther et
 al. 2024](https://publications.gc.ca/site/eng/9.901355/publication.html "An assessment of Skeena River Chinook salmon using genetic stock identification 1984 to 2020").
 
 [This methods
 document](https://github.com/Pacific-salmon-assess/skrunchy/blob/1296a4d8effdc5d75e464436b5d2861e2915f3bf/methods.pdf)
 contains detailed methods, variables, and equations matching this
 package as much as possible.
+
+### Why two packages?
+
+[skrunchy2025](https://github.com/lukewarkentin/skrunchy2025) is like
+the sandbox with all the data for 1984-2024, and
+[skrunchy](https://github.com/Pacific-salmon-assess/skrunchy) is like
+the toolbox that has all the functions to do the run reconstruction [see
+this post by Dr. Stephanie C.
+Hicks](https://www.stephaniehicks.com/blog/why-it-s-best-to-keep-software-and-data-analysis-repositories-separate/).
+That way, every time we do an actual data update of the run
+reconstruction, we don’t have to further complicate the skrunchy
+software package.
 
 ## General methods
 
@@ -40,38 +57,48 @@ $$X_i = X_{aggregate} \cdot P_i$$
 After that, the run is “reconstructed”: working backwards from
 age-specific wild spawner abundance, all mortalities (brood stock
 removals, fishery harvest, incidental mortality) are added back in, to
-estimate total recruits produced by brood year. This produces estimates
-of spawners and recruits by brood year, which can then be use to model
+estimate the total run (escapement plus all mortality). From total run,
+we calculate recruits by brood year, which can then be use to model
 productivity.
 
-## 
+## Run Reconstruction
 
-We can walk through all the functions with data saved in the ‘data/’
-folder
+We can walk through all the functions with data saved in the
+[data](data/) folder
 
 Note that most of the package functions produce lists with two elements.
 The first element is an array, and the second element is a data frame.
 The array is used for subsequent analysis, and the data frame is useful
 for plotting and producing report tables.
 
-    #> Loading required package: abind
-    #> Loading required package: here
-    #> here() starts at C:/github/skrunchy2025
-    #> Loading required package: zoo
-    #> 
-    #> Attaching package: 'zoo'
-    #> The following objects are masked from 'package:base':
-    #> 
-    #>     as.Date, as.Date.numeric
-    #> 
-    #> Attaching package: 'dplyr'
-    #> The following objects are masked from 'package:stats':
-    #> 
-    #>     filter, lag
-    #> The following objects are masked from 'package:base':
-    #> 
-    #>     intersect, setdiff, setequal, union
-    #> ℹ Loading skrunchy2025
+``` r
+library(skrunchy)
+#> Loading required package: abind
+#> Loading required package: here
+#> here() starts at C:/github/skrunchy2025
+#> Loading required package: zoo
+#> 
+#> Attaching package: 'zoo'
+#> The following objects are masked from 'package:base':
+#> 
+#>     as.Date, as.Date.numeric
+library(ggplot2)
+library(latex2exp)
+library(here)
+library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
+options(scipen = 999)
+# Load all files in data/ folder
+devtools::load_all(".") # could probably replace this with library(skrunchy2025) but would need to reinstall to reflect any updates. 
+#> ℹ Loading skrunchy2025
+```
 
 Use example data from Skeena Tyee test fishery weekly catch and genetic
 mixture data, and pool it into annual genetic proportions.
