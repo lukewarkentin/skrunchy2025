@@ -50,20 +50,22 @@ We can walk through all the functions with data saved in the 'data/' folder
 
 Note that most of the package functions produce lists with two elements. The first element is an array, and the second element is a data frame. The array is used for subsequent analysis, and the data frame is useful for plotting and producing report tables. 
 
-Use example data from Skeena Tyee test fishery weekly catch and genetic mixture data, and pool it into annual genetic proportions. 
-
-```{r P_tilde, dpi = 300}
+```{r setup, echo=FALSE}
 library(skrunchy)
 library(ggplot2)
 library(latex2exp)
 library(here)
 library(dplyr)
 options(scipen = 999)
+# Load all files in data/ folder
 devtools::load_all(".")
+```
 
 
-P <- P
+Use example data from Skeena Tyee test fishery weekly catch and genetic mixture data, and pool it into annual genetic proportions. 
 
+
+```{r P_tilde, dpi=300}
 P_tilde <- get_P_tilde(P = P, sigma_P = sigma_P, G = G)
 
 ggplot( P_tilde$df, aes(y = P_tilde, x = y, group = i)) +
