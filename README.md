@@ -34,3 +34,13 @@ install_github("Pacific-salmon-assess/skrunchy")
 install_github("lukewarkentin/skrunchy2025")
 
 ```
+
+## Information
+
+For information about data in the `data/` folder, run `?<data_name>` in R. This will bring up the help file for the data set, with a description. For example:
+
+```
+?omega
+?run_reconstruction_table
+```
+
