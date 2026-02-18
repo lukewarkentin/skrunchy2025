@@ -35,7 +35,7 @@ install_github("lukewarkentin/skrunchy2025")
 
 ```
 
-## Information
+## Info about data files 
 
 For information about data in the `data/` folder, run `?<data_name>` in R. This will bring up the help file for the data set, with a description. For example:
 
