@@ -54,39 +54,29 @@ The first element is an array, and the second element is a data frame.
 The array is used for subsequent analysis, and the data frame is useful
 for plotting and producing report tables.
 
+    #> Loading required package: abind
+    #> Loading required package: here
+    #> here() starts at C:/github/skrunchy2025
+    #> Loading required package: zoo
+    #> 
+    #> Attaching package: 'zoo'
+    #> The following objects are masked from 'package:base':
+    #> 
+    #>     as.Date, as.Date.numeric
+    #> 
+    #> Attaching package: 'dplyr'
+    #> The following objects are masked from 'package:stats':
+    #> 
+    #>     filter, lag
+    #> The following objects are masked from 'package:base':
+    #> 
+    #>     intersect, setdiff, setequal, union
+    #> ℹ Loading skrunchy2025
+
 Use example data from Skeena Tyee test fishery weekly catch and genetic
 mixture data, and pool it into annual genetic proportions.
 
 ``` r
-library(skrunchy)
-#> Loading required package: abind
-#> Loading required package: here
-#> here() starts at C:/github/skrunchy2025
-#> Loading required package: zoo
-#> 
-#> Attaching package: 'zoo'
-#> The following objects are masked from 'package:base':
-#> 
-#>     as.Date, as.Date.numeric
-library(ggplot2)
-library(latex2exp)
-library(here)
-library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
-options(scipen = 999)
-devtools::load_all(".")
-#> ℹ Loading skrunchy2025
-
-
-P <- P
-
 P_tilde <- get_P_tilde(P = P, sigma_P = sigma_P, G = G)
 
 ggplot( P_tilde$df, aes(y = P_tilde, x = y, group = i)) +
@@ -99,7 +89,7 @@ ggplot( P_tilde$df, aes(y = P_tilde, x = y, group = i)) +
   theme_classic() 
 ```
 
-<img src="man/figures/README-P_tilde-1.png" width="100%" />
+<img src="man/figures/README-P_tilde-1.png" alt="" width="100%" />
 
 Now do expansions to get returns to Terrace for each population, and the
 Skeena aggregate.
@@ -119,7 +109,7 @@ ggplot( X$df, aes(y = X, x = y, group = i)) +
   theme_classic()
 ```
 
-<img src="man/figures/README-X-1.png" width="100%" />
+<img src="man/figures/README-X-1.png" alt="" width="100%" />
 
 Estimate terminal mortalities, total by year
 
@@ -142,7 +132,7 @@ ggplot( omega_J_all$df[ omega_J_all$df$i == "Skeena", ], aes(y = omega, x = y, g
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-omega_J-1.png" width="100%" />
+<img src="man/figures/README-omega_J-1.png" alt="" width="100%" />
 
 Get freshwater terminal mortalities in the lower Skeena by year
 
@@ -165,7 +155,7 @@ ggplot( Tau_L_total_df, aes(y = Tau_L_total, x = y, group = 1)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-Tau_L_total-1.png" width="100%" />
+<img src="man/figures/README-Tau_L_total-1.png" alt="" width="100%" />
 
 Get freshwater terminal mortalities in the upper Skeena by year
 
@@ -183,7 +173,7 @@ ggplot( Tau_U_total_df, aes(y = Tau_U_total, x = y, group = 1)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-Tau_U_total-1.png" width="100%" />
+<img src="man/figures/README-Tau_U_total-1.png" alt="" width="100%" />
 
 Get escapement for each population, plot with returns to Terrace (note,
 will only be different for Skeena aggregate and the three upper
@@ -207,7 +197,7 @@ ggplot(X$df, aes(y = X, x = y, group = i)) +
   theme_classic()
 ```
 
-<img src="man/figures/README-E-1.png" width="100%" />
+<img src="man/figures/README-E-1.png" alt="" width="100%" />
 
 Get age proportions by age, population and year (fake data).
 
@@ -225,7 +215,7 @@ ggplot( omega$df, aes(y = omega, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-omega-1.png" width="100%" />
+<img src="man/figures/README-omega-1.png" alt="" width="100%" />
 
 Get age-specific escapement for Kitsumkalum River, from sex-specific age
 proportions, sex-specific escapement, and hatchery contributions.
@@ -247,7 +237,7 @@ ggplot(K_star_df, aes(y = K_star, x = y, group= a )) +
   theme_classic()
 ```
 
-<img src="man/figures/README-K_star-1.png" width="100%" />
+<img src="man/figures/README-K_star-1.png" alt="" width="100%" />
 
 Get age-specific escapement by using age proportions.
 
@@ -265,7 +255,7 @@ ggplot( E_star$df, aes(y = E_star, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-E_star-1.png" width="100%" />
+<img src="man/figures/README-E_star-1.png" alt="" width="100%" />
 
 Get spawners for each population (accounts for brood stock removals),
 plot with returns to Terrace and escapement. Spawners should only be
@@ -287,7 +277,7 @@ ggplot( E_star$df, aes(y = E_star, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-S_star-1.png" width="100%" />
+<img src="man/figures/README-S_star-1.png" alt="" width="100%" />
 
 Get wild spawners for each population (accounts for hatchery origin
 spawners), plot with returns to Terrace, escapement, and spawners. Wild
@@ -310,7 +300,7 @@ ggplot( E_star$df, aes(y = E_star, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-W_star-1.png" width="100%" />
+<img src="man/figures/README-W_star-1.png" alt="" width="100%" />
 
 Get proportion wild spawners for each population and plot. Should only
 be \<1 for Skeena aggregate and Kitsumkalum, since hatchery origin
@@ -335,7 +325,7 @@ ggplot(p$df, aes(y = p, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-p-1.png" width="100%" />
+<img src="man/figures/README-p-1.png" alt="" width="100%" />
 
 Estimate freshwater terminal mortalities in the lower Skeena by
 population, year, and age.
@@ -354,7 +344,7 @@ ggplot( tau_L$df , aes(y =tau_L, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-tau_L-1.png" width="100%" />
+<img src="man/figures/README-tau_L-1.png" alt="" width="100%" />
 
 Estimate freshwater terminal mortalities in the upper Skeena by
 population, year, and age. Should be 0 for Kitsumkalum, Lower Skeena,
@@ -376,7 +366,7 @@ ggplot( tau_U$df, aes(y =tau_U, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-tau_U-1.png" width="100%" />
+<img src="man/figures/README-tau_U-1.png" alt="" width="100%" />
 
 Estimate marine terminal mortalities in the marine area by population,
 year, and age.
@@ -395,7 +385,7 @@ ggplot( tau_M$df, aes(y =tau_M, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-tau_M-1.png" width="100%" />
+<img src="man/figures/README-tau_M-1.png" alt="" width="100%" />
 
 <!-- Get total terminal mortality  -->
 
@@ -448,7 +438,7 @@ ggplot( tau_W$df, aes(y =tau_W, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-tau_W-1.png" width="100%" />
+<img src="man/figures/README-tau_W-1.png" alt="" width="100%" />
 
 Get wild terminal run
 
@@ -468,7 +458,7 @@ ggplot( TermRun$df, aes(y =TermRun, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-TermRun-1.png" width="100%" />
+<img src="man/figures/README-TermRun-1.png" alt="" width="100%" />
 
 Get mature run
 
@@ -487,7 +477,7 @@ ggplot( MatureRun$df, aes(y =MatureRun, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-MatureRun-1.png" width="100%" />
+<img src="man/figures/README-MatureRun-1.png" alt="" width="100%" />
 
 Pre-terminal post fishery abundance.
 
@@ -508,8 +498,8 @@ ggplot( MatureRun$df, aes(y =MatureRun, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-A_phi-1.png" width="100%" /> Pre-fishery
-ocean abundance.
+<img src="man/figures/README-A_phi-1.png" alt="" width="100%" />
+Pre-fishery ocean abundance.
 
 ``` r
 A_P <- get_A_P( A_phi = A_phi$A_phi, phi_dot_E = phi_dot_E)
@@ -526,7 +516,7 @@ ggplot( A_phi$df, aes(y = A_phi, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-A_P-1.png" width="100%" />
+<img src="man/figures/README-A_P-1.png" alt="" width="100%" />
 
 Preterminal fishing mortality in nominal fish.
 
@@ -544,7 +534,7 @@ ggplot( phi_N$df, aes(y = phi_N, x = y, group = i)) +
         strip.text.y = element_text( angle = 0))
 ```
 
-<img src="man/figures/README-phi_N-1.png" width="100%" />
+<img src="man/figures/README-phi_N-1.png" alt="" width="100%" />
 
 Preterminal fishing mortality in adult equivalents.
 
@@ -563,7 +553,7 @@ ggplot( phi_N$df, aes(y = phi_N, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-phi_Q-1.png" width="100%" />
+<img src="man/figures/README-phi_Q-1.png" alt="" width="100%" />
 
 Recruits by return year and brood year.
 
@@ -583,7 +573,7 @@ ggplot( R_star$df, aes(y = R_star, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-R_star-1.png" width="100%" />
+<img src="man/figures/README-R_star-1.png" alt="" width="100%" />
 
 ``` r
 
@@ -600,7 +590,7 @@ ggplot( R_star$df, aes(y = R_star, x = b, group = i, colour= complete_brood)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-R_star-2.png" width="100%" />
+<img src="man/figures/README-R_star-2.png" alt="" width="100%" />
 
 Get recruits by brood year, summed across ages.
 
@@ -619,7 +609,7 @@ ggplot( R$df, aes(y = R, x = b, group = i, colour = complete_brood)) +
   theme(axis.text.x = element_text(angle=90, vjust=0.5))
 ```
 
-<img src="man/figures/README-R-1.png" width="100%" />
+<img src="man/figures/README-R-1.png" alt="" width="100%" />
 
 ``` r
 
@@ -758,14 +748,16 @@ names(dcn) <- new_names
 
 run_reconstruction_table <- dcn
 
-# Save run reconstruction data in a big table
-usethis::use_data( run_reconstruction_table, overwrite = TRUE)
-#> ✔ Saving "run_reconstruction_table" to "data/run_reconstruction_table.rda".
-#> ☐ Document your data (see <https://r-pkgs.org/data.html>).
 
 dcsum <- dc %>% filter(!a== 7) %>% group_by(i, b) %>% summarize( W = sum(W_star, na.rm=TRUE), harvest = sum(total_harvest_estimate, na.rm=TRUE), total_run = sum(total_run, na.rm=TRUE))
 #> `summarise()` has grouped output by 'i'. You can override using the `.groups`
 #> argument.
+
+
+# Save run reconstruction data in a big table
+usethis::use_data( run_reconstruction_table, overwrite = TRUE)
+#> ✔ Saving "run_reconstruction_table" to "data/run_reconstruction_table.rda".
+#> ☐ Document your data (see <https://r-pkgs.org/data.html>).
 
 
 # Optional: merge result together into a big table. 
@@ -812,7 +804,7 @@ ggplot( dcsum, aes(y = total_run, x = b)) +
 #> "red", : Ignoring empty aesthetic: `colour`.
 ```
 
-<img src="man/figures/README-return-1.png" width="100%" />
+<img src="man/figures/README-return-1.png" alt="" width="100%" />
 
 ``` r
 ggplot( dcsum, aes(y = harvest, x = b)) +
@@ -826,4 +818,4 @@ ggplot( dcsum, aes(y = harvest, x = b)) +
   theme(axis.text.x = element_text(angle=90, vjust=0.5))
 ```
 
-<img src="man/figures/README-harvest-1.png" width="100%" />
+<img src="man/figures/README-harvest-1.png" alt="" width="100%" />
