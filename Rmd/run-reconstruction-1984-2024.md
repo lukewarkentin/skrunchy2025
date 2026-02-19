@@ -1,4 +1,6 @@
 
+# Run reconstruction for Skeena River Chinook, 1984-2024
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ## Purpose
@@ -32,9 +34,9 @@ package as much as possible.
 [skrunchy2025](https://github.com/lukewarkentin/skrunchy2025) is like
 the sandbox with all the data for 1984-2024, and
 [skrunchy](https://github.com/Pacific-salmon-assess/skrunchy) is like
-the toolbox that has all the functions to do the run reconstruction [see
-this post by Dr. Stephanie C.
-Hicks](https://www.stephaniehicks.com/blog/why-it-s-best-to-keep-software-and-data-analysis-repositories-separate/).
+the toolbox that has all the functions to do the run reconstruction
+([see this post by Dr. Stephanie C.
+Hicks](https://www.stephaniehicks.com/blog/why-it-s-best-to-keep-software-and-data-analysis-repositories-separate/)).
 That way, every time we do an actual data update of the run
 reconstruction, we don’t have to further complicate the skrunchy
 software package.

@@ -2,6 +2,8 @@
 output: github_document
 ---
 
+# Run reconstruction for Skeena River Chinook, 1984-2024
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
