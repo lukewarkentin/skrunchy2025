@@ -330,11 +330,5 @@ usethis::use_data( ERA_data_processed, overwrite = TRUE)
 write.csv( ERA_data_processed$df_wide, here( "data/ERA_data_processed.csv") , row.names = FALSE)
 
 
-# # Temp, for newer R-generated, rds files ------------
-# str(KLM)
-# head(KLM$data_list$Recoveries)
-# head(KLM$data_list$camp_fishery_era )
-# head(KLM$data_list$ream_pnv_data )
-# head(KLM$data_list$ream_cnr_data )
-# head(KLM$data_list$ream_cnr_data_weighted )
+
 
