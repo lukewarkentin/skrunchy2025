@@ -556,12 +556,15 @@ ggplot( R$df, aes(y = R, x = b, group = i, colour = complete_brood)) +
 
 
 ```
+
+
 ```{r save_data }
 
 
 
 # Save generated data files to data/ folder
 usethis::use_data(P_tilde, overwrite= TRUE)
+usethis::use_data(X, overwrite = TRUE)
 usethis::use_data(W_star, overwrite = TRUE)
 usethis::use_data(R_star, overwrite = TRUE)
 

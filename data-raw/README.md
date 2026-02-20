@@ -108,21 +108,17 @@ Weekly catch, genetics, and age proportions from Tyee Test fishery, 1984-2020, d
    - keeping Kuldo in Middle Skeena
    - Fiddler into Middle Skeena 
 
-#### `P_1984_2020.rda`
+#### `G-1984-2020.rda`
+
+Tyee test fishery gillnet catch by week (adults only), used to expand genetic proportions by week. 
+
+#### `P-1984-2020.rda`
 
 Genetic proportions by year, week and CU.
    
-#### `sigma_P_1984_2020.rda`
+#### `sigma-P-1984-2020.rda`
 
 Standard deviation of genetic proportions by year, week and CU.
-
-#### `omega_1984_2020.rda` 
-
-Age proportions (ages 4-7) by return year and CU
-
-#### `omega_J_1984_2020.rda` 
-
-Age proportions including jacks (ages) by return year and CU
 
 #### `tyee-biodata-age-sex-length-CU-1984-2020.rda` 
 

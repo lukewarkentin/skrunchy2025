@@ -649,6 +649,9 @@ usethis::use_data(P_tilde, overwrite= TRUE)
 #> ✔ Setting active project to "C:/github/skrunchy2025".
 #> ✔ Saving "P_tilde" to "data/P_tilde.rda".
 #> ☐ Document your data (see <https://r-pkgs.org/data.html>).
+usethis::use_data(X, overwrite = TRUE)
+#> ✔ Saving "X" to "data/X.rda".
+#> ☐ Document your data (see <https://r-pkgs.org/data.html>).
 usethis::use_data(W_star, overwrite = TRUE)
 #> ✔ Saving "W_star" to "data/W_star.rda".
 #> ☐ Document your data (see <https://r-pkgs.org/data.html>).
@@ -740,18 +743,18 @@ dc$total_harvest_estimate <- dc$R_star - dc$W_star - dc$B_star
 dc$total_run <- dc$R_star
 
 variable_name_key
-#>    skrunchy                   detail
-#> 1    R_star                 recruits
-#> 2    W_star            wild_spawners
-#> 3    S_star           total_spawners
-#> 4         b               brood_year
-#> 5         y              return_year
-#> 6         i               population
-#> 7    B_star     brood_stock_removals
-#> 8     omega           age_proportion
-#> 9         a                      age
-#> 10   E_star               escapement
-#> 11        p proportion_wild_spawners
+#>    skrunchy                   detail        skrunchy_with_detail
+#> 1    R_star                 recruits             R_star_recruits
+#> 2    W_star            wild_spawners        W_star_wild_spawners
+#> 3    S_star           total_spawners       S_star_total_spawners
+#> 4         b               brood_year                b_brood_year
+#> 5         y              return_year               y_return_year
+#> 6         i               population                i_population
+#> 7    B_star     brood_stock_removals B_star_brood_stock_removals
+#> 8     omega           age_proportion        omega_age_proportion
+#> 9         a                      age                       a_age
+#> 10   E_star               escapement           E_star_escapement
+#> 11        p proportion_wild_spawners  p_proportion_wild_spawners
 
 new_names <- names(dc)
 for( i in 1:length(names(dc))) {
