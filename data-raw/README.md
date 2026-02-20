@@ -80,7 +80,7 @@ Lookup table with the fishery codes from the ERA file (`chinook-cwt-ERA-outfiles
 
 ## `tyee-genetics/`
 
-Contains files for weekly Chinook catch and GSI mixture results, by stat week, from Tyee Test Fishery. GSI results are for age 4-7 fish ony. Catch results are for adults (1984-2020) and adults age 4-7 (2021-2024). 
+Contains files Chinook GSI results, by stat week (plus individual), from Tyee Test Fishery.
 
 #### `check-sets-per-day.csv`
 
