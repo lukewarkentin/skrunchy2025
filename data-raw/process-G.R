@@ -28,7 +28,10 @@ library(ggplot2)
 # Read in data exported from skeena-escapament-gsi repo, consistent with P and sigma_P from msat data (all came from the same table)
 # Originally from: file `1AB Skeena Esc 1979 to 2020 POPAN 2023-11-13 to LW&CM .xlsx`,
 #     tab "Samples & catch 79-20".
+# Weekly adult Chinook catch data to be matched up with re-run of msat GSI mixture analysis. Revised for accuracy by Ivan Winther.
+# This table is taken from tab "Samples & catch 79-20" from file "1AB Skeena Esc 1979 to 2020 POPAN 2023-11-13 to LW&CM .xlsx", which was created by Ivan Winther for the publication: An assessment of Skeena River Chinook salmon using genetic stock identification 1984 to 2020 (https://publications.gc.ca/site/eng/9.901355/publication.html).
 # Script that creates the rda file is here (private repo): skeena-escapement-gsi/scripts/save-data-for-skrunchy2025-tyee-weekly-and-ages.R
+
 G_1984_2020 <- readRDS( here("data-raw/tyee-data-1984-2020/G-1984-2020.rda"))
 G_1984_2020_df <- array2DF( G_1984_2020, responseName = "G")
 
