@@ -144,6 +144,7 @@ tau_dot_M_df <- by_er %>% filter(Fishery_Name %in% tau_dot_M_fisheries, Stock ==
 names(tau_dot_M_df)[ grep("age", names(tau_dot_M_df))] <- "a"
 # convert to array
 tau_dot_M_raw <- df_to_array( tau_dot_M_df, value = "tau_dot_M", dimnames_order = c("y", "a"), FUN = sum, default = 0)
+
 # sub rollmean for hi values
 tau_dot_M <- process_rates( tau_dot_M_raw )
 tau_dot_M
