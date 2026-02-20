@@ -52,11 +52,6 @@
 # using average of brood years 1987, 1988, 2000, 2001
 
 
-
-# Notes
-# This uses the older xlsx output file. There is a newer rds file output
-# but I still don't have enough information to use that.
-
 # Note that all brood year 2019 releases were untagged and unclipped.
 # CWT_Release column does not reflect this for brood year 2019.
 # FLAG: Was escape column for 2019 brood year done using pseudo-recoveries?
@@ -332,6 +327,7 @@ usethis::use_data( phi_dot_E, overwrite = TRUE)
 usethis::use_data( Q, overwrite = TRUE)
 usethis::use_data( ERA_data_processed, overwrite = TRUE)
 
+write.csv( ERA_data_processed$df_wide, here( "data/ERA_data_processed.csv") , row.names = FALSE)
 
 
 # # Temp, for newer R-generated, rds files ------------
