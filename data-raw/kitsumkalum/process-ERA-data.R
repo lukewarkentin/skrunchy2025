@@ -131,7 +131,7 @@ check1$dif <- abs( check1$ER_legal_by - check1$ER_legal_cy )
 # make a new variable named ER that is actually the legal catch + Incidental mortality
 by_er$ER <- by_er$ER_legal + by_er$ER_total
 # Make tau_dot_M
-# Use Terminal Northern BC Terminal Net fisheries (includes river gap slough, terminal gillnet and seine fisheries)
+# Use Terminal Northern BC Terminal Net fisheries (includes river gap slough, terminal gillnet and seine fisheries (not happening anymore))
 #           FLAG - need to confirm if this uses Tyee test fishery recoveries!!!! Don't want to double count them
 # and Terminal Northern BC Terminal Sport fisheries (areas 3-4?)
 tau_dot_M_fisheries <- c("TNBC TERM N", "TNBC TERM S")
