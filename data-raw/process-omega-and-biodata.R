@@ -173,11 +173,14 @@ md$y <- as.integer(md$year_catch)
 md$date <- ymd( paste(md$year_catch, md$month_catch, md$day_catch, sep = "="))
 str(md)
 
-names(md)[grep("prob.1", names(md))] <- "max_CU_prob_sum"
+md$max_CU_prob_sum <- md$`prob.1`/100
+
 md$hypural_length_mm <- as.numeric(md$hypural_length_mm)
 md$nose_fork_length_mm <- as.numeric(md$nose_fork_length_mm)
 md$sex <- as.integer(md$sex)
 cols_exp <- c("date", "i", "y", "sex", "a", "nose_fork_length_mm", "hypural_length_mm", "max_CU_prob_sum" )
+
+
 
 md_exp <- md[ names(md) %in% cols_exp]
 
@@ -220,9 +223,10 @@ aarr
 pops_keep <- c("Kitsumkalum", "Large Lakes", "Lower Skeena", "Middle Skeena",
                "Upper Skeena", "Zymoetz")
 age_obs <- aarr[ c("Skeena", pops_keep), , c("4", "5", "6", "7")]
+
 # bring in Kitsumkalum age obs from spawning ground sampling, mark-recap program.
-load( here("data/n_kitsumkalum.rda"))
-kitsumkalum_age_obs <- n_kitsumkalum
+load( here("data/n_age_kitsumkalum.rda"))
+kitsumkalum_age_obs <- n_age_kitsumkalum
 
 #gurl <- "https://github.com/lukewarkentin/skrunchy2025/raw/refs/heads/main/data-raw/kitsumkalum/misc/kitsumkalum-age-observations.RDS"
 #kitsumkalum_age_obs <- readRDS( url(gurl) )
