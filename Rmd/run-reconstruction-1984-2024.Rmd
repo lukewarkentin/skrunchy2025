@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  out.width = "90%"
 )
 h <- 6
 w <- 6
@@ -623,13 +623,35 @@ B_star_df2 <- rbind( B_star_df1, CU_dummy2)
 #   facet_grid( i ~ a) + 
 #   theme_classic() 
 
+# same for H_star
+H_star_df <-  array2DF( H_star, responseName = "H_star")
 
-list_df_iya <- list(# omega$df,
-                     B_star_df2,
+brood_pops <- c("Kitsumkalum", "Skeena")
+CU_dummy <-  expand.grid( brood_pops, unique(H_star_df$y), unique(H_star_df$a) ) 
+names(CU_dummy) <- c("i", "y", "a")
+CU_dummy2 <-  expand.grid( unique(X$df$i)[ !unique(X$df$i) %in% brood_pops], unique(H_star_df$y), unique(H_star_df$a) ) 
+names(CU_dummy2) <- c("i", "y", "a")
+CU_dummy2$H_star <- 0
+
+H_star_df1 <- merge(H_star_df, CU_dummy, by = c("y", "a"), all = TRUE)
+H_star_df2 <- rbind( H_star_df1, CU_dummy2)
+# ggplot( H_star_df2, aes ( y = H_star, x  = y)) +
+#   geom_line()+ geom_point() +
+#   facet_grid( i ~ a) +
+#   theme_classic()
+
+
+
+
+list_df_iya <- list(
+                 # omega$df,
                  #"n" = n # n age observations, would need to make into df
-                 p$df,
                  E_star$df, 
+                 B_star_df2,
+                 S_star$df,
+                 H_star_df2,
                  W_star$df,
+                 p$df,
                  tau_L$df,
                  tau_U$df,
                  tau_M$df,
@@ -657,16 +679,22 @@ dciy <- combine_df_list(list_df_iy, includes_ages = FALSE)
 #names(ERA_data_processed)
 
 dc$total_harvest_estimate <- dc$R_star - dc$W_star - dc$B_star
-dc$total_run <- dc$R_star
+dc$N <- dc$R_star
+dc <- dc[ !grepl("R_star", names(dc))] 
 
-variable_name_key
+# merge ERA rates with run recon table
+#names(ERA_data_processed$df_wide)
+
+dc <- merge(dc, ERA_data_processed$df_wide[ !grepl("H_star", names(ERA_data_processed$df_wide)) ], by= c("y", "a", "b"), all.x = TRUE)
+
+#variable_name_key
 
 new_names <- names(dc)
 for( i in 1:length(names(dc))) {
   new_names[i] <- ifelse( names(dc)[i] %in% variable_name_key$skrunchy,
-                          variable_name_key$detail[ variable_name_key$skrunchy == names(dc)[i] ], names(dc)[i] )
+                          variable_name_key$skrunchy_with_detail[ variable_name_key$skrunchy == names(dc)[i] ], names(dc)[i] )
 }
-new_names
+#new_names
 
 dcn <- dc
 names(dcn) <- new_names
@@ -674,7 +702,7 @@ names(dcn) <- new_names
 run_reconstruction_table <- dcn
 
 
-dcsum <- dc %>% filter(!a== 7) %>% group_by(i, b) %>% summarize( W = sum(W_star, na.rm=TRUE), harvest = sum(total_harvest_estimate, na.rm=TRUE), total_run = sum(total_run, na.rm=TRUE))
+dcsum <- dc %>% filter(!a== 7) %>% group_by(i, b) %>% summarize( W = sum(W_star, na.rm=TRUE), harvest = sum(total_harvest_estimate, na.rm=TRUE), N = sum(N, na.rm=TRUE))
 
 
 # Save run reconstruction data in a big table
@@ -715,13 +743,13 @@ usethis::use_data( run_reconstruction_table, overwrite = TRUE)
 
 
 ```{r return, dpi=300}
-ggplot( dcsum, aes(y = total_run, x = b)) +
+ggplot( dcsum, aes(y = N, x = b)) +
   geom_line() +
   geom_hline(aes(yintercept=0)) +
   ylab(TeX("Skeena aggregate total run (black), wild\nspawners (blue), and harvest (red shaded)")) +
   xlab("Brood year") +
   geom_line( aes( y = W) , colour = "dodgerblue") + 
-  geom_ribbon( aes( ymin = W, ymax = total_run), colour = NULL, fill= "red", alpha = 0.5) +
+  geom_ribbon( aes( ymin = W, ymax = N), colour = NULL, fill= "red", alpha = 0.5) +
   facet_wrap( ~ i, scales = "free_y") +
   theme_classic() +
   theme(axis.text.x = element_text(angle=90, vjust=0.5))

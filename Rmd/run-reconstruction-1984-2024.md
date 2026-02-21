@@ -118,7 +118,7 @@ ggplot( P_tilde$df, aes(y = P_tilde, x = y, group = i)) +
   theme_classic() 
 ```
 
-<img src="man/figures/README-P_tilde-1.png" alt="" width="100%" />
+<img src="man/figures/README-P_tilde-1.png" alt="" width="90%" />
 
 Now do expansions to get returns to Terrace for each population, and the
 Skeena aggregate.
@@ -138,7 +138,7 @@ ggplot( X$df, aes(y = X, x = y, group = i)) +
   theme_classic()
 ```
 
-<img src="man/figures/README-X-1.png" alt="" width="100%" />
+<img src="man/figures/README-X-1.png" alt="" width="90%" />
 
 Estimate terminal mortalities, total by year
 
@@ -161,7 +161,7 @@ ggplot( omega_J_all$df[ omega_J_all$df$i == "Skeena", ], aes(y = omega, x = y, g
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-omega_J-1.png" alt="" width="100%" />
+<img src="man/figures/README-omega_J-1.png" alt="" width="90%" />
 
 Get freshwater terminal mortalities in the lower Skeena by year
 
@@ -184,7 +184,7 @@ ggplot( Tau_L_total_df, aes(y = Tau_L_total, x = y, group = 1)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-Tau_L_total-1.png" alt="" width="100%" />
+<img src="man/figures/README-Tau_L_total-1.png" alt="" width="90%" />
 
 Get freshwater terminal mortalities in the upper Skeena by year
 
@@ -202,7 +202,7 @@ ggplot( Tau_U_total_df, aes(y = Tau_U_total, x = y, group = 1)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-Tau_U_total-1.png" alt="" width="100%" />
+<img src="man/figures/README-Tau_U_total-1.png" alt="" width="90%" />
 
 Get escapement for each population, plot with returns to Terrace (note,
 will only be different for Skeena aggregate and the three upper
@@ -226,7 +226,7 @@ ggplot(X$df, aes(y = X, x = y, group = i)) +
   theme_classic()
 ```
 
-<img src="man/figures/README-E-1.png" alt="" width="100%" />
+<img src="man/figures/README-E-1.png" alt="" width="90%" />
 
 Get age proportions by age, population and year (fake data).
 
@@ -244,7 +244,7 @@ ggplot( omega$df, aes(y = omega, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-omega-1.png" alt="" width="100%" />
+<img src="man/figures/README-omega-1.png" alt="" width="90%" />
 
 Get age-specific escapement for Kitsumkalum River, from sex-specific age
 proportions, sex-specific escapement, and hatchery contributions.
@@ -266,7 +266,7 @@ ggplot(K_star_df, aes(y = K_star, x = y, group= a )) +
   theme_classic()
 ```
 
-<img src="man/figures/README-K_star-1.png" alt="" width="100%" />
+<img src="man/figures/README-K_star-1.png" alt="" width="90%" />
 
 Get age-specific escapement by using age proportions.
 
@@ -284,7 +284,7 @@ ggplot( E_star$df, aes(y = E_star, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-E_star-1.png" alt="" width="100%" />
+<img src="man/figures/README-E_star-1.png" alt="" width="90%" />
 
 Get spawners for each population (accounts for brood stock removals),
 plot with returns to Terrace and escapement. Spawners should only be
@@ -306,7 +306,7 @@ ggplot( E_star$df, aes(y = E_star, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-S_star-1.png" alt="" width="100%" />
+<img src="man/figures/README-S_star-1.png" alt="" width="90%" />
 
 Get wild spawners for each population (accounts for hatchery origin
 spawners), plot with returns to Terrace, escapement, and spawners. Wild
@@ -329,7 +329,7 @@ ggplot( E_star$df, aes(y = E_star, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-W_star-1.png" alt="" width="100%" />
+<img src="man/figures/README-W_star-1.png" alt="" width="90%" />
 
 Get proportion wild spawners for each population and plot. Should only
 be \<1 for Skeena aggregate and Kitsumkalum, since hatchery origin
@@ -354,7 +354,7 @@ ggplot(p$df, aes(y = p, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-p-1.png" alt="" width="100%" />
+<img src="man/figures/README-p-1.png" alt="" width="90%" />
 
 Estimate freshwater terminal mortalities in the lower Skeena by
 population, year, and age.
@@ -373,7 +373,7 @@ ggplot( tau_L$df , aes(y =tau_L, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-tau_L-1.png" alt="" width="100%" />
+<img src="man/figures/README-tau_L-1.png" alt="" width="90%" />
 
 Estimate freshwater terminal mortalities in the upper Skeena by
 population, year, and age. Should be 0 for Kitsumkalum, Lower Skeena,
@@ -395,7 +395,7 @@ ggplot( tau_U$df, aes(y =tau_U, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-tau_U-1.png" alt="" width="100%" />
+<img src="man/figures/README-tau_U-1.png" alt="" width="90%" />
 
 Estimate marine terminal mortalities in the marine area by population,
 year, and age.
@@ -414,7 +414,7 @@ ggplot( tau_M$df, aes(y =tau_M, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-tau_M-1.png" alt="" width="100%" />
+<img src="man/figures/README-tau_M-1.png" alt="" width="90%" />
 
 <!-- Get total terminal mortality  -->
 
@@ -467,7 +467,7 @@ ggplot( tau_W$df, aes(y =tau_W, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-tau_W-1.png" alt="" width="100%" />
+<img src="man/figures/README-tau_W-1.png" alt="" width="90%" />
 
 Get wild terminal run
 
@@ -487,7 +487,7 @@ ggplot( TermRun$df, aes(y =TermRun, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-TermRun-1.png" alt="" width="100%" />
+<img src="man/figures/README-TermRun-1.png" alt="" width="90%" />
 
 Get mature run
 
@@ -506,7 +506,7 @@ ggplot( MatureRun$df, aes(y =MatureRun, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-MatureRun-1.png" alt="" width="100%" />
+<img src="man/figures/README-MatureRun-1.png" alt="" width="90%" />
 
 Pre-terminal post fishery abundance.
 
@@ -527,7 +527,7 @@ ggplot( MatureRun$df, aes(y =MatureRun, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-A_phi-1.png" alt="" width="100%" />
+<img src="man/figures/README-A_phi-1.png" alt="" width="90%" />
 Pre-fishery ocean abundance.
 
 ``` r
@@ -545,7 +545,7 @@ ggplot( A_phi$df, aes(y = A_phi, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-A_P-1.png" alt="" width="100%" />
+<img src="man/figures/README-A_P-1.png" alt="" width="90%" />
 
 Preterminal fishing mortality in nominal fish.
 
@@ -563,7 +563,7 @@ ggplot( phi_N$df, aes(y = phi_N, x = y, group = i)) +
         strip.text.y = element_text( angle = 0))
 ```
 
-<img src="man/figures/README-phi_N-1.png" alt="" width="100%" />
+<img src="man/figures/README-phi_N-1.png" alt="" width="90%" />
 
 Preterminal fishing mortality in adult equivalents.
 
@@ -582,7 +582,7 @@ ggplot( phi_N$df, aes(y = phi_N, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-phi_Q-1.png" alt="" width="100%" />
+<img src="man/figures/README-phi_Q-1.png" alt="" width="90%" />
 
 Recruits by return year and brood year.
 
@@ -602,7 +602,7 @@ ggplot( R_star$df, aes(y = R_star, x = y, group = i)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-R_star-1.png" alt="" width="100%" />
+<img src="man/figures/README-R_star-1.png" alt="" width="90%" />
 
 ``` r
 
@@ -619,7 +619,7 @@ ggplot( R_star$df, aes(y = R_star, x = b, group = i, colour= complete_brood)) +
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-R_star-2.png" alt="" width="100%" />
+<img src="man/figures/README-R_star-2.png" alt="" width="90%" />
 
 Get recruits by brood year, summed across ages.
 
@@ -638,7 +638,7 @@ ggplot( R$df, aes(y = R, x = b, group = i, colour = complete_brood)) +
   theme(axis.text.x = element_text(angle=90, vjust=0.5))
 ```
 
-<img src="man/figures/README-R-1.png" alt="" width="100%" />
+<img src="man/figures/README-R-1.png" alt="" width="90%" />
 
 ``` r
 
@@ -676,6 +676,8 @@ combine_df_list <- function(x, includes_ages = TRUE) {
   combdf <- Reduce(function(d1, d2) {
     merge(d1, d2, by = c("y", "a", "i"), all = TRUE)
   }, dn)
+    combdf$a <- as.integer(combdf$a)
+    combdf$y <- as.integer(combdf$y)
     combdf$b <- combdf$y - combdf$a
   }
   
@@ -706,13 +708,35 @@ B_star_df2 <- rbind( B_star_df1, CU_dummy2)
 #   facet_grid( i ~ a) + 
 #   theme_classic() 
 
+# same for H_star
+H_star_df <-  array2DF( H_star, responseName = "H_star")
 
-list_df_iya <- list( omega$df,
-                     B_star_df2,
+brood_pops <- c("Kitsumkalum", "Skeena")
+CU_dummy <-  expand.grid( brood_pops, unique(H_star_df$y), unique(H_star_df$a) ) 
+names(CU_dummy) <- c("i", "y", "a")
+CU_dummy2 <-  expand.grid( unique(X$df$i)[ !unique(X$df$i) %in% brood_pops], unique(H_star_df$y), unique(H_star_df$a) ) 
+names(CU_dummy2) <- c("i", "y", "a")
+CU_dummy2$H_star <- 0
+
+H_star_df1 <- merge(H_star_df, CU_dummy, by = c("y", "a"), all = TRUE)
+H_star_df2 <- rbind( H_star_df1, CU_dummy2)
+# ggplot( H_star_df2, aes ( y = H_star, x  = y)) +
+#   geom_line()+ geom_point() +
+#   facet_grid( i ~ a) +
+#   theme_classic()
+
+
+
+
+list_df_iya <- list(
+                 # omega$df,
                  #"n" = n # n age observations, would need to make into df
-                 p$df,
                  E_star$df, 
+                 B_star_df2,
+                 S_star$df,
+                 H_star_df2,
                  W_star$df,
+                 p$df,
                  tau_L$df,
                  tau_U$df,
                  tau_M$df,
@@ -740,40 +764,22 @@ dciy <- combine_df_list(list_df_iy, includes_ages = FALSE)
 #names(ERA_data_processed)
 
 dc$total_harvest_estimate <- dc$R_star - dc$W_star - dc$B_star
-dc$total_run <- dc$R_star
+dc$N <- dc$R_star
+dc <- dc[ !grepl("R_star", names(dc))] 
 
-variable_name_key
-#>    skrunchy                   detail        skrunchy_with_detail
-#> 1    R_star                 recruits             R_star_recruits
-#> 2    W_star            wild_spawners        W_star_wild_spawners
-#> 3    S_star           total_spawners       S_star_total_spawners
-#> 4         b               brood_year                b_brood_year
-#> 5         y              return_year               y_return_year
-#> 6         i               population                i_population
-#> 7    B_star     brood_stock_removals B_star_brood_stock_removals
-#> 8     omega           age_proportion        omega_age_proportion
-#> 9         a                      age                       a_age
-#> 10   E_star               escapement           E_star_escapement
-#> 11        p proportion_wild_spawners  p_proportion_wild_spawners
+# merge ERA rates with run recon table
+#names(ERA_data_processed$df_wide)
+
+dc <- merge(dc, ERA_data_processed$df_wide[ !grepl("H_star", names(ERA_data_processed$df_wide)) ], by= c("y", "a", "b"), all.x = TRUE)
+
+#variable_name_key
 
 new_names <- names(dc)
 for( i in 1:length(names(dc))) {
   new_names[i] <- ifelse( names(dc)[i] %in% variable_name_key$skrunchy,
-                          variable_name_key$detail[ variable_name_key$skrunchy == names(dc)[i] ], names(dc)[i] )
+                          variable_name_key$skrunchy_with_detail[ variable_name_key$skrunchy == names(dc)[i] ], names(dc)[i] )
 }
-new_names
-#>  [1] "return_year"              "age"                     
-#>  [3] "population"               "age_proportion"          
-#>  [5] "brood_stock_removals"     "proportion_wild_spawners"
-#>  [7] "escapement"               "wild_spawners"           
-#>  [9] "tau_L"                    "tau_U"                   
-#> [11] "tau_M"                    "tau_W"                   
-#> [13] "TermRun"                  "MatureRun"               
-#> [15] "A_phi"                    "A_P"                     
-#> [17] "phi_N"                    "phi_Q"                   
-#> [19] "recruits"                 "complete_brood"          
-#> [21] "brood_year"               "total_harvest_estimate"  
-#> [23] "total_run"
+#new_names
 
 dcn <- dc
 names(dcn) <- new_names
@@ -781,7 +787,7 @@ names(dcn) <- new_names
 run_reconstruction_table <- dcn
 
 
-dcsum <- dc %>% filter(!a== 7) %>% group_by(i, b) %>% summarize( W = sum(W_star, na.rm=TRUE), harvest = sum(total_harvest_estimate, na.rm=TRUE), total_run = sum(total_run, na.rm=TRUE))
+dcsum <- dc %>% filter(!a== 7) %>% group_by(i, b) %>% summarize( W = sum(W_star, na.rm=TRUE), harvest = sum(total_harvest_estimate, na.rm=TRUE), N = sum(N, na.rm=TRUE))
 #> `summarise()` has grouped output by 'i'. You can override using the `.groups`
 #> argument.
 
@@ -822,21 +828,21 @@ usethis::use_data( run_reconstruction_table, overwrite = TRUE)
 ```
 
 ``` r
-ggplot( dcsum, aes(y = total_run, x = b)) +
+ggplot( dcsum, aes(y = N, x = b)) +
   geom_line() +
   geom_hline(aes(yintercept=0)) +
   ylab(TeX("Skeena aggregate total run (black), wild\nspawners (blue), and harvest (red shaded)")) +
   xlab("Brood year") +
   geom_line( aes( y = W) , colour = "dodgerblue") + 
-  geom_ribbon( aes( ymin = W, ymax = total_run), colour = NULL, fill= "red", alpha = 0.5) +
+  geom_ribbon( aes( ymin = W, ymax = N), colour = NULL, fill= "red", alpha = 0.5) +
   facet_wrap( ~ i, scales = "free_y") +
   theme_classic() +
   theme(axis.text.x = element_text(angle=90, vjust=0.5))
-#> Warning in geom_ribbon(aes(ymin = W, ymax = total_run), colour = NULL, fill =
-#> "red", : Ignoring empty aesthetic: `colour`.
+#> Warning in geom_ribbon(aes(ymin = W, ymax = N), colour = NULL, fill = "red", :
+#> Ignoring empty aesthetic: `colour`.
 ```
 
-<img src="man/figures/README-return-1.png" alt="" width="100%" />
+<img src="man/figures/README-return-1.png" alt="" width="90%" />
 
 ``` r
 ggplot( dcsum, aes(y = harvest, x = b)) +
@@ -850,4 +856,4 @@ ggplot( dcsum, aes(y = harvest, x = b)) +
   theme(axis.text.x = element_text(angle=90, vjust=0.5))
 ```
 
-<img src="man/figures/README-harvest-1.png" alt="" width="100%" />
+<img src="man/figures/README-harvest-1.png" alt="" width="90%" />
