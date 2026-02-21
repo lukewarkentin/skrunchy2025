@@ -25,3 +25,5 @@ r,maturation_rate
 phi_dot_E,preterminal_mortality_exploitation_rate
 Q,adult_equivalency_rate
 N,total_run
+TermRun,terminal_run
+MatureRun,mature_run
