@@ -134,3 +134,4 @@ Biodata from Tyee Test fishery, one line per fish. Includes catch date, sex, len
 - Confirm rec catch above Terrace is 0 for 2002, 2003, 2007
 - Check maturation rate `r` for return year 2003, age 4. Very low. Gives weird results. Using 5-year average now.
 - Confirm if Tyee CWT recoveries are included in TNBC TERM N results
+- Check and possibly combine the two Kitsumkalum age processing R scripts
