@@ -66,13 +66,21 @@ rsconnect/
 !data-raw/stat-week-calculator-2021.xlsx
 !data-raw/variable-name-key.csv
 
+
+# Kitsumkalum data include
 !data-raw/kitsumkalum/process-ERA-data.R
 
 !data-raw/kitsumkalum/kitsumkalum-escapement.csv
 !data-raw/kitsumkalum/brood-removals.csv
+!data-raw/kitsumkalum/kitsumkalum-escapement-by-age-1984-2020.xlsx
+!data-raw/kitsumkalum/kitsumkalum-age-observations-by-sex-1984-2020.xlsx
+!data-raw/kitsumkalum/kitsumkalum-age-observations-by-sex-2021-2024.xlsx
+
 !data-raw/kitsumkalum/fishery-lookup-CWT-ERA-notes.csv
 !data-raw/kitsumkalum/chinook-cwt-ERA-outfiles_2025-03-06_KLM-KLY.xlsx
+
 !data-raw/kitsumkalum/misc/kitsumkalum-age-observations.RDS
+
 
 #!data-raw/tyee-genetics/tyee-catch-by-stat-week-1984-2020.xlsx # obsolete
 !data-raw/tyee-genetics/check-sets-per-day.csv
@@ -93,8 +101,11 @@ data-raw/
 data-raw/tyee-genetics/
 data-raw/tyee-sampling-biodata-ages/
 *.csv
+*.xlsx
+
+# Data outputs
 !data/ERA_data_processed.csv
 !data/run_reconstruction_table.csv
-*.xlsx
+
 
 
