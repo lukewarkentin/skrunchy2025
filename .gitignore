@@ -94,6 +94,7 @@ data-raw/tyee-genetics/
 data-raw/tyee-sampling-biodata-ages/
 *.csv
 !data/ERA_data_processed.csv
+!data/run_reconstruction_table.csv
 *.xlsx
 
 

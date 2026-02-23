@@ -796,7 +796,7 @@ dcsum <- dc %>% filter(!a== 7) %>% group_by(i, b) %>% summarize( W = sum(W_star,
 usethis::use_data( run_reconstruction_table, overwrite = TRUE)
 #> ✔ Saving "run_reconstruction_table" to "data/run_reconstruction_table.rda".
 #> ☐ Document your data (see <https://r-pkgs.org/data.html>).
-
+write.csv(run_reconstruction_table, here( "data", "run_reconstruction_table.rda"), row.names = FALSE)
 
 # Optional: merge result together into a big table. 
 

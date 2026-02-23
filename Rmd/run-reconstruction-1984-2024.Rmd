@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "90%"
+  out.width = "100%"
 )
 h <- 6
 w <- 6
@@ -707,7 +707,7 @@ dcsum <- dc %>% filter(!a== 7) %>% group_by(i, b) %>% summarize( W = sum(W_star,
 
 # Save run reconstruction data in a big table
 usethis::use_data( run_reconstruction_table, overwrite = TRUE)
-
+write.csv(run_reconstruction_table, here( "data", "run_reconstruction_table.csv"), row.names = FALSE)
 
 # Optional: merge result together into a big table. 
 
