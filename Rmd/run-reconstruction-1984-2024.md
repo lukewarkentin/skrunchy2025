@@ -817,7 +817,10 @@ names(dcn) <- new_names
 run_reconstruction_table <- dcn
 
 # Sum wild spawners, total harvest, and total run by CU and return year
-dcsum <- dc %>% filter(!a== 7) %>% group_by(i, y) %>% summarize( W = sum(W_star, na.rm=TRUE), harvest = sum(total_harvest_estimate, na.rm=TRUE), N = sum(N, na.rm=TRUE))
+dcsum <- dc %>% filter(!a== 7) %>% group_by(i, y) %>% 
+  summarize( W = sum(W_star, na.rm=TRUE), 
+             harvest = sum(total_harvest_estimate, na.rm=TRUE), 
+             N = sum(N, na.rm=TRUE))
 #> `summarise()` has grouped output by 'i'. You can override using the `.groups`
 #> argument.
 
@@ -898,11 +901,13 @@ ggplot( dcsum, aes(y = harvest, x = y)) +
 <img src="man/figures/README-harvest-1.png" alt="" width="100%" />
 
 ``` r
-ggplot( brood_table, aes(y = R, x = W, colour = b)) +
+ggplot( brood_table[ brood_table$complete_brood==TRUE, ], aes(y = R, x = W, colour = b)) +
   geom_point() +
   ylab(TeX("$R$ recruits")) +
   scale_colour_viridis_c() +
   xlab(TeX("$W$ wild spawners")) +
+  geom_hline(aes(yintercept = 0))+ 
+  geom_vline(aes(xintercept = 0))+ 
   facet_wrap( ~ i, scales= "free" ) +
   theme_classic()
 ```
@@ -911,7 +916,7 @@ ggplot( brood_table, aes(y = R, x = W, colour = b)) +
 
 ``` r
  
-ggplot( brood_table, aes(y = R/W, x = b)) +
+ggplot( brood_table[ brood_table$complete_brood==TRUE, ], aes(y = R/W, x = b)) +
   geom_point() +
   geom_line() +
   geom_hline(aes(yintercept = 1), linetype = 2, colour = "gray")+ 
@@ -922,3 +927,31 @@ ggplot( brood_table, aes(y = R/W, x = b)) +
 ```
 
 <img src="man/figures/README-recruits-spawners-2.png" alt="" width="100%" />
+
+``` r
+
+ggplot( brood_table[ brood_table$complete_brood==TRUE, ], aes(y = R/W, x = b)) +
+  geom_point() +
+  geom_line() +
+  geom_hline(aes(yintercept = 1), linetype = 2, colour = "gray")+ 
+  ylab(TeX("Recruits per (wild) spawner")) +
+  xlab("Brood year") +
+  facet_wrap( ~ i) +
+  theme_classic()
+```
+
+<img src="man/figures/README-recruits-spawners-3.png" alt="" width="100%" />
+
+``` r
+
+ggplot( brood_table[ brood_table$complete_brood==TRUE, ], aes(y = log(R/W), x = b)) +
+  geom_point() +
+  geom_line() +
+  geom_hline(aes(yintercept = log(1)), linetype = 2, colour = "gray")+ 
+  ylab(TeX("log Recruits per (wild) spawner")) +
+  xlab("Brood year") +
+  facet_wrap( ~ i ) +
+  theme_classic()
+```
+
+<img src="man/figures/README-recruits-spawners-4.png" alt="" width="100%" />
