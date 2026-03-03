@@ -12,4 +12,3 @@
 #' }
 #' @source data-raw/process-omega-and-biodata.R
 "n_age_observations"
-

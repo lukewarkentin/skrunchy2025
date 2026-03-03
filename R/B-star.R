@@ -11,4 +11,3 @@
 #' }
 #' @source data-raw/process-B-star.R
 "B_star"
-

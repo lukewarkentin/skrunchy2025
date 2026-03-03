@@ -11,7 +11,7 @@ The goal of **skrunchy2025** is to update the run reconstruction for Skeena Rive
 See package [skrunchy](https://github.com/Pacific-salmon-assess/skrunchy) - **Sk**eena River **Run** Reconstruction for **Ch**inook Salmon - for detailed methods and functions. 
 The goal of skrunchy is to recreate and update the run reconstruction for Skeena River summer run timing Chinook upstream of Tyee test fishery (aggregate plus six Conservation Units), as documented in [Winther et al. 2024](https://publications.gc.ca/site/eng/9.901355/publication.html "An assessment of Skeena River Chinook salmon using genetic stock identification 1984 to 2020").
 
-[This methods document](https://github.com/Pacific-salmon-assess/skrunchy/blob/1296a4d8effdc5d75e464436b5d2861e2915f3bf/methods.pdf) contains detailed methods, variables, and equations matching this package as much as possible. 
+[This methods document](https://github.com/Pacific-salmon-assess/skrunchy/blob/2da587e2e51a5b157ece5897e9c63e4ba6f10c5d/inst/methods.pdf) contains detailed methods, variables, and equations matching this package as much as possible. 
 
 ### Why two packages?
 

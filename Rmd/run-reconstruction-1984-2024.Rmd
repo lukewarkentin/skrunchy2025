@@ -32,7 +32,7 @@ The goal of **skrunchy2025** is to update the run reconstruction for Skeena Rive
 See package [skrunchy](https://github.com/Pacific-salmon-assess/skrunchy) - **Sk**eena River **Run** Reconstruction for **Ch**inook Salmon - for detailed methods and functions. 
 The goal of skrunchy is to recreate and update the run reconstruction for Skeena River summer run timing Chinook upstream of Tyee test fishery (aggregate plus six Conservation Units), as documented in [Winther et al. 2024](https://publications.gc.ca/site/eng/9.901355/publication.html "An assessment of Skeena River Chinook salmon using genetic stock identification 1984 to 2020").
 
-[This methods document](https://github.com/Pacific-salmon-assess/skrunchy/blob/1296a4d8effdc5d75e464436b5d2861e2915f3bf/methods.pdf) contains detailed methods, variables, and equations matching this package as much as possible. 
+[This methods document](https://github.com/Pacific-salmon-assess/skrunchy/blob/main/inst/methods.pdf) contains detailed methods, variables, and equations matching this package as much as possible. 
 
 ### Why two packages?
 
@@ -63,9 +63,14 @@ library(ggplot2)
 library(latex2exp)
 library(here)
 library(dplyr)
-options(scipen = 999)
+
+library(skrunchy2025)
+# build_rmd(here("Rmd/run-reconstruction-1984-2024.Rmd"))
 # Load all files in data/ folder
-devtools::load_all(".") # could probably replace this with library(skrunchy2025) but would need to reinstall to reflect any updates. 
+#devtools::load_all(".") # could probably replace this with library(skrunchy2025) but would need to reinstall to reflect any updates. 
+
+options(scipen = 999)
+
 ```
 
 
@@ -436,8 +441,9 @@ Pre-terminal post fishery abundance.
 
 ```{r A_phi, dpi=300, fig.width = w,fig.height=h}
 # Quick fix for r, age 4, year = 2003, very low
-r[ "2003", "4"] <- mean(r [ as.character(c(2001:2002, 2004:2005)) , "4"])
-A_phi <- get_A_phi( MatureRun = MatureRun$MatureRun, r = r)
+r_use <- r
+r_use[ "2003", "4"] <- mean(r_use [ as.character(c(2001:2002, 2004:2005)) , "4"])
+A_phi <- get_A_phi( MatureRun = MatureRun$MatureRun, r = r_use)
 
 ggplot( MatureRun$df, aes(y =MatureRun, x = y, group = i)) +
   geom_line(colour="darkgreen") +
@@ -507,41 +513,58 @@ ggplot( phi_N$df, aes(y = phi_N, x = y, group = i)) +
 
 ```
 
-Recruits by return year and brood year. 
+Total Run $N$
 
-```{r R_star, dpi=300, fig.width = w,fig.height=h}
-R_star <- get_R_star( MatureRun = MatureRun$MatureRun, phi_Q = phi_Q$phi_Q)
+```{r N, dpi=300, fig.width = w,fig.height=h}
+N <- get_N( MatureRun = MatureRun$MatureRun, phi_Q = phi_Q$phi_Q)
 
-ggplot( R_star$df, aes(y = R_star, x = y, group = i)) +
+ggplot( N$df, aes(y = N, x = y, group = i)) +
   geom_line() +
   geom_point() +
   geom_line(data = phi_Q$df, aes( y= phi_Q, x = y), colour="darkorchid1")+
   geom_line(data = MatureRun$df, aes(y = MatureRun, x = y), colour = "darkgreen") +
   geom_hline(aes(yintercept=0)) +
-  ylab(TeX("$R^*$ in black, $MatureRun$ in green, $\\varphi_Q$ in pink")) +
+  ylab(TeX("$N$ in black, $MatureRun$ in green, $\\varphi_Q$ in pink")) +
   facet_grid( i ~ a, scales="free_y") +
   theme_classic() +
   theme(axis.text.x = element_text(angle=90, vjust=0.5),
         strip.text.y = element_text(angle = 0))
 
-ggplot( R_star$df, aes(y = R_star, x = b, group = i, colour= complete_brood)) +
+
+```
+
+
+Recruits by return year and brood year. 
+
+```{r R, dpi=300, fig.width = w,fig.height=h}
+R <- get_R( N = N$N )
+
+str(R)
+
+ggplot( R$df_with_ages, aes(y = R_star, x = y, group = i)) +
+  geom_line() +
+  geom_point() +
+  geom_line(data = phi_Q$df, aes( y= phi_Q, x = y), colour="darkorchid1")+
+  geom_line(data = MatureRun$df, aes(y = MatureRun, x = y), colour = "darkgreen") +
+  geom_hline(aes(yintercept=0)) +
+  xlab("Return year") +
+  ylab(TeX("$R$ by age in black, $MatureRun$ in green, $\\varphi_Q$ in pink")) +
+  facet_grid( i ~ a, scales="free_y") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle=90, vjust=0.5),
+        strip.text.y = element_text(angle = 0))
+
+ggplot( R$df_with_ages, aes(y = R_star, x = b, group = i, colour= complete_brood)) +
   geom_line() +
   geom_point() +
   geom_hline(aes(yintercept=0)) +
   xlab("Brood year") +
-  ylab(TeX("$R^*$ by brood year.")) +
+  ylab(TeX("$R$ by age")) +
   facet_grid( i ~ a, scales="free_y") +
   scale_colour_manual(values = c("gray", "black")) +
   theme_classic() +
   theme(axis.text.x = element_text(angle=90, vjust=0.5),
         strip.text.y = element_text(angle = 0))
-
-```
-
-
-Get recruits by brood year, summed across ages.
-```{r R, dpi=300}
-R <- get_R( R_star_b = R_star$R_star_b, R_star_df = R_star$df)
 
 ggplot( R$df, aes(y = R, x = b, group = i, colour = complete_brood)) +
   geom_line() +
@@ -554,7 +577,6 @@ ggplot( R$df, aes(y = R, x = b, group = i, colour = complete_brood)) +
   theme_classic() +
   theme(axis.text.x = element_text(angle=90, vjust=0.5))
 
-
 ```
 
 
@@ -563,10 +585,11 @@ ggplot( R$df, aes(y = R, x = b, group = i, colour = complete_brood)) +
 
 
 # Save generated data files to data/ folder
-usethis::use_data(P_tilde, overwrite= TRUE)
-usethis::use_data(X, overwrite = TRUE)
-usethis::use_data(W_star, overwrite = TRUE)
-usethis::use_data(R_star, overwrite = TRUE)
+usethis::use_data(P_tilde, 
+                  X, 
+                  W_star,
+                  R, 
+                  overwrite = TRUE)
 
 
 
@@ -642,7 +665,7 @@ H_star_df2 <- rbind( H_star_df1, CU_dummy2)
 
 
 
-
+# List of data with CU and return year and age
 list_df_iya <- list(
                  # omega$df,
                  #"n" = n # n age observations, would need to make into df
@@ -667,6 +690,7 @@ list_df_iya <- list(
 #debugonce(combine_df_list)
 dc <- combine_df_list(list_df_iya, includes_ages = TRUE)
 
+# list of data by CU and return year, no ages
 list_df_iy <- list( P_tilde$df,
                         X$df, 
                         E$df)
@@ -701,12 +725,20 @@ names(dcn) <- new_names
 
 run_reconstruction_table <- dcn
 
+# Sum wild spawners, total harvest, and total run by CU and return year
+dcsum <- dc %>% filter(!a== 7) %>% group_by(i, y) %>% summarize( W = sum(W_star, na.rm=TRUE), harvest = sum(total_harvest_estimate, na.rm=TRUE), N = sum(N, na.rm=TRUE))
 
-dcsum <- dc %>% filter(!a== 7) %>% group_by(i, b) %>% summarize( W = sum(W_star, na.rm=TRUE), harvest = sum(total_harvest_estimate, na.rm=TRUE), N = sum(N, na.rm=TRUE))
+# columns to merge into brood table
+btmc <- c("i", "y", "W")
+# Make brood table
+brood_table <- merge( R$df , dcsum[ , names(dcsum) %in% btmc ] , by.x = c("b", "i"), by.y = c("y", "i"))
 
 
 # Save run reconstruction data in a big table
-usethis::use_data( run_reconstruction_table, overwrite = TRUE)
+usethis::use_data( run_reconstruction_table,
+                   brood_table, 
+                   overwrite = TRUE)
+
 write.csv(run_reconstruction_table, here( "data", "run_reconstruction_table.csv"), row.names = FALSE)
 
 # Optional: merge result together into a big table. 
@@ -743,11 +775,11 @@ write.csv(run_reconstruction_table, here( "data", "run_reconstruction_table.csv"
 
 
 ```{r return, dpi=300}
-ggplot( dcsum, aes(y = N, x = b)) +
+ggplot( dcsum, aes(y = N, x = y)) +
   geom_line() +
   geom_hline(aes(yintercept=0)) +
   ylab(TeX("Skeena aggregate total run (black), wild\nspawners (blue), and harvest (red shaded)")) +
-  xlab("Brood year") +
+  xlab("Return year") +
   geom_line( aes( y = W) , colour = "dodgerblue") + 
   geom_ribbon( aes( ymin = W, ymax = N), colour = NULL, fill= "red", alpha = 0.5) +
   facet_wrap( ~ i, scales = "free_y") +
@@ -758,11 +790,11 @@ ggplot( dcsum, aes(y = N, x = b)) +
 ```
 
 ```{r harvest, dpi=300}
-ggplot( dcsum, aes(y = harvest, x = b)) +
+ggplot( dcsum, aes(y = harvest, x = y)) +
   geom_line() +
   geom_hline(aes(yintercept=0)) +
   ylab(TeX("Total harvest estimate")) +
-  xlab("Brood year") +
+  xlab("Return year") +
   #geom_line( aes( y = W) , colour = "dodgerblue") + 
   facet_wrap( ~ i, scales = "free_y") +
   theme_classic() +
@@ -770,3 +802,27 @@ ggplot( dcsum, aes(y = harvest, x = b)) +
 
 
 ```
+
+```{r recruits-spawners, dpi=300}
+ggplot( brood_table, aes(y = R, x = W, colour = b)) +
+  geom_point() +
+  ylab(TeX("$R$ recruits")) +
+  scale_colour_viridis_c() +
+  xlab(TeX("$W$ wild spawners")) +
+  facet_wrap( ~ i, scales= "free" ) +
+  theme_classic()
+ 
+ggplot( brood_table, aes(y = R/W, x = b)) +
+  geom_point() +
+  geom_line() +
+  geom_hline(aes(yintercept = 1), linetype = 2, colour = "gray")+ 
+  ylab(TeX("Recruits per (wild) spawner")) +
+  xlab("Brood year") +
+  facet_wrap( ~ i, scales="free_y" ) +
+  theme_classic()
+
+```
+
+
+
+

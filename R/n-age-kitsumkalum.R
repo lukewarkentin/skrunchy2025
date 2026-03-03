@@ -12,4 +12,3 @@
 #' }
 #' @source data-raw/kitsumkalum/process-kitsumkalum-age-observations-omega-K.R
 "n_age_observations"
-
