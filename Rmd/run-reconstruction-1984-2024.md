@@ -89,10 +89,10 @@ library(dplyr)
 #> 
 #>     intersect, setdiff, setequal, union
 
-library(skrunchy2025)
+library(skrunchy2025) # turn on to knit, must have fresh install 
 # build_rmd(here("Rmd/run-reconstruction-1984-2024.Rmd"))
 # Load all files in data/ folder
-#devtools::load_all(".") # could probably replace this with library(skrunchy2025) but would need to reinstall to reflect any updates. 
+#devtools::load_all(".") # Turn on to run in console 
 
 options(scipen = 999)
 ```
@@ -605,42 +605,6 @@ Recruits by return year and brood year.
 ``` r
 R <- get_R( N = N$N )
 
-str(R)
-#> List of 3
-#>  $ R           : num [1:7, 1:43] 8973 7663 1324 1409 17593 ...
-#>   ..- attr(*, "dimnames")=List of 2
-#>   .. ..$ i: chr [1:7] "Kitsumkalum" "Large Lakes" "Lower Skeena" "Middle Skeena" ...
-#>   .. ..$ b: chr [1:43] "1978" "1979" "1980" "1981" ...
-#>  $ df          :'data.frame':    301 obs. of  4 variables:
-#>   ..$ i             : chr [1:301] "Kitsumkalum" "Large Lakes" "Lower Skeena" "Middle Skeena" ...
-#>   ..$ b             : int [1:301] 1978 1978 1978 1978 1978 1978 1978 1979 1979 1979 ...
-#>   ..$ complete_brood: logi [1:301] FALSE FALSE FALSE FALSE FALSE FALSE ...
-#>   ..$ R             : num [1:301] 8973 7663 1324 1409 17593 ...
-#>  $ df_with_ages:'data.frame':    861 obs. of  6 variables:
-#>   ..$ i             : chr [1:861] "Skeena" "Kitsumkalum" "Large Lakes" "Lower Skeena" ...
-#>   ..$ y             : int [1:861] 1984 1984 1984 1984 1984 1984 1984 1985 1985 1985 ...
-#>   ..$ a             : int [1:861] 4 4 4 4 4 4 4 4 4 4 ...
-#>   ..$ R_star        : num [1:861] 29160 5465 16008 1392 1043 ...
-#>   ..$ b             : int [1:861] 1980 1980 1980 1980 1980 1980 1980 1981 1981 1981 ...
-#>   ..$ complete_brood: logi [1:861] TRUE TRUE TRUE TRUE TRUE TRUE ...
-
-ggplot( R$df_with_ages, aes(y = R_star, x = y, group = i)) +
-  geom_line() +
-  geom_point() +
-  geom_line(data = phi_Q$df, aes( y= phi_Q, x = y), colour="darkorchid1")+
-  geom_line(data = MatureRun$df, aes(y = MatureRun, x = y), colour = "darkgreen") +
-  geom_hline(aes(yintercept=0)) +
-  xlab("Return year") +
-  ylab(TeX("$R$ by age in black, $MatureRun$ in green, $\\varphi_Q$ in pink")) +
-  facet_grid( i ~ a, scales="free_y") +
-  theme_classic() +
-  theme(axis.text.x = element_text(angle=90, vjust=0.5),
-        strip.text.y = element_text(angle = 0))
-```
-
-<img src="man/figures/README-R-1.png" alt="" width="100%" />
-
-``` r
 
 ggplot( R$df_with_ages, aes(y = R_star, x = b, group = i, colour= complete_brood)) +
   geom_line() +
@@ -655,7 +619,7 @@ ggplot( R$df_with_ages, aes(y = R_star, x = b, group = i, colour= complete_brood
         strip.text.y = element_text(angle = 0))
 ```
 
-<img src="man/figures/README-R-2.png" alt="" width="100%" />
+<img src="man/figures/README-R-1.png" alt="" width="100%" />
 
 ``` r
 
@@ -665,13 +629,13 @@ ggplot( R$df, aes(y = R, x = b, group = i, colour = complete_brood)) +
   geom_hline(aes(yintercept=0)) +
   ylab(TeX("Recruits, $R$")) +
   xlab("Brood year") +
-  facet_wrap( ~i , scales="free_y") +
+  facet_wrap( ~i , scales="free_y", ncol = 2) +
   scale_colour_manual(values = c("gray", "black")) +
   theme_classic() +
   theme(axis.text.x = element_text(angle=90, vjust=0.5))
 ```
 
-<img src="man/figures/README-R-3.png" alt="" width="100%" />
+<img src="man/figures/README-R-2.png" alt="" width="100%" />
 
 ``` r
 
@@ -776,7 +740,7 @@ list_df_iya <- list(
                  A_P$df,
                  phi_N$df,
                  phi_Q$df,
-                 R_star$df )
+                 N$df)
 
 #debugonce(combine_df_list)
 dc <- combine_df_list(list_df_iya, includes_ages = TRUE)
@@ -793,9 +757,9 @@ dciy <- combine_df_list(list_df_iy, includes_ages = FALSE)
 # ERA_data_processed <- list( df_wide = ERA_w, df_long = ERA_l)
 #names(ERA_data_processed)
 
-dc$total_harvest_estimate <- dc$R_star - dc$W_star - dc$B_star
-dc$N <- dc$R_star
-dc <- dc[ !grepl("R_star", names(dc))] 
+# Get total harvest estimate
+# Total (wild) run minus wild spawners minus brood removals
+dc$total_harvest_estimate <- dc$N - dc$W_star -  dc$B_star
 
 # merge ERA rates with run recon table
 #names(ERA_data_processed$df_wide)
@@ -820,11 +784,13 @@ run_reconstruction_table <- dcn
 dcsum <- dc %>% filter(!a== 7) %>% group_by(i, y) %>% 
   summarize( W = sum(W_star, na.rm=TRUE), 
              harvest = sum(total_harvest_estimate, na.rm=TRUE), 
-             N = sum(N, na.rm=TRUE))
+             N = sum(N, na.rm=TRUE)) 
 #> `summarise()` has grouped output by 'i'. You can override using the `.groups`
 #> argument.
+dcsum1 <- dcsum
+dcsum1$est_hr <- dcsum1$harvest / dcsum$N
 
-# columns to merge into brood table
+# columns dcsum1# columns to merge into brood table
 btmc <- c("i", "y", "W")
 # Make brood table
 brood_table <- merge( R$df , dcsum[ , names(dcsum) %in% btmc ] , by.x = c("b", "i"), by.y = c("y", "i"))
@@ -899,6 +865,21 @@ ggplot( dcsum, aes(y = harvest, x = y)) +
 ```
 
 <img src="man/figures/README-harvest-1.png" alt="" width="100%" />
+
+``` r
+
+ggplot( dcsum, aes(y = harvest/N, x = y)) +
+  geom_line() +
+  geom_hline(aes(yintercept=0)) +
+  ylab(TeX("approx. total harvest rate (harvest/N)")) +
+  xlab("Return year") +
+  #geom_line( aes( y = W) , colour = "dodgerblue") + 
+  facet_wrap( ~ i) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle=90, vjust=0.5))
+```
+
+<img src="man/figures/README-harvest-2.png" alt="" width="100%" />
 
 ``` r
 ggplot( brood_table[ brood_table$complete_brood==TRUE, ], aes(y = R, x = W, colour = b)) +
