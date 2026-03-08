@@ -188,7 +188,7 @@ ggplot(X$df, aes(y = X, x = y, group = i)) +
 
 ```
 
-Get age proportions by age, population and year (fake data).
+Get age proportions by age, population and year
 
 ```{r omega, dpi = 300 , fig.width = w,fig.height=h}
 omega <- omega
@@ -767,12 +767,12 @@ write.csv(run_reconstruction_table, here( "data", "run_reconstruction_table.csv"
 
 ```{r return, dpi=300}
 ggplot( dcsum, aes(y = N, x = y)) +
-  geom_line() +
+  geom_line( ) +
   geom_hline(aes(yintercept=0)) +
-  ylab(TeX("Skeena aggregate total run (black), wild\nspawners (blue), and harvest (red shaded)")) +
+  ylab(TeX("Total run (black), wild spawners (blue), and harvest (red shaded)")) +
   xlab("Return year") +
   geom_line( aes( y = W) , colour = "dodgerblue") + 
-  geom_ribbon( aes( ymin = W, ymax = N), colour = NULL, fill= "red", alpha = 0.5) +
+  geom_ribbon( aes( ymin = W, ymax = N), colour = NULL, fill= "firebrick", alpha = 0.2) +
   facet_wrap( ~ i, scales = "free_y") +
   theme_classic() +
   theme(axis.text.x = element_text(angle=90, vjust=0.5))

@@ -223,7 +223,7 @@ ggplot(X$df, aes(y = X, x = y, group = i)) +
 
 <img src="man/figures/README-E-1.png" alt="" width="100%" />
 
-Get age proportions by age, population and year (fake data).
+Get age proportions by age, population and year
 
 ``` r
 omega <- omega
@@ -785,8 +785,12 @@ dcsum <- dc %>% filter(!a== 7) %>% group_by(i, y) %>%
   summarize( W = sum(W_star, na.rm=TRUE), 
              harvest = sum(total_harvest_estimate, na.rm=TRUE), 
              N = sum(N, na.rm=TRUE)) 
-#> `summarise()` has grouped output by 'i'. You can override using the `.groups`
-#> argument.
+#> `summarise()` has regrouped the output.
+#> ℹ Summaries were computed grouped by i and y.
+#> ℹ Output is grouped by i.
+#> ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+#> ℹ Use `summarise(.by = c(i, y))` for per-operation grouping
+#>   (`?dplyr::dplyr_by`) instead.
 dcsum1 <- dcsum
 dcsum1$est_hr <- dcsum1$harvest / dcsum$N
 
@@ -837,17 +841,17 @@ write.csv(run_reconstruction_table, here( "data", "run_reconstruction_table.csv"
 
 ``` r
 ggplot( dcsum, aes(y = N, x = y)) +
-  geom_line() +
+  geom_line( ) +
   geom_hline(aes(yintercept=0)) +
-  ylab(TeX("Skeena aggregate total run (black), wild\nspawners (blue), and harvest (red shaded)")) +
+  ylab(TeX("Total run (black), wild spawners (blue), and harvest (red shaded)")) +
   xlab("Return year") +
   geom_line( aes( y = W) , colour = "dodgerblue") + 
-  geom_ribbon( aes( ymin = W, ymax = N), colour = NULL, fill= "red", alpha = 0.5) +
+  geom_ribbon( aes( ymin = W, ymax = N), colour = NULL, fill= "firebrick", alpha = 0.2) +
   facet_wrap( ~ i, scales = "free_y") +
   theme_classic() +
   theme(axis.text.x = element_text(angle=90, vjust=0.5))
-#> Warning in geom_ribbon(aes(ymin = W, ymax = N), colour = NULL, fill = "red", :
-#> Ignoring empty aesthetic: `colour`.
+#> Warning in geom_ribbon(aes(ymin = W, ymax = N), colour = NULL, fill =
+#> "firebrick", : Ignoring empty aesthetic: `colour`.
 ```
 
 <img src="man/figures/README-return-1.png" alt="" width="100%" />
