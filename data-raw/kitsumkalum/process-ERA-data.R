@@ -199,7 +199,7 @@ tau_dot_M <- tau_dot_M[as.character(1984:2024), ]
 
 # phi_dot_M - preterminal net total mortality harvest rate of mature fish ----------
 #       (0 for age 3-4, sum of ALASKA N and CENTRL N for age 5-6)
-phi_dot_M_fisheries <- c("ALASKA N", "CENTRAL N")
+phi_dot_M_fisheries <- c("ALASKA N", "CENTRL N")
 
 phi_dot_M_df <- by_er %>%
   filter(Fishery_Name %in% phi_dot_M_fisheries, Stock == "KLM", age >= 4) %>%
