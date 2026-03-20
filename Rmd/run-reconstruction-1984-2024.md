@@ -89,10 +89,11 @@ library(dplyr)
 #> 
 #>     intersect, setdiff, setequal, union
 
-library(skrunchy2025) # turn on to knit, must have fresh install 
+#library(skrunchy2025) # turn on to knit, must have fresh install 
 # build_rmd(here("Rmd/run-reconstruction-1984-2024.Rmd"))
 # Load all files in data/ folder
-#devtools::load_all(".") # Turn on to run in console 
+devtools::load_all(".") # Turn on to run in console 
+#> ℹ Loading skrunchy2025
 
 options(scipen = 999)
 ```
@@ -507,7 +508,7 @@ Pre-terminal post fishery abundance.
 
 ``` r
 # Quick fix for r, age 4, year = 2003, very low
-r_use <- r
+r_use <- r_maturation_rate
 r_use[ "2003", "4"] <- mean(r_use [ as.character(c(2001:2002, 2004:2005)) , "4"])
 A_phi <- get_A_phi( MatureRun = MatureRun$MatureRun, r = r_use)
 

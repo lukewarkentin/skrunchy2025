@@ -441,7 +441,7 @@ Pre-terminal post fishery abundance.
 
 ```{r A_phi, dpi=300, fig.width = w,fig.height=h}
 # Quick fix for r, age 4, year = 2003, very low
-r_use <- r
+r_use <- r_maturation_rate
 r_use[ "2003", "4"] <- mean(r_use [ as.character(c(2001:2002, 2004:2005)) , "4"])
 A_phi <- get_A_phi( MatureRun = MatureRun$MatureRun, r = r_use)
 
