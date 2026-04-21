@@ -22,15 +22,18 @@ The goal of skrunchy is to recreate and update the run reconstruction for Skeena
 
 ## Organization 
 
-Raw data (`.csv` and `.xlsx` files) are included in the `data-raw` folder. A `README.md` file gives a brief explanation of each data file. 
+Raw data (`.csv` and `.xlsx` files) are included in the `data-raw` folder. 
+A `README.md` file gives a brief explanation of each data file. 
 
 The R scripts that read, format, and save the raw data are also saved in the `data-raw` folder. 
+
+**[This script](data-raw/do-run-reconstruction.R)** is run to do the run reconstruction on the data, using the `skrunchy` package. 
 
 Processed data is saved as `.rda` files in the `data` folder. When the package is installed and loaded, these data are available to call.  
 
 The `R` folder has documentation files for each `.rda` data object. 
 
-The `Rmd` folder has a [markdown document](Rmd/run-reconstruction-1984-2024.md) that is run to do the run reconstruction on the data, using the `skrunchy` package. 
+The `Rmd` folder has a [markdown document](Rmd/run-reconstruction-1984-2024.md) that plots the data. 
 
 ## Installation
 
