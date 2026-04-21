@@ -1,12 +1,16 @@
 # data-raw/do-run-reconstruction
 
+# 1. Setup ---------------------------
 library(skrunchy)
 library(here)
 library(dplyr)
 library(skrunchy2025)
 library(ggplot2)
 
-# Part 1: Run reconstruction step by step
+# 2. Load processed inputs in data/ folder ----------------------
+devtools::load_all(".")
+
+# 3. Run reconstruction step by step --------------------
 
 # Use data from Skeena Tyee test fishery weekly catch and genetic mixture data,
 # and pool it into annual genetic proportions.
@@ -76,6 +80,7 @@ W_star <- get_W_star(S_star = S_star$S_star, H_star = H_star)
 # for Skeena aggregate and Kitsumkalum, since hatchery origin spawners only occur
 # for Kitsumkalum. Note this is not real data, p is very high for Kitsumkalum across years.
 p <- get_p(W_star = W_star$W_star, E_star = E_star$E_star, B_star = B_star)
+p_proportion_wild <- p # this is so R doesn't confuse P and p
 # Estimate freshwater terminal mortalities in the lower Skeena by population, year, and age.
 tau_L <- get_tau_L(
   Tau_L = Tau_L_total,
@@ -129,7 +134,7 @@ N <- get_N(MatureRun = MatureRun$MatureRun, phi_Q = phi_Q$phi_Q)
 R <- get_R(N = N$N)
 
 
-# Part 2: Processing and mergin run reconstruction data
+# 4. Process and merge run reconstruction data into tables --------------------
 
 # Merge all data frames by the return year, age, and CU
 
@@ -299,14 +304,37 @@ brood_table <- merge(
   by.y = c("y", "i")
 )
 
-# Part 3: Save data
+# 5. Save data -----------------------
 # FLAG: need to expand this to include more
-usethis::use_data(P_tilde, X, W_star, R, overwrite = TRUE)
+usethis::use_data(
+  P_tilde,
+  X,
+  Tau_L_total,
+  Tau_U_total,
+  E,
+  E_star,
+  S_star,
+  W_star,
+  p_proportion_wild,
+  tau_L,
+  tau_U,
+  tau_M,
+  tau_W,
+  TermRun,
+  MatureRun,
+  A_phi,
+  A_P,
+  phi_N,
+  phi_Q,
+  N,
+  R,
+  overwrite = TRUE
+)
 
 # Save run reconstruction data in a big table
 usethis::use_data(run_reconstruction_table, brood_table, overwrite = TRUE)
 
-# Save to csv
+# Save big table to csv
 write.csv(
   run_reconstruction_table,
   here("data", "run_reconstruction_table.csv"),
