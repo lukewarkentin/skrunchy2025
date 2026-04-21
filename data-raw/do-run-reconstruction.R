@@ -293,6 +293,7 @@ dcsum <- dc %>%
   )
 dcsum1 <- dcsum
 dcsum1$est_hr <- dcsum1$harvest / dcsum$N
+run_reconstruction_table_summary <- dcsum1
 
 # columns dcsum1# columns to merge into brood table
 btmc <- c("i", "y", "W")
@@ -332,7 +333,12 @@ usethis::use_data(
 )
 
 # Save run reconstruction data in a big table
-usethis::use_data(run_reconstruction_table, brood_table, overwrite = TRUE)
+usethis::use_data(
+  run_reconstruction_table,
+  run_reconstruction_table_summary,
+  brood_table,
+  overwrite = TRUE
+)
 
 # Save big table to csv
 write.csv(
