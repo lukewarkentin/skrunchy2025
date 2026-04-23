@@ -123,7 +123,7 @@ r_use <- r_maturation_rate
 r_use["2003", "4"] <- mean(r_use[as.character(c(2001:2002, 2004:2005)), "4"])
 A_phi <- get_A_phi(MatureRun = MatureRun$MatureRun, r = r_use)
 # Get pre-fishery ocean abundance.
-A_P <- get_A_P(A_phi = A_phi$A_phi, phi_dot_E = phi_dot_E)
+# A_P <- get_A_P(A_phi = A_phi$A_phi, phi_dot_E = phi_dot_E)
 # Get preterminal fishing mortality in nominal fish.
 phi_N <- get_phi_N(A_P = A_P$A_P, A_phi = A_phi$A_phi)
 # Get preterminal fishing mortality in adult equivalents.
@@ -287,13 +287,27 @@ dcsum <- dc %>%
   filter(!a == 7) %>%
   group_by(i, y) %>%
   summarize(
-    W = sum(W_star, na.rm = TRUE),
+    W_wild_spawners = sum(W_star, na.rm = TRUE),
     harvest = sum(total_harvest_estimate, na.rm = TRUE),
     N = sum(N, na.rm = TRUE)
   )
 dcsum1 <- dcsum
 dcsum1$est_hr <- dcsum1$harvest / dcsum$N
+
+new_names1 <- names(dcsum1)
+for (i in 1:length(names(dcsum1))) {
+  new_names1[i] <- ifelse(
+    names(dcsum1)[i] %in% variable_name_key$skrunchy,
+    variable_name_key$skrunchy_with_detail[
+      variable_name_key$skrunchy == names(dcsum1)[i]
+    ],
+    names(dcsum1)[i]
+  )
+}
+new_names1
+names(dcsum1) <- new_names1
 run_reconstruction_table_summary <- dcsum1
+
 
 # columns dcsum1# columns to merge into brood table
 btmc <- c("i", "y", "W")
@@ -306,7 +320,7 @@ brood_table <- merge(
 )
 
 # 5. Save data -----------------------
-# FLAG: need to expand this to include more
+# save the step by step data products
 usethis::use_data(
   P_tilde,
   X,
@@ -332,7 +346,7 @@ usethis::use_data(
   overwrite = TRUE
 )
 
-# Save run reconstruction data in a big table
+# Save summarized/ merged data objects
 usethis::use_data(
   run_reconstruction_table,
   run_reconstruction_table_summary,

@@ -87,7 +87,7 @@ data-raw/tyee-sampling-biodata-ages/
 
 !data-raw/kitsumkalum/fishery-lookup-CWT-ERA-notes.csv
 !data-raw/kitsumkalum/chinook-cwt-ERA-outfiles_2025-03-06_KLM-KLY.xlsx
-
+!data-raw/kitsumkalum/kitsumkalum-female-brood-age-length-egg-data.csv
 
 #!data-raw/tyee-genetics/tyee-catch-by-stat-week-1984-2020.xlsx # obsolete
 !data-raw/tyee-genetics/check-sets-per-day.csv
