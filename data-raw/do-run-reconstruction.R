@@ -310,7 +310,7 @@ run_reconstruction_table_summary <- dcsum1
 
 
 # columns dcsum1# columns to merge into brood table
-btmc <- c("i", "y", "W")
+btmc <- c("i", "y", "W_wild_spawners")
 # Make brood table
 brood_table <- merge(
   R$df,

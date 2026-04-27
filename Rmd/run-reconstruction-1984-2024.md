@@ -639,30 +639,30 @@ ggplot( R$df, aes(y = R, x = b, group = i, colour = complete_brood)) +
 <img src="man/figures/README-R-2.png" alt="" width="100%" />
 
 ``` r
-ggplot( run_reconstruction_table_summary, aes(y = N, x = y)) +
+ggplot( run_reconstruction_table_summary, aes(y = N_total_run, x = y_return_year)) +
   geom_line( ) +
   geom_hline(aes(yintercept=0)) +
   ylab(TeX("Total run (black), wild spawners (blue), and harvest (red shaded)")) +
   xlab("Return year") +
-  geom_line( aes( y = W) , colour = "dodgerblue") + 
-  geom_ribbon( aes( ymin = W, ymax = N), colour = NULL, fill= "firebrick", alpha = 0.2) +
-  facet_wrap( ~ i, scales = "free_y") +
+  geom_line( aes( y = W_wild_spawners) , colour = "dodgerblue") + 
+  geom_ribbon( aes( ymin = W_wild_spawners, ymax = N_total_run), colour = NULL, fill= "firebrick", alpha = 0.2) +
+  facet_wrap( ~ i_population, scales = "free_y") +
   theme_classic() +
   theme(axis.text.x = element_text(angle=90, vjust=0.5))
-#> Warning in geom_ribbon(aes(ymin = W, ymax = N), colour = NULL, fill =
-#> "firebrick", : Ignoring empty aesthetic: `colour`.
+#> Warning in geom_ribbon(aes(ymin = W_wild_spawners, ymax = N_total_run), :
+#> Ignoring empty aesthetic: `colour`.
 ```
 
 <img src="man/figures/README-return-1.png" alt="" width="100%" />
 
 ``` r
-ggplot( run_reconstruction_table_summary, aes(y = harvest, x = y)) +
+ggplot( run_reconstruction_table_summary, aes(y = harvest, x = y_return_year)) +
   geom_line() +
   geom_hline(aes(yintercept=0)) +
   ylab(TeX("Total harvest estimate")) +
   xlab("Return year") +
   #geom_line( aes( y = W) , colour = "dodgerblue") + 
-  facet_wrap( ~ i, scales = "free_y") +
+  facet_wrap( ~ i_population, scales = "free_y") +
   theme_classic() +
   theme(axis.text.x = element_text(angle=90, vjust=0.5))
 ```
@@ -671,13 +671,13 @@ ggplot( run_reconstruction_table_summary, aes(y = harvest, x = y)) +
 
 ``` r
 
-ggplot( run_reconstruction_table_summary, aes(y = harvest/N, x = y)) +
+ggplot( run_reconstruction_table_summary, aes(y = est_hr, x = y_return_year)) +
   geom_line() +
   geom_hline(aes(yintercept=0)) +
   ylab(TeX("approx. total harvest rate (harvest/N)")) +
   xlab("Return year") +
   #geom_line( aes( y = W) , colour = "dodgerblue") + 
-  facet_wrap( ~ i) +
+  facet_wrap( ~ i_population) +
   theme_bw() +
   theme(axis.text.x = element_text(angle=90, vjust=0.5))
 ```
@@ -685,7 +685,7 @@ ggplot( run_reconstruction_table_summary, aes(y = harvest/N, x = y)) +
 <img src="man/figures/README-harvest-2.png" alt="" width="100%" />
 
 ``` r
-ggplot( brood_table[ brood_table$complete_brood==TRUE, ], aes(y = R, x = W, colour = b)) +
+ggplot( brood_table[ brood_table$complete_brood==TRUE, ], aes(y = R, x = W_wild_spawners, colour = b)) +
   geom_point() +
   ylab(TeX("$R$ recruits")) +
   scale_colour_viridis_c() +
@@ -700,7 +700,7 @@ ggplot( brood_table[ brood_table$complete_brood==TRUE, ], aes(y = R, x = W, colo
 
 ``` r
  
-ggplot( brood_table[ brood_table$complete_brood==TRUE, ], aes(y = R/W, x = b)) +
+ggplot( brood_table[ brood_table$complete_brood==TRUE, ], aes(y = R/W_wild_spawners, x = b)) +
   geom_point() +
   geom_line() +
   geom_hline(aes(yintercept = 1), linetype = 2, colour = "gray")+ 
@@ -714,7 +714,7 @@ ggplot( brood_table[ brood_table$complete_brood==TRUE, ], aes(y = R/W, x = b)) +
 
 ``` r
 
-ggplot( brood_table[ brood_table$complete_brood==TRUE, ], aes(y = R/W, x = b)) +
+ggplot( brood_table[ brood_table$complete_brood==TRUE, ], aes(y = R/W_wild_spawners, x = b)) +
   geom_point() +
   geom_line() +
   geom_hline(aes(yintercept = 1), linetype = 2, colour = "gray")+ 
@@ -728,7 +728,7 @@ ggplot( brood_table[ brood_table$complete_brood==TRUE, ], aes(y = R/W, x = b)) +
 
 ``` r
 
-ggplot( brood_table[ brood_table$complete_brood==TRUE, ], aes(y = log(R/W), x = b)) +
+ggplot( brood_table[ brood_table$complete_brood==TRUE, ], aes(y = log(R/W_wild_spawners), x = b)) +
   geom_point() +
   geom_line() +
   geom_hline(aes(yintercept = log(1)), linetype = 2, colour = "gray")+ 
