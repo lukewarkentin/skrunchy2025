@@ -1,0 +1,14 @@
+#' P_tilde
+#'
+#' Description
+#'
+#'
+#' @format ## `P_tilde`
+#' Object type and dimensions
+#' \describe{
+#'   \item{dim1}{dimension 1 description}
+#'   \item{dim2}{dimension 2 descirption}
+#' }
+#' @source Source code to create object
+"P_tilde"
+
