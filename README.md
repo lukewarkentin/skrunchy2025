@@ -33,7 +33,7 @@ Processed data is saved as `.rda` files in the `data` folder. When the package i
 
 The `R` folder has documentation files for each `.rda` data object. 
 
-The `Rmd` folder has a [markdown document](Rmd/run-reconstruction-1984-2024.md) that plots the data. 
+The `Rmd` folder has a [markdown document](inst/Rmd/run-reconstruction-1984-2024.md) that plots the data. 
 
 ## Installation
 
