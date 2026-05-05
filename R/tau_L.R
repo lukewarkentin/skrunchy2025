@@ -1,14 +1,11 @@
-#' tau_L
+#' Terminal mortality by age, lower Skeena
 #'
-#' Description
+#' Terminal freshwater mortality by age, lower Skeena (below Terrace)
 #'
 #'
 #' @format ## `tau_L`
-#' Object type and dimensions
-#' \describe{
-#'   \item{dim1}{dimension 1 description}
-#'   \item{dim2}{dimension 2 descirption}
-#' }
-#' @source Source code to create object
+#'
+#' A list with two objects. First object: numeric, array of total terminal mortalities in the lower Skeena with three dimensions: population (i), year (y), and age (a). Second object: data frame with same data in long format (columns for population, year, and age) for plotting.
+#'
+#' @source data-raw/do-run-reconstruction.R
 "tau_L"
-

@@ -1,14 +1,10 @@
-#' S_star
+#' Spawners by age
 #'
-#' Description
+#' Total spawners
 #'
 #'
 #' @format ## `S_star`
-#' Object type and dimensions
-#' \describe{
-#'   \item{dim1}{dimension 1 description}
-#'   \item{dim2}{dimension 2 descirption}
-#' }
-#' @source Source code to create object
+#' List with two elements. First element: numeric, array of spawner values with three dimensions: population (i), year (y), and age (a). Second element: data frame version of first element in long format, for plotting and tables.
+#'
+#' @source data-raw/do-run-reconstruction.R
 "S_star"
-

@@ -1,6 +1,6 @@
 #' Total run
 #'
-#Sum of escapement, brood removals, terminal mortality, and preterminal mortality (including incidental mortality).
+#' Sum of escapement, brood removals, terminal mortality, and preterminal mortality (including incidental mortality).
 #'
 #'
 #' @format ## `N`

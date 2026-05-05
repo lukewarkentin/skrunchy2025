@@ -1,14 +1,11 @@
-#' r_maturation_rate
+#' Maturation rate
 #'
-#' Description
+#' Maturation rate by year and age.
 #'
 #'
 #' @format ## `r_maturation_rate`
-#' Object type and dimensions
-#' \describe{
-#'   \item{dim1}{dimension 1 description}
-#'   \item{dim2}{dimension 2 descirption}
-#' }
-#' @source Source code to create object
+#'
+#' Array of maturation rate by year and age. CTC Chinook model output for Kitsumkalum (KLM).
+#'
+#' @source data-raw/kitsumkalum/process-ERA-data.R
 "r_maturation_rate"
-

@@ -1,14 +1,11 @@
-#' R
+#' Recruits
 #'
-#' Description
+#' Recruits by brood year
 #'
 #'
 #' @format ## `R`
-#' Object type and dimensions
-#' \describe{
-#'   \item{dim1}{dimension 1 description}
-#'   \item{dim2}{dimension 2 descirption}
-#' }
-#' @source Source code to create object
+#' List with three elements. First element: numeric, array of recruits by  brood year with three dimensions: population (i), brood year (b).
+#' Second element: data frame version of first element. Third element: data frame of recruits by age, population, brood year and return year.
+#'
+#' @source data-raw/do-run-reconstruction.R
 "R"
-

@@ -1,14 +1,11 @@
-#' phi_Q
+#' Preterminal fishing mortality in adult equivalents
 #'
-#' Description
+#'Preteriminal fishing mortality in adult equivalents (AEQ).
 #'
 #'
 #' @format ## `phi_Q`
-#' Object type and dimensions
-#' \describe{
-#'   \item{dim1}{dimension 1 description}
-#'   \item{dim2}{dimension 2 descirption}
-#' }
-#' @source Source code to create object
+#'
+#' List with two elements. First element: numeric, array of preterminal fishing mortality in adult equivalents, with three dimensions: population (i), year (y), and age (a). Second element: dataframe version of first element, for plotting and tables.
+#'
+#' @source data-raw/do-run-reconstruction.R
 "phi_Q"
-

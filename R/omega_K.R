@@ -1,14 +1,14 @@
-#' omega_K
+#' Age proportions of Kitsumkalum spawners by sex
 #'
-#' Description
+#' Age proportions of Kitsumkalum spawners (collected on spawning grounds) by year, sex, and age. From scales collected during tagging and deadpitch.
 #'
 #'
 #' @format ## `omega_K`
-#' Object type and dimensions
+#' Array with three dimensions:
 #' \describe{
-#'   \item{dim1}{dimension 1 description}
-#'   \item{dim2}{dimension 2 descirption}
+#'   \item{s}{Sex}
+#'   \item{y}{Return year}
+#'   \item{a}{Age}
 #' }
-#' @source Source code to create object
+#' @source data-raw/process-kitsumkalum-age-observations-omega-K.R
 "omega_K"
-

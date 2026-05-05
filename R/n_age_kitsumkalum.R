@@ -1,14 +1,15 @@
-#' n_age_kitsumkalum
+#' Number of age observations for Kitsumkalum spawners
 #'
-#' Description
+#' Number of Kitsumkalum spawners by age, year, and sex. From scales collected on the
+#' spawning grounds during tagging and dead pitch.
 #'
 #'
 #' @format ## `n_age_kitsumkalum`
-#' Object type and dimensions
+#' Array with 3 dimensions:
 #' \describe{
-#'   \item{dim1}{dimension 1 description}
-#'   \item{dim2}{dimension 2 descirption}
+#'   \item{s}{Sex}
+#'   \item{y}{Return year}
+#'   \item{a}{Total age (Gilbert-Rich)}
 #' }
-#' @source Source code to create object
+#' @source data-raw/process-kitsumkalum-age-observations-omega-K.R
 "n_age_kitsumkalum"
-
