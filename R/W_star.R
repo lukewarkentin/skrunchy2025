@@ -1,14 +1,11 @@
-#' W_star
+#' Wild spawners by age
 #'
-#' Description
+#' Wild (natural origin) spawners by age.
 #'
 #'
 #' @format ## `W_star`
-#' Object type and dimensions
-#' \describe{
-#'   \item{dim1}{dimension 1 description}
-#'   \item{dim2}{dimension 2 descirption}
-#' }
-#' @source Source code to create object
+#'
+#' First element: numeric, array of wild spawner values with three dimensions: population (i), year (y), and age (a). Second element: data frame version of first element in long format, for plotting and tables.
+#'
+#' @source data-raw/do-run-reconstruction.R
 "W_star"
-

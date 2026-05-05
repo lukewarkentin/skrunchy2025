@@ -1,14 +1,10 @@
-#' Q
+#' Adult Equivalency (AEQ) rates
 #'
-#' Description
-#'
+#' Adult Equivalency (AEQ) rates by year and age.
 #'
 #' @format ## `Q`
-#' Object type and dimensions
-#' \describe{
-#'   \item{dim1}{dimension 1 description}
-#'   \item{dim2}{dimension 2 descirption}
-#' }
+#'
+#'  array of adult equivalency (AEQ) rates with two dimensions: year (y) and age (a). Output from CTC Chinook model based on Kitsumkalum CWT releases (KLM).
+#'
 #' @source Source code to create object
 "Q"
-

@@ -1,14 +1,11 @@
-#' Tau_U_total
+#' Terminal mortality, upper Skeena
 #'
-#' Description
+#' Terminal mortality, upper Skeena (upstream of Terrace)
 #'
 #'
 #' @format ## `Tau_U_total`
-#' Object type and dimensions
-#' \describe{
-#'   \item{dim1}{dimension 1 description}
-#'   \item{dim2}{dimension 2 descirption}
-#' }
-#' @source Source code to create object
+#'
+#' A numeric vector of total terminal mortalities including catch and incidental mortalities, for the upper Skeena (upstream of Terrace), by year.
+#'
+#' @source data-raw/do-run-reconstruction.R
 "Tau_U_total"
-

@@ -1,14 +1,11 @@
-#' run_reconstruction_table_summary
+#' Run reconstruction data summarized by return year
 #'
-#' Description
+#' Full run reconstruction data, summed across ages.
 #'
 #'
 #' @format ## `run_reconstruction_table_summary`
-#' Object type and dimensions
-#' \describe{
-#'   \item{dim1}{dimension 1 description}
-#'   \item{dim2}{dimension 2 descirption}
-#' }
-#' @source Source code to create object
+#' Data frame
+#'
+#'
+#' @source data-raw/do-run-reconstruction.R
 "run_reconstruction_table_summary"
-

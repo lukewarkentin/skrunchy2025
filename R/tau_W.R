@@ -1,14 +1,11 @@
-#' tau_W
+#' Wild terminal mortalities by age
 #'
-#' Description
+#' Wild terminal mortalities by age
 #'
 #'
 #' @format ## `tau_W`
-#' Object type and dimensions
-#' \describe{
-#'   \item{dim1}{dimension 1 description}
-#'   \item{dim2}{dimension 2 descirption}
-#' }
-#' @source Source code to create object
+#'
+#' List with two elements. First element: numeric, array of wild terminal mortalities with three dimensions: population (i), year (y), and age (a). Second element: data frame version of first element, for plotting and tables.
+#'
+#' @source data-raw/do-run-reconstruction.R
 "tau_W"
-

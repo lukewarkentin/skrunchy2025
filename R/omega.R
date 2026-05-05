@@ -1,14 +1,14 @@
-#' omega
+#' Age proportion data by population, year, and age
 #'
-#' Description
+#' Age proportion by population, year, and age, for ages 4-7. From Tyee Test Fishery.
 #'
 #'
 #' @format ## `omega`
-#' Object type and dimensions
+#' List with two objects
+#'
 #' \describe{
-#'   \item{dim1}{dimension 1 description}
-#'   \item{dim2}{dimension 2 descirption}
+#'   \item{omega}{Array}
+#'   \item{df}{Data frame}
 #' }
-#' @source Source code to create object
+#' @source data-raw/process-omega-and-biodata.R
 "omega"
-

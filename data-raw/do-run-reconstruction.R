@@ -14,7 +14,7 @@ devtools::load_all(".")
 
 # Use data from Skeena Tyee test fishery weekly catch and genetic mixture data,
 # and pool it into annual genetic proportions.
-P_tilde <- get_P_tilde(P = P, sigma_P = sigma_P, G = G)
+P_tilde <- skrunchy::get_P_tilde(P = P, sigma_P = sigma_P, G = G)
 # Now do expansions to get returns to Terrace for each population, and the
 # Skeena aggregate.
 k <- kitsumkalum[kitsumkalum$year <= 2024, ]
@@ -41,7 +41,7 @@ Tau_L_total <- get_Tau_L_total(
 # Get freshwater terminal mortalities in the upper Skeena by year
 Tau_U_total <- get_Tau_U_total(
   omega_J = omega_J_skeena,
-  rec_catch_U = Tau$rec_catch_U,
+  # rec_catch_U = Tau$rec_catch_U,
   FN_catch_U = Tau$FN_catch_U
 )
 # Get escapement for each population, plot with returns to Terrace (note, will

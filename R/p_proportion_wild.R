@@ -1,14 +1,13 @@
-#' p_proportion_wild
+#' Proportion wild spawners
 #'
-#' Description
+#' Proportion of spawners that are wild origin
 #'
 #'
 #' @format ## `p_proportion_wild`
-#' Object type and dimensions
+#' List with the data in two formats:
 #' \describe{
-#'   \item{dim1}{dimension 1 description}
-#'   \item{dim2}{dimension 2 descirption}
+#'   \item{p}{Array}
+#'   \item{df}{Data frame}
 #' }
-#' @source Source code to create object
+#' @source data-raw/do-run-reconstruction.R
 "p_proportion_wild"
-
