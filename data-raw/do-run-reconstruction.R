@@ -138,37 +138,6 @@ R <- get_R(N = N$N)
 
 # Merge all data frames by the return year, age, and CU
 
-combine_df_list <- function(x, includes_ages = TRUE) {
-  # remove brood year column before merging
-  dn <- lapply(x, function(i) {
-    df_new <- i[, !grepl("^b$", names(i))]
-    df_new
-  })
-
-  if (includes_ages == TRUE) {
-    combdf <- Reduce(
-      function(d1, d2) {
-        merge(d1, d2, by = c("y", "a", "i"), all = TRUE)
-      },
-      dn
-    )
-    combdf$a <- as.integer(combdf$a)
-    combdf$y <- as.integer(combdf$y)
-    combdf$b <- combdf$y - combdf$a
-  }
-
-  if (includes_ages == FALSE) {
-    combdf <- Reduce(
-      function(d1, d2) {
-        merge(d1, d2, by = c("y", "i"), all = TRUE)
-      },
-      dn
-    )
-  }
-
-  return(combdf)
-}
-
 # Make a data frame with brood stock removals, equal for Skeena and Kitsumkalum, 0 for all other CUs
 B_star_df <- array2DF(B_star, responseName = "B_star")
 
@@ -234,12 +203,10 @@ list_df_iya <- list(
   N$df
 )
 
-#debugonce(combine_df_list)
 dc <- combine_df_list(list_df_iya, includes_ages = TRUE)
 
 # list of data by CU and return year, no ages
 list_df_iy <- list(P_tilde$df, X$df, E$df)
-#debugonce(combine_df_list)
 dciy <- combine_df_list(list_df_iy, includes_ages = FALSE)
 
 
