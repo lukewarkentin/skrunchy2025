@@ -41,7 +41,7 @@ Tau_L_total <- get_Tau_L_total(
 # Get freshwater terminal mortalities in the upper Skeena by year
 Tau_U_total <- get_Tau_U_total(
   omega_J = omega_J_skeena,
-  # rec_catch_U = Tau$rec_catch_U,
+  rec_catch_U = Tau$rec_catch_U,
   FN_catch_U = Tau$FN_catch_U
 )
 # Get escapement for each population, plot with returns to Terrace (note, will
@@ -123,7 +123,7 @@ r_use <- r_maturation_rate
 r_use["2003", "4"] <- mean(r_use[as.character(c(2001:2002, 2004:2005)), "4"])
 A_phi <- get_A_phi(MatureRun = MatureRun$MatureRun, r = r_use)
 # Get pre-fishery ocean abundance.
-# A_P <- get_A_P(A_phi = A_phi$A_phi, phi_dot_E = phi_dot_E)
+A_P <- get_A_P(A_phi = A_phi$A_phi, phi_dot_E = phi_dot_E)
 # Get preterminal fishing mortality in nominal fish.
 phi_N <- get_phi_N(A_P = A_P$A_P, A_phi = A_phi$A_phi)
 # Get preterminal fishing mortality in adult equivalents.
@@ -209,10 +209,6 @@ dc <- combine_df_list(list_df_iya, includes_ages = TRUE)
 list_df_iy <- list(P_tilde$df, X$df, E$df)
 dciy <- combine_df_list(list_df_iy, includes_ages = FALSE)
 
-
-# ERA_l <- ERA_w %>% pivot_longer(., cols = 3:8, names_to = "var", values_to = "value")
-# ERA_data_processed <- list( df_wide = ERA_w, df_long = ERA_l)
-#names(ERA_data_processed)
 
 # Get total harvest estimate
 # Total (wild) run minus wild spawners minus brood removals

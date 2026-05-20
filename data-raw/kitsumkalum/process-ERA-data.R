@@ -330,34 +330,34 @@ Q
 
 # Create master table of all rates after QAQC
 # function to combine arrays into data frame
-comb_arr <- function(x) {
-  # Check list has names
-  if (is.null(names(x))) {
-    stop("List must be named.")
-  }
-
-  # Convert each array to data frame using its list name
-  l_df <- Map(
-    function(arr, nm) {
-      array2DF(arr, responseName = nm)
-    },
-    x,
-    names(x)
-  )
-
-  # Merge all data frames by the first two dimension columns
-  combdf <- Reduce(
-    function(d1, d2) {
-      merge(d1, d2, by = c("y", "a"), all = TRUE)
-    },
-    l_df
-  )
-
-  combdf$y <- as.numeric(combdf$y)
-  combdf$a <- as.numeric(combdf$a)
-  combdf$b <- combdf$y - combdf$a
-  return(combdf)
-}
+# comb_arr <- function(x) {
+#   # Check list has names
+#   if (is.null(names(x))) {
+#     stop("List must be named.")
+#   }
+#
+#   # Convert each array to data frame using its list name
+#   l_df <- Map(
+#     function(arr, nm) {
+#       array2DF(arr, responseName = nm)
+#     },
+#     x,
+#     names(x)
+#   )
+#
+#   # Merge all data frames by the first two dimension columns
+#   combdf <- Reduce(
+#     function(d1, d2) {
+#       merge(d1, d2, by = c("y", "a"), all = TRUE)
+#     },
+#     l_df
+#   )
+#
+#   combdf$y <- as.numeric(combdf$y)
+#   combdf$a <- as.numeric(combdf$a)
+#   combdf$b <- combdf$y - combdf$a
+#   return(combdf)
+# }
 
 listarr <- list(
   "H_star" = H_star,
@@ -367,7 +367,7 @@ listarr <- list(
   "phi_dot_E" = phi_dot_E,
   "Q" = Q
 )
-ERA_w <- comb_arr(listarr)
+ERA_w <- array_to_df(listarr)
 ERA_l <- ERA_w %>%
   pivot_longer(., cols = 3:8, names_to = "var", values_to = "value")
 ERA_data_processed <- list(df_wide = ERA_w, df_long = ERA_l)
