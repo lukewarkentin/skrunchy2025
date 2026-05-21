@@ -78,4 +78,16 @@ ggplot(ds, aes(y = mean_N, x = y_return_year)) +
   geom_line() +
   geom_ribbon(aes(ymin = p5, ymax = p95), alpha = 0.2) +
   facet_wrap(~i_population, scales = "free_y") +
+  ylab("Total run") +
   theme_classic()
+
+# Compare with deterministic values
+run_reconstruction_table_summary
+check <- merge(
+  run_reconstruction_table_summary,
+  ds,
+  by = c("i_population", "y_return_year")
+)
+ggplot(check, aes(y = mean_N, x = N_total_run)) +
+  geom_point() +
+  facet_wrap(~i_population, scales = "free")
