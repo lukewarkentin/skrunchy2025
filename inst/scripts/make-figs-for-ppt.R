@@ -44,13 +44,13 @@ ggplot(
     "Total run, wild spawners, and harvest (000s)"
   )) +
   xlab("Return year") +
-  coord_cartesian( expand = FALSE, clip = FALSE) +
+  coord_cartesian(expand = FALSE, clip = FALSE) +
   geom_line(aes(y = W_wild_spawners / 1000, colour = "Wild Spawners")) +
   geom_ribbon(
     aes(
       ymin = W_wild_spawners / 1000,
       ymax = N_total_run / 1000,
-      fill = "Harvest"
+      fill = "Harvest + Incidental Mortality"
     ),
     colour = NULL,
     alpha = 0.2
@@ -61,14 +61,14 @@ ggplot(
     values = c(
       "Total Run" = "black",
       "Wild Spawners" = "dodgerblue",
-      "Harvest" = "firebrick"
+      "Harvest + Incidental Mortality" = "firebrick"
     )
   ) +
   # Manual fill scale for polygon
   scale_fill_manual(
     name = "",
     values = c(
-      "Harvest" = "firebrick"
+      "Harvest + Incidental Mortality" = "firebrick"
     )
   ) +
   facet_wrap(~ factor(i_population, levels = skeena_order), scales = "free_y") +
