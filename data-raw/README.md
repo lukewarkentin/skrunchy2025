@@ -95,6 +95,10 @@ of equal effort by week for expansions of GSI by weekly catch. File created by q
 
 Contains files with individual fish biodata (age, sex, length), one row per fish, from the Tyee test fishery. 
 
+#### `merge-biodata.R` 
+
+R script that merges 1973-2013 and 2014-2025 Tyee biodata. They are from two different Access databases. 
+
 #### `biodata-merge-no-fix.csv`
 
 Merged Tyee test fishery biodata for Chinook. 
@@ -116,10 +120,6 @@ Genetic proportions by year, week and CU.
 #### `sigma-P-1984-2020.rda`
 
 Standard deviation of genetic proportions by year, week and CU.
-
-#### `merge-biodata.R` 
-
-R script that merges 1973-2013 and 2014-2025 Tyee biodata. They are from two different Access databases. 
 
 #### `tyee-biodata-age-sex-length-CU-1984-2020.rda` 
 
