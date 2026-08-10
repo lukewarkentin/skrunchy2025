@@ -103,7 +103,7 @@ R script that merges 1973-2013 and 2014-2025 Tyee biodata. They are from two dif
 
 Merged Tyee test fishery biodata for Chinook. 
 
-## `tyee-data-1984-2020`
+## `tyee-data-1984-2020/`
 
 Weekly catch, genetics, and age proportions from Tyee Test fishery, 1984-2020, derived from msat data (currently waiting for rerun). Same data as for Winther et al. 2024, with some minor adjustments to CUs: 
    - keeping Kuldo in Middle Skeena
@@ -130,7 +130,6 @@ Biodata from Tyee Test fishery, one line per fish. Includes catch date, sex, len
 - Look into large increases in maturation rate for age 4, 5 fish
 - SD, female and male spawner values for Kitsumkalum in 2022
 - 2021 SNP Tyee file - is it with jacks or not?
-- In river harvest values for 2021-2024 (FSC and rec)
 - Note that 1984-2020 biodata file with gsi/CU is excluding some observations of sex/length/catch/age. IW's 1984-2020 file was just fish that had age and genetics data. More data exists for sex/length, and for aged fish that didn't get genetic analysis. May be useful for demographics (e.g., length, sex ratio, and age shifts for aggregate, or independent of CU).
 - For Kitsumkalum escapement, decide whether to use age proportion data from Tyee test fishery, or from mark-recap on Kitsumkalum River 
 - All genetics data (1984-2020 msat, 2021-2024 SNP) is being rerun against most current baselines. GSI data subject to small changes. 
@@ -140,7 +139,7 @@ Biodata from Tyee Test fishery, one line per fish. Includes catch date, sex, len
 - Add a file with raw catch by day at Tyee
 - Add file with Tyee index by day at Tyee
 - In CTC data, clarify where NBC ISBM S should go
-- Confirm rec catch above Terrace is 0 for 2002, 2003, 2007
+- Confirm whether rec catch above Terrace is 0 for 2002, 2003, 2007. Currently using edits from LGL report. 
 - Check maturation rate `r` for return year 2003, age 4. Very low. Gives weird results. Using 5-year average now.
-- Confirm if Tyee CWT recoveries are included in TNBC TERM N results
+- Confirm if Tyee CWT recoveries are included in TNBC TERM N results - CONFIRMED, need to adjust run reconstruction. 
 - Check and possibly combine the two Kitsumkalum age processing R scripts
