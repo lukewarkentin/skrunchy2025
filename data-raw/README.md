@@ -127,6 +127,7 @@ Biodata from Tyee Test fishery, one line per fish. Includes catch date, sex, len
 
 # Current placeholder values or things to consider/ updates: 
 
+- Look into using POPAN male/female ratio for demographic change instead of Tyee catch. 
 - Look into large increases in maturation rate for age 4, 5 fish
 - SD, female and male spawner values for Kitsumkalum in 2022
 - 2021 SNP Tyee file - is it with jacks or not?
