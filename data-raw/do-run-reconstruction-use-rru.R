@@ -26,7 +26,7 @@ n_age_samples <- apply(n_age_observations, c(1, 2), sum)
 
 # 3. Run reconstruction using rr() wrapper function --------------------
 run_recon <- rru_iterate(
-  n_iter = 100,
+  n_iter = 1000,
   seed = 1,
   n_gsi_samples = n_gsi_samples$n,
   n_age_samples = n_age_samples,
@@ -40,6 +40,8 @@ run_recon <- rru_iterate(
   omega = omega$omega,
   omega_J = omega_J$omega["Skeena", , ],
   tyee = Tau$tyee,
+  cv_freshwater_mortality = 0.3,
+  use_tyee = FALSE,
   rec_catch_L = Tau$rec_catch_L,
   rec_release_L = Tau$rec_release_L,
   FN_catch_L = Tau$FN_catch_L,
@@ -53,6 +55,9 @@ run_recon <- rru_iterate(
   add_6_7 = TRUE,
   B_star = B_star,
   H_star = H_star,
+  rate_resample_method = "lognormal",
+  rate_resample_cv = 0.3,
+  rate_resample_max_er = 0.5,
   tau_dot_M = tau_dot_M,
   phi_dot_M = phi_dot_M,
   r = r_use,
@@ -62,6 +67,57 @@ run_recon <- rru_iterate(
   save_outputs = FALSE
 )
 
+# Plot new summaries
+# get df summary
+sdat <- run_recon[[2]]
+
+# Plot summary
+ggplot(
+  sdat[sdat$variable == "W_wild_spawners", ],
+  aes(y = mean, y_return_year)
+) +
+  geom_line() +
+  ylab("Wild spawners (W)") +
+  geom_ribbon(aes(ymin = mean - sd, ymax = mean + sd), alpha = 0.5) +
+  facet_wrap(~i_population, scales = "free_y") +
+  geom_hline(aes(yintercept = 0)) +
+  theme_classic()
+
+ggplot(
+  sdat[sdat$variable == "harvest", ],
+  aes(y = mean, y_return_year)
+) +
+  geom_line() +
+  ylab("Harvest (includes IM)") +
+  geom_ribbon(aes(ymin = mean - sd, ymax = mean + sd), alpha = 0.5) +
+  facet_wrap(~i_population, scales = "free_y") +
+  geom_hline(aes(yintercept = 0)) +
+  theme_classic()
+
+ggplot(
+  sdat[sdat$variable == "N_total_run", ],
+  aes(y = mean, y_return_year)
+) +
+  geom_line() +
+  ylab("Total Run (N)") +
+  geom_ribbon(aes(ymin = mean - sd, ymax = mean + sd), alpha = 0.5) +
+  facet_wrap(~i_population, scales = "free_y") +
+  geom_hline(aes(yintercept = 0)) +
+  theme_classic()
+
+ggplot(
+  sdat[sdat$variable == "est_hr", ],
+  aes(y = mean, y_return_year)
+) +
+  geom_line() +
+  ylab("Harvest Rate (includes IM)") +
+  geom_ribbon(aes(ymin = mean - sd, ymax = mean + sd), alpha = 0.5) +
+  facet_wrap(~i_population) +
+  geom_hline(aes(yintercept = 0)) +
+  theme_classic()
+
+
+# OBS
 d <- do.call(rbind, run_recon)
 
 ds <- d |>

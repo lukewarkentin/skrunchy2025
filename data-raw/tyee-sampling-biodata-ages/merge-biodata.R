@@ -34,6 +34,11 @@ d1 <- read_xlsx(
   .name_repair = fix_names
 )
 d1 <- d1[d1$species == "124", ] # keep chinook only
+
+
+# new columns for etag, cwt in original data
+d1$etag <- d1$head_number
+
 # remove unneccessary columns
 cols_not_use <- c(
   "wab_code",
@@ -74,7 +79,7 @@ cols_not_use <- c(
   "coded_fin_mark",
   "head_code",
   "head_number",
-  "cwt_code", # these might be superfluous for this data
+  #"cwt_code", # these might be superfluous for this data
   "external_damage",
   "hook_location",
   "stomach_sample",
@@ -102,6 +107,7 @@ d1 <- d1[!is.na(d1$species), ] # remove NA rows
 # fix typo
 d1$location_name <- sub("SLEENA", "SKEENA", d1$location_name) # one typo in 1996
 
+
 file2 <- "2014-2025-tyee-chinook-biodata-2026-08-10.xlsx"
 
 d2 <- read_xlsx(
@@ -111,6 +117,15 @@ d2 <- read_xlsx(
 )
 cols_not_use2 <- c("months_catch", "field1")
 d2 <- d2[, !names(d2) %in% cols_not_use2]
+
+
+# Pull out etag number and make new column
+d2$etag <- ifelse(
+  grepl("[[:digit:]]{7}", d2$comments),
+  stringr::str_extract(d2$comments, "[[:digit:]]{5,7}"),
+  NA
+)
+
 
 unique(d2$comments[d2$year_catch > 2013])
 
@@ -155,6 +170,7 @@ d$nose_fork_length_mm <- as.numeric(d$nose_fork_length_mm)
 d$year_catch <- as.integer(d$year_catch)
 
 d$decade <- floor(d$year_catch / 10) * 10
+
 
 write.csv(d, here(path1, "biodata-merge-no-fix.csv"), row.names = FALSE)
 
