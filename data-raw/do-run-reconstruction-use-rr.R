@@ -16,6 +16,7 @@ kitsumkalum <- kitsumkalum[kitsumkalum$year <= 2024, ]
 r_use <- r_maturation_rate
 r_use["2003", "4"] <- mean(r_use[as.character(c(2001:2002, 2004:2005)), "4"])
 
+# Something is broked for Kitsumkalum past wild spawners
 
 # 3. Run reconstruction using rr() wrapper function --------------------
 run_recon <- rr(
@@ -28,6 +29,7 @@ run_recon <- rr(
   omega = omega$omega,
   omega_J = omega_J$omega["Skeena", , ],
   tyee = Tau$tyee,
+  use_tyee = FALSE,
   rec_catch_L = Tau$rec_catch_L,
   rec_release_L = Tau$rec_release_L,
   FN_catch_L = Tau$FN_catch_L,
@@ -38,6 +40,8 @@ run_recon <- rr(
   lower_populations = c("Lower Skeena", "Zymoetz"),
   upper_populations = c("Upper Skeena", "Middle Skeena", "Large Lakes"),
   K_star = K_star,
+  use_alternate_escapement_by_age = TRUE,
+  population_use_age_from_river_samples = "Kitsumkalum",
   add_6_7 = TRUE,
   B_star = B_star,
   H_star = H_star,

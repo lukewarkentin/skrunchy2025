@@ -118,6 +118,8 @@ data-raw/tyee-sampling-biodata-ages/
 # Data outputs
 !data/ERA_data_processed.csv
 !data/run_reconstruction_table.csv
+!data/run_reconstruction_table_with_uncertainty.rda
+!data/run_reconstruction_table_summary_with_uncertainty.rda
 
 
 
